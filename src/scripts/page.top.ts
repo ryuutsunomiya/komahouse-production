@@ -63,8 +63,39 @@ function enter() {
   }, 500);
 }
 
+function facility_init() {
+  const facility = document.querySelector(".facilityList");
+  const items = facility?.querySelectorAll(".facilityList_sticky_item");
+  const facilityList_scroll = facility?.querySelector(".facilityList_scroll")!;
+  let current = -1;
+  let perH = 0;
+  const total = items ? items.length - 1 : 0;
+
+  function onResize() {
+    const rect = facilityList_scroll?.getBoundingClientRect();
+    perH = rect.height / (total + 1);
+  }
+  window.addEventListener("resize", onResize);
+  onResize();
+
+  function change() {
+    items?.forEach((item, index) => item.classList.toggle("--current", index <= current));
+  }
+  function onScroll() {
+    const rect = facilityList_scroll?.getBoundingClientRect();
+    const next = Math.min(total, Math.max(0, Math.round((rect.top * -1) / perH)));
+    if (next !== current) {
+      current = next;
+      change();
+    }
+  }
+  new RowScroll({ wrapper: facility, onScroll: onScroll });
+  onScroll();
+}
+
 export function pageTop_init() {
   gallery_init();
+  facility_init();
 
   enter();
 }
