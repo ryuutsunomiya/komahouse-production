@@ -1,0 +1,61 @@
+---
+import Image from "astro/components/Image.astro"
+import src_01 from "../assets/top/facility/facility_01.jpg"
+import src_02 from "../assets/top/facility/facility_02.jpg"
+import src_03 from "../assets/top/facility/facility_03.jpg"
+import { zeroPad } from "../utils/calc"
+
+
+const data = [
+    {
+        title: "LIVING / リビング",
+        detail: "くつろぐための、ゆったりとしたソファ。話す人、料理する人、何もしない人。思い思いの場所で過ごせます。",
+        src: src_01,
+    },
+    {
+        title: "KITCHEN / キッチン",
+        detail: "口コンロを備え、複数人で同時に料理ができる広さに設計。買い出しをして、料理をして、みんなで食卓を囲む。その時間ごと楽しんでいただければ幸いです。",
+        src: src_02,
+    },
+    {
+        title: "TERRACE / テラス",
+        detail: "星を眺めたり、ただ風に吹かれたり。<br />室内とは少し違う時間が流れる場所です。",
+        src: src_03,
+    },
+]
+---
+
+
+<div class="facilityList">
+    <ul class="facilityList_sticky">
+        {
+            data.map((item, index) => (
+                <li class="facilityList_sticky_item">
+                    <div class="facilityList_sticky_img">
+                        <Image src={item.src} alt={""} />
+                    </div>
+                    <div class="facilityList_sticky_texts">
+                        <div class="facilityList_sticky_itemBox">
+                            <div class="facilityList_sticky_numbers">
+                                <p class="facilityList_sticky_numbers_title">FACILITY</p>
+                                <div class="facilityList_sticky_numbers_number">
+                                    <p>{zeroPad(index + 1, 2)}</p>
+                                    <p>{zeroPad(data.length, 2)}</p>
+                                </div>
+                            </div>
+                            <p class="facilityList_sticky_title">{item.title}</p>
+                        </div>
+                        <p class="facilityList_sticky_text" set:html={item.detail}></p>
+                    </div>
+                </li>
+            ))
+        }
+    </ul>
+    <div class="facilityList_scroll">
+        {
+            [...Array(data.length)].map(() => (
+                <div></div>
+            )
+        )}
+    </div>
+</div>

@@ -1,4 +1,3 @@
-import { clamp } from "../utils/calc";
 import { RowScroll } from "../utils/rowScroll";
 
 function gallery_init() {
@@ -29,7 +28,7 @@ function gallery_init() {
     navItems.forEach((item, index) => {
       item.classList.toggle("--current", index === current);
     });
-    windowItems.forEach((item, index) => {
+    windowItems?.forEach((item, index) => {
       item.classList.toggle("js--hidden", index !== current);
     });
     console.log("j");
@@ -47,6 +46,25 @@ function gallery_init() {
   new RowScroll({ wrapper: nav, onScroll: onScroll });
 }
 
+function enter() {
+  setTimeout(() => {
+    const fv = document.querySelector(".fv");
+    fv?.classList.add("--act");
+    const helos = fv?.querySelectorAll(".slTexts_text");
+    helos?.forEach((item, index) => {
+      setTimeout(
+        () => {
+          item.classList.remove("--hide");
+        },
+        // 200 + index * 100,
+        0,
+      );
+    });
+  }, 500);
+}
+
 export function pageTop_init() {
   gallery_init();
+
+  enter();
 }

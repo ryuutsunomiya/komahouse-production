@@ -91,6 +91,8 @@ import { slTexts_init } from "../scripts/slTexts";
 import { cta_init } from "../scripts/cta";
 import { accordion_init } from "../utils/accordion";
 import { pageTop_init } from "../scripts/page.top";
+import { showImg_init } from "../scripts/showImg";
+import { lenis_init } from "../libs/lenis";
 
 window.addEventListener('DOMContentLoaded', () => {
 	!isDev && checkLocal();
@@ -99,9 +101,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		function page_beforeEnter(resolve: (value: unknown) => void) {
 			isSp_set();
 			pageTransition_set();
+			lenis_init();
 			slTexts_init();
 			cta_init();
 			accordion_init();
+			showImg_init();
 
 			switch (pageId) {
 				case "top":

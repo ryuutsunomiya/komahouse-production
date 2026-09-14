@@ -2,6 +2,173 @@
 @use './mixin' as f
 
 .top
+    .fv
+        height: 100svh
+        position: relative
+        max-height: 960rem
+        color: v.$white
+        +f.flex()
+        overflow: clip
+        .fv_bg
+            position: absolute
+            width: 100%
+            height: 100%
+            +f.tra(opacity, 0.8s, 0s, linear)
+            opacity: 0
+            .fv_bg_img
+                width: 100%
+                height: 100%
+                object-fit: cover
+                transform-origin: center bottom
+                scale: 1.1
+                +f.tra(scale, 2.6s, 0s, auto)
+        .fv_bg::after
+            content: ""
+            position: absolute
+            height: 179rem
+            width: 100%
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%,)
+            opacity: 0.4
+            bottom: 0
+        .fv_texts
+            @include f.sectionW
+            position: absolute
+            bottom: 0
+            +f.flex(sta, bet)
+            .fv_texts_main
+                +f.font(83, 140, 10, ForR)
+                position: relative
+                bottom: -8rem
+            .fv_texts_sub
+                text-align: right
+                +f.font(27, 149, 6, ZenMiB)
+                margin-bottom: 4rem
+                position: absolute
+                right: -28rem
+                bottom: 6rem
+                +f.tra(opacity, 1.6s, 1.0s, linear)
+                opacity: 0
+                span:nth-child(1)
+                    margin-right: 1.8em
+        .fv_shutter
+            position: absolute
+            pointer-events: none
+            width: 100%
+            height: 200%
+            bottom: 0
+            background: linear-gradient(0deg, rgba(v.$white, 1) 0%, rgba(v.$white, 1) 50%, rgba(v.$white, 0) 100%,)
+            +f.tra(transform, 2.0s, 0s, auto)
+    .fv.--act
+        .fv_shutter
+            transform: translate3d(0, 100%, 0)
+        .fv_bg
+            opacity: 1
+            .fv_bg_img
+                scale: 1
+        .fv_texts_sub
+            opacity: 1
+    .concept
+        width: 966rem
+        margin: v.$sectionMt auto
+        position: relative
+        .showImg
+            width: 347rem
+            height: 465rem
+        .cencept_caths
+            position: absolute
+        .concept_heading
+            +f.font(17, 160, 11, ZenMiB)
+            margin-left: 88rem
+        .cencept_cath.--en
+            +f.font(83, 140, 10, ForR)
+            span:nth-child(2)
+                margin-left: 175rem
+            span:nth-child(3)
+                margin-left: 173rem
+        .cencept_cath.--jp
+            -ms-writing-mode: tb-rl
+            writing-mode: vertical-rl
+            +f.font(27, 210, 20, ZenMiB)
+            margin-top: 1em
+            margin-left: 335rem
+            span:nth-child(2)
+                margin-top: 8.4em
+        .cencept_itemBox
+            width: 437rem
+            position: relative
+            margin: 264rem 0 0 auto
+            +f.font(17, 290, 6, ZenMiB)
+            .cencept_text
+                margin-top: 2.9em
+    .facility
+        margin: v.$sectionMt 0
+        .facilityList
+            position: relative
+            color: v.$white
+        .facilityList_sticky
+            position: sticky
+            top: 0
+            width: 100%
+            height: 100svh
+            .facilityList_sticky_item
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                +f.flex()
+                .facilityList_sticky_img
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    img
+                        width: 100%
+                        height: 100%
+                        object-fit: cover
+                .facilityList_sticky_img::before
+                    content: ""
+                    position: absolute
+                    height: 179rem
+                    width: 100%
+                    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%,)
+                    opacity: 0.8
+                    bottom: 0
+                .facilityList_sticky_texts
+                    +f.flex(end, bet)
+                .facilityList_sticky_itemBox
+                    width: 791rem
+                .facilityList_sticky_numbers
+                    +f.flex(cen, bet)
+                    width: 259rem
+                    +f.font(15, 240, 11, ZenMiB)
+                    .facilityList_sticky_numbers_number
+                        +f.flex(cen, bet)
+                        width: 141rem
+                        position: relative
+                    .facilityList_sticky_numbers_number::before
+                        content: ""
+                        width: 81rem
+                        height: 1px
+                        background-color: currentColor
+                        position: absolute
+                        left: 50%
+                        transform: translateX(-50%)
+                .facilityList_sticky_title
+                    +f.font(30, 170, 10, ZenMiB)
+                .facilityList_sticky_text
+                    +f.font(17, 170, 10, ZenGoR)
+                    width: 524rem
+                    margin-bottom: 0.5em
+                    
+
+            .facilityList_sticky_texts
+                @include f.sectionW
+                position: absolute
+                bottom: 0
+        .facilityList_scroll
+            pointer-events: none
+            > div
+                height: 960rem
     .floor
         @include f.sectionW
         margin-top: v.$sectionMt

@@ -2,11 +2,15 @@
 import Address from '../components/Address.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { toAccess, toFaq } from '../const/menu';
-import { address } from '../const/tips';
 import Layout from '../layouts/Layout.astro';
 import { zeroPad } from '../utils/calc';
 import src_map from "../assets/dev/map.png"
 import Image from 'astro/components/Image.astro';
+import src_fv from "../assets/top/fv.jpg"
+import SlTexts from '../components/SlTexts.astro';
+import ShowImg from '../components/ShowImg.astro';
+import src_concept from "../assets/top/concept.jpg"
+import FacilityList from '../components/FacilityList.astro';
 
 const faq = [
 	{
@@ -53,9 +57,45 @@ const faq = [
 
 <Layout>
 	<article id="pageContainer" class="top" data-pageId="top">
-		<section class="fv"></section>
-		<section class="concept"></section>
-		<section class="facility"></section>
+		<section class="fv">
+			<div class="fv_bg">
+				<Image class="fv_bg_img" src={src_fv} alt={""} fetchpriority={"high"} loading={"eager"} />
+			</div>
+			<div class="fv_texts">
+				<p class='fv_texts_main'>
+					<SlTexts tag='span' texts={["BREATH,"]} noSplit noInview noClip />&nbsp;
+					<SlTexts tag='span' texts={["CALL,"]} noSplit noInview noClip/>&nbsp;
+					<SlTexts tag='span' texts={["BELONG."]} noSplit noInview noClip/>
+				</p>
+				<h1 class="fv_texts_sub">
+					<span>呼吸するように、過ごす</span><br />
+					<span>一棟貸切の宿。</span>
+				</h1>
+			</div>
+			<div class="fv_shutter"></div>
+		</section>
+		<section class="concept">
+			<h2 class="concept_heading">CONCEPT</h2>
+			<div class="cencept_caths">
+				<h3 class="cencept_cath --en">
+					<span>PRACE FOR YOU<br /></span>
+					<span>TO REST YOUR<br /></span>
+					<span>HEART</span>
+				</h3>
+				<p class="cencept_cath --jp"><span>呼吸するように、過ごす<br /></span><span>一棟貸切の宿。</span></p>
+			</div>
+			<div class="cencept_itemBox">
+				<ShowImg src={src_concept} />
+				<p class="cencept_text">
+					時間を継いで、かわりながら育っていく宿。<br />
+					築50年の民家をリノベーションした、<br />
+					一棟貸切の空間。
+				</p>
+			</div>
+		</section>
+		<section class="facility">
+			<FacilityList />
+		</section>
 		<search class="others"></search>
 		<section class="floor">
 			<SectionHeading main={"Floor Map"} sub='マウスホバー / タップで画像が表示されます。' />

@@ -5,14 +5,17 @@ interface Props {
     texts: string[],
     spTexts?: string[],
     tag: tagType
-    className?: string
+    className?: string,
+    noSplit?: boolean
+    noInview?: boolean,
+    noClip?: boolean
 }
 
-const { texts, spTexts, tag, className="" } = Astro.props
+const { texts, spTexts, tag, className="", noSplit, noInview, noClip } = Astro.props
 const Tag = tag;
 ---
 
-<Tag class={`${className} slTexts`} aria-label={texts.join("")}>
+<Tag class={`${className} slTexts --${noInview ? "noInview" : "inview"} --${noClip ? "noClip" : "clip"}`} aria-label={texts.join("")}>
     <span class={"slTexts_inner"} aria-hidden="true">
         {spTexts ? (
             <span class="--sp">
@@ -28,7 +31,7 @@ const Tag = tag;
         ): (
             <span class="--pc --sp">
                 {texts.map((item, index) => {
-                    const chars = [...item];
+                    const chars = noSplit ? [item] : [...item];
                     return (
                         <span class={`slTexts_line --${index}`}>
                             {chars.map((char) => (

@@ -1,0 +1,15 @@
+---
+import Image from 'astro/components/Image.astro';
+
+interface Props {
+    src: ImageMetadata,
+    noInview?: boolean
+}
+
+const { src, noInview } = Astro.props
+---
+
+<div class={`showImg --${noInview ? "noInview" : "inview"}`}>
+    <Image class="showImg_img" src={src} alt={""} />
+    <div class="showImg_shutter"></div>
+</div>
