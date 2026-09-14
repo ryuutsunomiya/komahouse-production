@@ -4,14 +4,15 @@ import HoverText from './HoverText.astro'
 interface Props {
     href: string
     text: string
-    bg?: "none" | "black"
-    border?: "inherit" | "none" | "black"
+    bg?: "none" | "black" | "white"
+    border?: "inherit" | "none" | "black" | "white"
     isBlank?: boolean
+    className?: string
 }
 
-const { href, text, bg="black", border="inherit", isBlank } = Astro.props;
+const { href, text, bg="black", border="inherit", isBlank, className="" } = Astro.props;
 const borderClassName = border === "inherit" ? bg : border;
-const wrapperClassName = `--bg_${bg} --border_${borderClassName} mainButton`;
+const wrapperClassName = `${className} --bg_${bg} --border_${borderClassName} mainButton`;
 ---
 
 <a class={wrapperClassName} href={href} target={isBlank ? "_blank" : "_self"} rel={isBlank ? 'noopener noreferrer' : ""}>

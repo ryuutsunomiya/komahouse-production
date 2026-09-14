@@ -7,7 +7,7 @@ import src_thum from "../assets/menu_thum.jpg"
 import Address from './Address.astro';
 
 interface Props {
-    label: string
+    label: string,
     type: "header" | "footer"
 }
 
@@ -16,7 +16,7 @@ const { label, type } = Astro.props;
 const subs = [{title: "INFO", contents: menuData_sub}, {title: "FOLLOW", contents: menuData_Follow}]
 ---
 
-<nav class="mainNav", aria-label={label}>
+<nav class="mainNav" aria-label={label}>
     <ul class="mainNav_main">
         {menuData_main.map((item) => (
             <li class="mainNav_main_item">

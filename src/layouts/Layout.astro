@@ -94,6 +94,7 @@ import { pageTop_init } from "../scripts/page.top";
 import { showImg_init } from "../scripts/showImg";
 import { lenis_init } from "../libs/lenis";
 import { toggleBgSection_init } from "../scripts/toggleBgSection";
+import { header_init } from "../scripts/header";
 
 window.addEventListener('DOMContentLoaded', () => {
 	!isDev && checkLocal();
@@ -108,6 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			accordion_init();
 			showImg_init();
 			toggleBgSection_init();
+			header_init();
 
 			switch (pageId) {
 				case "top":
