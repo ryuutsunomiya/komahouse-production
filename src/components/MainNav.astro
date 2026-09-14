@@ -1,5 +1,4 @@
 ---
-import { address } from '../const/tips';
 import { menuData_Follow, menuData_main, menuData_sub } from '../const/menu';
 import HoverText from './HoverText.astro';
 import Image from 'astro/components/Image.astro';
@@ -33,7 +32,7 @@ const subs = [{title: "INFO", contents: menuData_sub}, {title: "FOLLOW", content
                 <ul class="mainNav_sub_items">
                     {sub.contents.map((item) => (
                         <li class="mainNav_sub_item">
-                            <a href={item.href} class="mainNav_sub_anchor">
+                            <a href={item.href} class="mainNav_sub_anchor" target={item.isBlank ? "_blank" : "_self"} rel={item.isBlank ? 'noopener noreferrer' : ""}>
                                 <HoverText text={item.title} />
                             </a>
                         </li>

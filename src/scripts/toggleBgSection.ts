@@ -11,27 +11,12 @@ export function toggleBgSection_init() {
   const showImgs = document.querySelectorAll(".others .others_imgs_inner");
   function change() {
     showImgs.forEach((item, index) => {
-      gsap.to(item, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "none",
-        overwrite: true,
-        onComplete: () => {
-          gsap.to(item, {
-            opacity: index === current ? 1 : 0,
-            duration: 0,
-            ease: "none",
-            overwrite: true,
-          });
-          showImgs.forEach((item, index) => {
-            const imgs = item.querySelectorAll(".showImg");
-            imgs.forEach((img) => {
-              img.classList.toggle("--act", index === current);
-            });
-          });
-        },
+      const imgs = item.querySelectorAll(".showImg");
+      imgs.forEach((img) => {
+        if (index === current) img.classList.add("--act");
       });
     });
+    // });
   }
 
   targets.forEach((target, index) => {
@@ -52,17 +37,17 @@ export function toggleBgSection_init() {
     });
   });
 
-  const other = document.querySelector(".others");
-  function ioCallback(entry: IntersectionObserverEntry) {
-    if (!entry.isIntersecting) {
-      current = -1;
-      console.log("h");
-      change();
-    }
-  }
-  createIo(other, ioCallback, false, {
-    root: null,
-    rootMargin: "-50% 0px -50% 0px",
-    threshold: 0,
-  });
+  // const other = document.querySelector(".others");
+  // function ioCallback(entry: IntersectionObserverEntry) {
+  //   if (!entry.isIntersecting) {
+  //     current = -1;
+  //     console.log("h");
+  //     change();
+  //   }
+  // }
+  // createIo(other, ioCallback, false, {
+  //   root: null,
+  //   rootMargin: "-50% 0px -50% 0px",
+  //   threshold: 0,
+  // });
 }

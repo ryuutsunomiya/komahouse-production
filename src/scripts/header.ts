@@ -4,7 +4,7 @@ import { rowResize } from "../utils/rowResize";
 function hamburger_init() {
   const hamburger = document.querySelector(".hamburger");
   const buttons = document.querySelectorAll(".hamburgerButton");
-  const anchors = hamburger?.querySelectorAll<HTMLAnchorElement>(".mainNav_main_anchor");
+  const navAnchors = hamburger?.querySelectorAll<HTMLAnchorElement>(".mainNav_main_anchor");
   let isOpen = false;
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -12,7 +12,7 @@ function hamburger_init() {
       hamburger?.classList.toggle("--open");
       isOpen = !isOpen;
       if (isOpen) {
-        anchors?.forEach((item, index) => {
+        navAnchors?.forEach((item, index) => {
           item.classList.remove("--act");
           setTimeout(
             () => {
@@ -32,6 +32,15 @@ function hamburger_init() {
     hamburger?.classList.remove("js--noAnime");
   }
   rowResize(resize_start, resize_end, 10);
+
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  anchors.forEach((anchor) => {
+    anchor.addEventListener("click", () => {
+      hamburger?.classList.add("--close");
+      hamburger?.classList.remove("--open");
+      isOpen = false;
+    });
+  });
 }
 
 function overlap_init() {

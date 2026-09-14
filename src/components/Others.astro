@@ -66,8 +66,13 @@ const data = [
 
 
 <section class="others">
-    <div class="others_imgBlock">
-        {data.map((item) => (
+    {data.map((item) => (
+        <ToggleBgSection className="others_block" col={item.col}>
+            <div class="others_texts">
+                <SubHeading text={item.title} />
+                <p class="others_catch" set:html={item.catch}></p>
+                <p class="others_text" set:html={item.text}></p>
+            </div>
             <div class={`others_imgs --${item.id}`}>
                 <div class="others_imgs_inner">
                     {item.imgs.map((img) => (
@@ -75,15 +80,6 @@ const data = [
                     ))}
                 </div>
             </div>
-        ))}
-    </div>
-    <div class="others_textBlock">
-        {data.map((item) => (
-            <ToggleBgSection className="others_texts" col={item.col}>
-                <SubHeading text={item.title} />
-                <p class="others_catch" set:html={item.catch}></p>
-                <p class="others_text" set:html={item.text}></p>
-            </ToggleBgSection>
-        ))}
-    </div>
+        </ToggleBgSection>
+    ))}
 </section>
