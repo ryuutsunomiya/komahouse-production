@@ -181,17 +181,21 @@
         +f.flex(sta, bet)
         @include f.sectionW
         overflow: clip
+        margin-top: v.$sectionMt
         .others_textBlock
             position: relative
             width: 524rem
             .others_texts
-                padding: calc(v.$sectionMt * 2) 0
                 margin: 0 0 0 auto
                 width: 524rem
             .others_texts:first-child
-                padding-top: calc(v.$sectionMt * 2)
+                padding-top: 100svh
+                padding-bottom: 0rem
+            .others_texts:nth-child(2)
+                padding: calc(v.$sectionMt * 2) 0
             .others_texts:last-child
-                padding-bottom: calc(v.$sectionMt * 2)
+                padding-top: 0rem
+                padding-bottom: 100svh
         .others_catch
             +f.font(34, 170, 6, ZenMiB)
             margin: 1.7em 0

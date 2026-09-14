@@ -13,7 +13,7 @@ export function toggleBgSection_init() {
     showImgs.forEach((item, index) => {
       gsap.to(item, {
         opacity: 0,
-        duration: 0.4,
+        duration: 0.8,
         ease: "none",
         overwrite: true,
         onComplete: () => {
