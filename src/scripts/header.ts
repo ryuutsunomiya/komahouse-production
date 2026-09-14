@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { rowResize } from "../utils/rowResize";
 
-export function header_init() {
+function hamburger_init() {
   const hamburger = document.querySelector(".hamburger");
   const buttons = document.querySelectorAll(".hamburgerButton");
   const anchors = hamburger?.querySelectorAll<HTMLAnchorElement>(".mainNav_main_anchor");
@@ -32,4 +32,36 @@ export function header_init() {
     hamburger?.classList.remove("js--noAnime");
   }
   rowResize(resize_start, resize_end, 10);
+}
+
+function overlap_init() {
+  const header = document.querySelector(".header > .header_wrapper");
+  const targets = document.querySelectorAll(".--header_white");
+
+  const checkHeaderOverlap = () => {
+    if (!header) return;
+
+    const headerRect = header.getBoundingClientRect();
+
+    const isOverlap = [...targets].some((target) => {
+      const targetRect = target.getBoundingClientRect();
+
+      return targetRect.top < headerRect.bottom && targetRect.bottom > headerRect.top;
+    });
+
+    header.classList.toggle("--color_white", isOverlap);
+  };
+
+  window.addEventListener("scroll", checkHeaderOverlap, {
+    passive: true,
+  });
+
+  window.addEventListener("resize", checkHeaderOverlap);
+
+  checkHeaderOverlap();
+}
+
+export function header_init() {
+  overlap_init();
+  hamburger_init();
 }

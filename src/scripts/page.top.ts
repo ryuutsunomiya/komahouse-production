@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { RowScroll } from "../utils/rowScroll";
 
 function gallery_init() {
@@ -59,6 +60,14 @@ function enter() {
         // 200 + index * 100,
         0,
       );
+    });
+
+    const header = document.querySelector(".header");
+    header?.classList.remove("js--noAnime");
+    gsap.to(header, {
+      opacity: 1,
+      duration: 0.8,
+      ease: "none",
     });
   }, 500);
 }

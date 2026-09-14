@@ -10,7 +10,7 @@ import src_fv from "../assets/top/fv.jpg"
 import SlTexts from '../components/SlTexts.astro';
 import ShowImg from '../components/ShowImg.astro';
 import src_concept from "../assets/top/concept.jpg"
-import FacilityList from '../components/FacilityList.astro';
+import Facility from '../components/Facility.astro';
 import Others from '../components/Others.astro';
 
 const faq = [
@@ -58,7 +58,7 @@ const faq = [
 
 <Layout>
 	<article id="pageContainer" class="top" data-pageId="top">
-		<section class="fv">
+		<section class="fv --header_white">
 			<div class="fv_bg">
 				<Image class="fv_bg_img" src={src_fv} alt={""} fetchpriority={"high"} loading={"eager"} />
 			</div>
@@ -94,9 +94,7 @@ const faq = [
 				</p>
 			</div>
 		</section>
-		<section class="facility">
-			<FacilityList />
-		</section>
+		<Facility />
 		<Others />
 		<section class="floor">
 			<SectionHeading main={"Floor Map"} sub='マウスホバー / タップで画像が表示されます。' />
