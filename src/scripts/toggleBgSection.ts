@@ -16,7 +16,6 @@ export function toggleBgSection_init() {
         if (index === current) img.classList.add("--act");
       });
     });
-    // });
   }
 
   targets.forEach((target, index) => {
@@ -36,18 +35,4 @@ export function toggleBgSection_init() {
       threshold: 0,
     });
   });
-
-  // const other = document.querySelector(".others");
-  // function ioCallback(entry: IntersectionObserverEntry) {
-  //   if (!entry.isIntersecting) {
-  //     current = -1;
-  //     console.log("h");
-  //     change();
-  //   }
-  // }
-  // createIo(other, ioCallback, false, {
-  //   root: null,
-  //   rootMargin: "-50% 0px -50% 0px",
-  //   threshold: 0,
-  // });
 }
