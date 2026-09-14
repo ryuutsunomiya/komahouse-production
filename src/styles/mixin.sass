@@ -31,18 +31,21 @@
   @if $font-family == auto
     font-family: inherit
     font-weight: normal
-  @else if $font-family == jp
-    font-family: "Noto Sans JP", sans-serif
-    font-optical-sizing: auto
+  @else if $font-family == ZenGoR
+    font-family: "Zen Kaku Gothic New", sans-serif
     font-weight: 400
     font-style: normal
-  @else if $font-family == VerR
-    font-family: "verdana", sans-serif
-    font-weight: 400
+  @else if $font-family == ZenGoM
+    font-family: "Zen Kaku Gothic New", sans-serif
+    font-weight: 500
     font-style: normal
-  @else if $font-family == VerB
-    font-family: "verdana", sans-serif
+  @else if $font-family == ZenMiB
+    font-family: "Zen Old Mincho", serif
     font-weight: 700
+    font-style: normal
+  @else if $font-family == ForR
+    font-family: "forevs", sans-serif
+    font-weight: 400
     font-style: normal
   @else
     background-color: yellow !important
