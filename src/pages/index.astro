@@ -1,8 +1,12 @@
 ---
+import Address from '../components/Address.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { toAccess, toFaq } from '../const/menu';
+import { address } from '../const/tips';
 import Layout from '../layouts/Layout.astro';
 import { zeroPad } from '../utils/calc';
+import src_map from "../assets/dev/map.png"
+import Image from 'astro/components/Image.astro';
 
 const faq = [
 	{
@@ -55,12 +59,36 @@ const faq = [
 		<search class="others"></search>
 		<section class="floor">
 			<SectionHeading main={"Floor Map"} sub='マウスホバー / タップで画像が表示されます。' />
+			<div class="floor_wrapper">
+				<p>コンテンツ確定後実装</p>
+			</div>
 		</section>
 		<section class="gallery">
 			<SectionHeading main={"Gallery"} sub='高画質な写真で施設をご確認いただけます。' />
 		</section>
 		<section class="access">
-			<SectionHeading main={toAccess.title} />
+			<div class="access_wrapper">
+				<div class="access_text">
+					<SectionHeading main={toAccess.title} />
+					<p>
+						<Address />
+					</p>
+					<h3>お車でお越しの方</h3>
+					<p>
+						東京湾アクアライン経由。<br />
+						東京都心から木更津エリアまで約40分〜。<br /><br />
+						駐車場は無料でご利用いただけます。
+					</p>
+					<h3>公共交通機関でお越しの方</h3>
+					<p>
+						東京・渋谷・品川方面から木更津駅まで、高速バスで約60分。<br /><br />
+						東京駅からJR特急で約55分。<br /><br />
+						木更津駅からKOMA HOUSEまでは、<br />
+						徒歩約13分 / 車で約5分。
+					</p>
+				</div>
+				<Image class="access_img" src={src_map} alt="" />
+			</div>
 		</section>
 		<section class="faq">
 			<SectionHeading main={toFaq.title} />
@@ -74,8 +102,6 @@ const faq = [
 								<rect x="7" y="13" width="13" height="1"/>
 								<rect x="14" y="7" width="13" height="1" transform="rotate(90 14 7)"/>
 							</svg>
-
-
 						</button>
 						<div class="faqList_card_a --accordion_body">
 							<p class="faqList_card_a_inner --accordion_bodyInner" set:html={item.a}></p>

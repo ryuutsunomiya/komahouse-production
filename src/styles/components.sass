@@ -77,6 +77,18 @@ button:has(.hoverText):hover
     +f.font(30, 160, 0, ZenMiB)
     text-transform: uppercase
 
+.sectionHeading
+    .sectionHeading_sub
+        +f.font(17, 160, 6, ZenGoR)
+
+.mainButton
+    +f.font(14, 130, 6, ZenGoM)
+    padding: 2rem 1em 5rem
+    border-radius: 100vmax
+.mainButton.--bg_black
+    background-color: v.$black
+    color: v.$white
+
 .footer
     margin-top: v.$sectionMt
     .mainNav

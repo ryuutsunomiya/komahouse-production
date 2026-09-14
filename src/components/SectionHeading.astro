@@ -12,5 +12,5 @@ const { main, sub } = Astro.props
 
 <div class="sectionHeading">
     <SubHeading text={main} />
-    <h2 class="sectionHeading_sub" set:html={sub}></h2>
+    {sub && <p class="sectionHeading_sub" set:html={sub}></p>}
 </div>

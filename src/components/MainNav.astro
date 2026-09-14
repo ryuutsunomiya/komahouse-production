@@ -4,6 +4,7 @@ import { menuData_Follow, menuData_main, menuData_sub } from '../const/menu';
 import HoverText from './HoverText.astro';
 import Image from 'astro/components/Image.astro';
 import src_thum from "../assets/menu_thum.jpg"
+import Address from './Address.astro';
 
 interface Props {
     label: string
@@ -43,7 +44,7 @@ const subs = [{title: "INFO", contents: menuData_sub}, {title: "FOLLOW", content
         <div class="mainNav_sub">
             <h3 class="mainNav_sub_title">ACCESS</h3>
             <p class="mainNav_sub_items">
-                {address}
+                <Address />
             </p>
         </div>
     </div>

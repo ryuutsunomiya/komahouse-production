@@ -2,6 +2,35 @@
 @use './mixin' as f
 
 .top
+    .floor
+        @include f.sectionW
+        margin-top: v.$sectionMt
+        .floor_wrapper
+            width: 100%
+            aspect-ratio: 16/10
+            background-color: rgba(v.$black, 0.05)
+            margin-top: 1.6em
+            border: 1px currentColor dotted
+            +f.font(16, 160, 0, ZenGoR)
+            +f.flex()
+    .gallery
+        @include f.sectionW
+        margin-top: v.$sectionMt
+    .access
+        @include f.sectionW
+        margin-top: v.$sectionMt
+        .access_wrapper
+            +f.flex(sta, bet)
+            +f.font(17, 200, 6, ZenGoR)
+            .access_text
+                width: 613rem
+                .sectionHeading
+                    margin-bottom: 6em
+                h3
+                    font-weight: 500
+                    margin-top: calc(2 * 1.5em)
+            .access_img
+                width: 613rem
     .faq
         @include f.sectionW
         margin-top: v.$sectionMt
