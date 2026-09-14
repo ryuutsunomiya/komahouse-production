@@ -1,0 +1,14 @@
+---
+import type { tagType } from '../types/tagType';
+
+interface Props {
+    text: string
+    tag?: tagType
+    className?: string
+}
+
+const { text, tag="h2", className="" } = Astro.props
+const Tag = tag;
+---
+
+<Tag class={`${className} subHeading`}>{text}</Tag>

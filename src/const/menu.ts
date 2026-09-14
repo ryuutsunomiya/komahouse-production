@@ -52,3 +52,5 @@ export const toOnlineStore = {
 export const menuData_main = [toConcept, toFacility, toAccess, toFaq];
 export const menuData_sub = [toTeam, toPrivacy, toLegal, toAccommodation];
 export const menuData_Follow = [toYoutube, toInstagram, toIds, toOnlineStore];
+
+export const toReserve = "/";

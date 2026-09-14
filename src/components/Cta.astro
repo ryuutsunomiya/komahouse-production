@@ -1,0 +1,9 @@
+---
+import { toReserve } from "../const/menu";
+import SlTexts from "./SlTexts.astro";
+---
+
+<a class="cta" href={toReserve} target='_blank' rel='noopener noreferrer'>
+    <SlTexts className="cta_main" tag="h2" texts={["RESERVE"]} />
+    <p class="cta_sub">ご予約はこちら</p>
+</a>

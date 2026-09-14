@@ -1,0 +1,36 @@
+---
+import type { tagType } from '../types/tagType';
+
+interface Props {
+    texts: string[],
+    spTexts?: string[],
+    tag: tagType
+    className?: string
+}
+
+const { texts, spTexts, tag, className="" } = Astro.props
+const Tag = tag;
+---
+
+<Tag class={`${className} slTexts`} aria-label={texts.join("")}>
+    <span class={"slTexts_inner"} aria-hidden="true">
+        {spTexts ? (
+            <span class="--sp">
+                {spTexts.map((item, index) => {
+                    return (<span class={`slTexts_line --${index}`}><span class="slTexts_text --hide">{item}</span></span><>{index !== texts.length - 1 && <br />}</>)
+                })}
+            </span>
+            <span class="--pc">
+                {texts.map((item, index) => {
+                    return (<span class={`slTexts_line --${index}`}><span class="slTexts_text --hide">{item}</span></span><>{index !== texts.length - 1 && <br />}</>)
+                })}
+            </span>
+        ): (
+            <span class="--pc --sp">
+                {texts.map((item, index) => {
+                    return (<span class={`slTexts_line --${index}`}><span class="slTexts_text --hide">{item}</span></span><>{index !== texts.length - 1 && <br />}</>)
+                })}
+            </span>
+        )}
+    </span>
+</Tag>

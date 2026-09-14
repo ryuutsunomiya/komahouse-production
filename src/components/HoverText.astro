@@ -1,0 +1,19 @@
+---
+import type { tagType } from "../types/tagType";
+
+interface Props {
+    text: string
+    tag?: tagType
+    className?: string
+}
+
+const { text, tag="span", className="" } = Astro.props
+const Tag = tag;
+---
+
+<Tag class={`hoverText ${className}`} aria-label={text}>
+    <span class="hoverText_outer" aria-hidden="true">
+        <span>{text}</span><br />
+        <span>{text}</span>
+    </span>
+</Tag>
