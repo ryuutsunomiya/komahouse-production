@@ -13,13 +13,13 @@ export function toggleBgSection_init() {
     showImgs.forEach((item, index) => {
       gsap.to(item, {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.4,
         ease: "none",
         overwrite: true,
         onComplete: () => {
           gsap.to(item, {
             opacity: index === current ? 1 : 0,
-            duration: 0.2,
+            duration: 0,
             ease: "none",
             overwrite: true,
           });
@@ -50,5 +50,19 @@ export function toggleBgSection_init() {
       rootMargin: "-50% 0px -50% 0px",
       threshold: 0,
     });
+  });
+
+  const other = document.querySelector(".others");
+  function ioCallback(entry: IntersectionObserverEntry) {
+    if (!entry.isIntersecting) {
+      current = -1;
+      console.log("h");
+      change();
+    }
+  }
+  createIo(other, ioCallback, false, {
+    root: null,
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0,
   });
 }

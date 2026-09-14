@@ -180,11 +180,12 @@
         position: relative
         +f.flex(sta, bet)
         @include f.sectionW
+        overflow: clip
         .others_textBlock
             position: relative
             width: 524rem
             .others_texts
-                padding: calc(v.$sectionMt) 0
+                padding: calc(v.$sectionMt * 2) 0
                 margin: 0 0 0 auto
                 width: 524rem
             .others_texts:first-child
