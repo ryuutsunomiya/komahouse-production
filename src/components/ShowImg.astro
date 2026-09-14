@@ -11,5 +11,7 @@ const { src, noInview } = Astro.props
 
 <div class={`showImg --${noInview ? "noInview" : "inview"}`}>
     <Image class="showImg_img" src={src} alt={""} />
-    <div class="showImg_shutter"></div>
+    <div class="showImg_shutter">
+        <div class="showImg_shutter_item"></div>
+    </div>
 </div>

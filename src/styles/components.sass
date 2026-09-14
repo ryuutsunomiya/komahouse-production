@@ -11,19 +11,23 @@
         object-fit: cover
         transform-origin: center bottom
         scale: 1.1
-        +f.tra(scale, 2.8s, 0s, auto)
     .showImg_shutter
+        position: absolute
+        width: 100%
+        height: 100%
+        bottom: 0
+    .showImg_shutter_item
         position: absolute
         width: 100%
         height: 200%
         bottom: 0
-        background: linear-gradient(0deg, rgba(v.$white, 1) 0%, rgba(v.$white, 1) 50%, rgba(v.$white, 0) 100%,)
-        +f.tra(transform, 2.4s, 0s, auto)
 .showImg.--act
     .showImg_img
         scale: 1
+        +f.tra(scale, 2.8s, 0s, auto)
     .showImg_shutter
-        transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 200%, 0)
+        +f.tra(transform, 2.4s, 0s, auto)
 
 .hoverText
     display: inline-block

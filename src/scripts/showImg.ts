@@ -1,7 +1,7 @@
 import { createIo } from "../utils/createIo";
 
 export function showImg_init() {
-  const showImgs = document.querySelectorAll(".showImg");
+  const showImgs = document.querySelectorAll(".showImg.--inview");
   showImgs.forEach((item) => {
     function ioCallback(entry: IntersectionObserverEntry) {
       if (entry.isIntersecting) {

@@ -9,6 +9,64 @@ html
     +f.sp
         +f.calc-font-size(1px, 392)
 
+// html
+//     .showImg_shutter_item
+//         background: linear-gradient(0deg, rgba(v.$white, 1) 0%, rgba(v.$white, 1) 50%, rgba(v.$white, 0) 100%,)
+
+// html.--toggleBgSection_darkGreen
+//     background-color: #5D5F4E
+//     body
+//         color: v.$white
+//     .showImg_shutter_item
+//         background: linear-gradient(0deg, rgba(#5D5F4E, 1) 0%, rgba(#5D5F4E, 1) 50%, rgba(#5D5F4E, 0) 100%)
+// html.--toggleBgSection_dimGrey
+//     background-color: #463F3E
+//     body
+//         color: v.$white
+//     .showImg_shutter_item
+//         background: linear-gradient(0deg, rgba(#463F3E, 1) 0%, rgba(#463F3E, 1) 50%, rgba(#463F3E, 0) 100%)
+// html.--toggleBgSection_beige
+//     background-color: #C6AA99
+//     body
+//         color: v.$black
+//     .showImg_shutter_item
+//         background: linear-gradient(0deg, rgba(#C6AA99, 1) 0%, rgba(#C6AA99, 1) 50%, rgba(#C6AA99, 0) 100%)
+
+@property --shutter-color
+    syntax: "<color>"
+    inherits: true
+    initial-value: #ffffff
+
+html
+    --shutter-color: #{v.$white}
+    transition: background-color 0.8s ease
+    body
+        color: v.$black
+        transition: color 0.8s ease
+    .showImg_shutter_item
+        background: linear-gradient(
+            0deg,
+            var(--shutter-color) 0%,
+            var(--shutter-color) 50%,
+            color-mix(in srgb, var(--shutter-color) 0%, transparent) 100%
+        )
+        transition: --shutter-color 0.8s ease
+html.--toggleBgSection_darkGreen
+    --shutter-color: #5D5F4E
+    background-color: #5D5F4E
+    body
+        color: v.$white
+html.--toggleBgSection_dimGrey
+    --shutter-color: #463F3E
+    background-color: #463F3E
+    body
+        color: v.$white
+html.--toggleBgSection_beige
+    --shutter-color: #C6AA99
+    background-color: #C6AA99
+    body
+        color: v.$black
+
 body
     width: 100%
     text-size-adjust: none

@@ -1,0 +1,89 @@
+---
+import ShowImg from "./ShowImg.astro";
+import SubHeading from "./SubHeading.astro";
+import src_01_01 from "../assets/top/others/others_1_1.jpg"
+import src_01_02 from "../assets/top/others/others_1_2.jpg"
+import src_01_03 from "../assets/top/others/others_1_3.jpg"
+import src_02_01 from "../assets/top/others/others_2_1.jpg"
+import src_03_01 from "../assets/top/others/others_3_1.jpg"
+import src_03_02 from "../assets/top/others/others_3_2.jpg"
+import ToggleBgSection from "./ToggleBgSection.astro";
+
+const data = [
+    {
+        id: "ame",
+        title: "AMENITIES",
+        catch: "触れるものから、心地よく。",
+        text: `
+            使い心地だけでなく、<br />
+            ものづくりの背景にも共感できるものを選びました。<br /><br />
+
+            nakedfact<br />
+            Face & Body Soap<br /><br />
+
+            ORMONICA<br />
+            Shampoo & Conditioner<br /><br />
+
+            YOBEK<br />
+            Hand Wash
+        `,
+        imgs: [src_01_01, src_01_02, src_01_03],
+        col: "darkGreen",
+    },
+    {
+        id: "bed",
+        title: "BEDDING",
+        catch: "良い感じのキャッチコピー。",
+        text: `
+            大人10名分の寝具をご用意しています。<br /><br />
+
+            2階寝室 / 2部屋<br />
+            セミダブルマットレス × 2枚 / 各部屋　合計4枚<br /><br />
+
+            1階リビング<br />
+            シングルマットレス × 6枚
+        `,
+        imgs: [src_02_01, ],
+        col: "dimGrey",
+    },
+    {
+        id: "mea",
+        title: "MEAL",
+        catch: "良い感じのキャッチコピー。",
+        text: `
+            食事の提供はありません。<br /><br />
+
+            木更津の魚市場や近隣のお店で食材を選び、<br />
+            4口コンロのキッチンで自由に料理を。<br /><br />
+
+            屋外BBQもご利用いただけます。
+        `,
+        imgs: [src_03_01, src_03_02],
+        col: "beige",
+    },
+]
+---
+
+
+<section class="others">
+    <div class="others_imgBlock">
+        {data.map((item) => (
+            <div class={`others_imgs --${item.id}`}>
+                <div class="others_imgs_inner">
+                    {item.imgs.map((img) => (
+                        <ShowImg src={img} noInview />
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+    <div class="others_textBlock">
+        {data.map((item) => (
+            <ToggleBgSection className="others_texts" col={item.col}>
+                <SubHeading text={item.title} />
+                <p class="others_catch" set:html={item.catch}></p>
+                <p class="others_text" set:html={item.text}></p>
+            </ToggleBgSection>
+        ))}
+    </div>
+</section>

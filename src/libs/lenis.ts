@@ -2,9 +2,19 @@ import Lenis from "lenis";
 
 export let lenis: Lenis;
 export function lenis_init() {
-  lenis = new Lenis({ autoRaf: true, duration: 1.2 });
+  // lenis = new Lenis({ autoRaf: true, duration: 1.2 });
 
   const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+
+  // const scrollAreas = document.querySelectorAll(".scrollArea");
+  // scrollAreas.forEach((scrollArea) => {
+  //   const scrollAreaLenis = new Lenis({
+  //     wrapper: scrollArea,
+  //     content: scrollArea.querySelector(".scrollArea_inner")!,
+  //     autoRaf: true,
+  //     overscroll: false,
+  //   });
+  // });
 
   links.forEach((link) => {
     link.addEventListener("click", (e) => {

@@ -93,9 +93,30 @@ function facility_init() {
   onScroll();
 }
 
+function other_init() {
+  // const other = document.querySelector(".others");
+  // const sections = document.querySelectorAll(".others_textBlock");
+  // let current = 0;
+  // const total = sections.length - 1;
+  // let isShow =
+  // function onScroll() {
+  //   sections.forEach((item, index) => {
+  //   })
+  //   const rect = facilityList_scroll?.getBoundingClientRect();
+  //   const next = Math.min(total, Math.max(0, Math.round((rect.top * -1) / perH)));
+  //   if (next !== current) {
+  //     current = next;
+  //     change();
+  //   }
+  // }
+  // new RowScroll({ wrapper: other, onScroll: onScroll });
+  // onScroll();
+}
+
 export function pageTop_init() {
   gallery_init();
   facility_init();
+  other_init();
 
   enter();
 }

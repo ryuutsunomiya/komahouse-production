@@ -1,0 +1,16 @@
+---
+import type { tagType } from '../types/tagType';
+
+interface Props {
+    tag?: tagType
+    col: string
+    className?: string
+}
+
+const { tag="div", col, className } = Astro.props
+---
+
+
+<div class={`${className} toggleBgSection`} data-col={col}>
+    <slot />
+</div>

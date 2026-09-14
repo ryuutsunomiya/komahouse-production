@@ -101,7 +101,7 @@
             .cencept_text
                 margin-top: 2.9em
     .facility
-        margin: v.$sectionMt 0
+        margin: v.$sectionMt 0 0
         .facilityList
             position: relative
             color: v.$white
@@ -176,6 +176,77 @@
             pointer-events: none
             > div
                 height: 960rem
+    .others
+        position: relative
+        +f.flex(sta, bet)
+        @include f.sectionW
+        .others_textBlock
+            position: relative
+            width: 524rem
+            .others_texts
+                padding: calc(v.$sectionMt) 0
+                margin: 0 0 0 auto
+                width: 524rem
+            .others_texts:first-child
+                padding-top: calc(v.$sectionMt * 2)
+            .others_texts:last-child
+                padding-bottom: calc(v.$sectionMt * 2)
+        .others_catch
+            +f.font(34, 170, 6, ZenMiB)
+            margin: 1.7em 0
+        .others_text
+            +f.font(17, 170, 6, ZenGoR)
+        .others_imgBlock
+            height: 100svh
+            width: 790rem
+            position: sticky
+            top: 0
+            .others_imgs
+                width: 100%
+                height: 100%
+                position: absolute
+                top: 0
+                +f.flex()
+                .others_imgs_inner
+                    position: relative
+                .showImg
+                    position: absolute
+            .others_imgs.--ame
+                .others_imgs_inner
+                    height: 785rem
+                    width: 613rem
+                .showImg:nth-child(1)
+                    width: 260rem
+                    height: 358rem
+                .showImg:nth-child(2)
+                    width: 347rem
+                    height: 231rem
+                    right: 0
+                    top: 192rem
+                .showImg:nth-child(3)
+                    width: 259rem
+                    height: 357rem
+                    bottom: 0
+                    left: 177rem
+            .others_imgs.--bed
+                .others_imgs_inner
+                    width: 613rem
+                    height: 409rem
+                .showImg:nth-child(1)
+                    width: 100%
+                    height: 100%
+            .others_imgs.--mea
+                .others_imgs_inner
+                    width: 701rem
+                    height: 737rem
+                .showImg:nth-child(1)
+                    width: 613rem
+                    height: 413rem
+                .showImg:nth-child(2)
+                    width: 364rem
+                    height: 461rem
+                    right: 0
+                    bottom: 0
     .floor
         @include f.sectionW
         margin-top: v.$sectionMt
@@ -296,10 +367,10 @@
                 height: 0
                 .faqList_card_a_inner
                     padding-bottom: 3.2em
-            .faqList_card:hover,
-            .faqList_card.--open
-                filter: invert(1)
-                transition-duration: 1.2s
+            // .faqList_card:hover,
+            // .faqList_card.--open
+            //     filter: invert(1)
+            //     transition-duration: 1.2s
             .faqList_card.--open
                 .faqList_card_q_icon
                     rect:nth-child(1)
