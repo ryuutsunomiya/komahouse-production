@@ -1,2 +1,118 @@
 @use './var.sass' as v
 @use './mixin' as f
+
+.hoverText
+    display: inline-block
+    overflow: clip
+    position: relative
+    .hoverText_outer
+        position: relative
+        display: inline-block
+        +f.tra(transform, 1.2s, 0s, auto)
+        span:last-child
+            position: absolute
+            top: 100%
+            left: 0
+a:has(.hoverText):hover,
+button:has(.hoverText):hover
+    .hoverText_outer
+        transform: translate3d(0, -100%, 0)
+
+.slTexts
+    .slTexts_line
+        position: relative
+        display: inline-block
+        overflow: hidden
+        vertical-align: top
+    .slTexts_text
+        display: inline-block
+        position: relative
+        transform: translate3d(0, 0, 0)
+        +f.tra(transform, 1.6s, 0s, auto)
+    .slTexts_text.--hide
+        transform: translate3d(0, 100%, 0)
+    .--pc:not(.--sp)
+        +f.sp
+            display: none
+    .--sp:not(.--pc)
+        display: none
+        +f.sp
+            display: inline
+
+.cta
+    display: block
+    width: 1144rem
+    height: 316rem
+    margin: 0 auto
+    +f.flex(cen, cen, col)
+    position: relative
+    +f.tra(filter, 0.4s, 0s, linear)
+    .cta_main
+        +f.font(159, 120, 10, ForR)
+    .cta_sub
+        +f.font(30, 50, 0, ZenMiB)
+        +f.tra(opacity, 1.0s, 1.6s, linear)
+        margin-bottom: 0.5em
+        opacity: 0
+        position: relative
+.cta::before
+    content: ""
+    width: 100%
+    height: 100%
+    border: v.$border
+    position: absolute
+    border-radius: 100vmax
+    +f.tra(scale, 2.4s, 0s, cubic-bezier(.02,.85,.14,.99))
+    scale: 0
+    background-color: v.$white
+.cta.--show
+    .cta_sub
+        opacity: 1
+.cta.--show::before
+    scale: 1
+.cta:hover
+    filter: invert(1)
+
+
+.footer
+    margin-top: v.$sectionMt
+    .mainNav
+        margin-top: v.$sectionMt
+
+.mainNav
+    @include f.sectionW
+    +f.flex(sta, sta)
+    position: relative
+    margin-bottom: 45rem
+    .mainNav_main
+        width: 348rem
+        margin-right: 271rem
+        +f.font(65, 140, 10, ForR)
+        text-transform: uppercase
+    .mainNav_subs
+        +f.font(16, 210, 6, ZenGoR)
+        +f.grid(repeat(2, 1fr), auto, 6rem, 2.1em)
+        margin-bottom: calc(2.1em * 4)
+        width: 618rem
+        margin-top: 0.8em
+        .mainNav_sub_title
+            +f.font(16, 210, 6, ZenMiB)
+        .mainNav_sub:nth-child(1)
+            grid-area: 1 / 1 / 2 / 2
+            width: 259rem
+        .mainNav_sub:nth-child(2)
+            grid-area: 2 / 1 / 3 / 2
+            width: 259rem
+        .mainNav_sub:nth-child(3)
+            grid-area: 1 / 2 / 2 / 3
+            width: 348rem
+    .mainNav_thum
+        width: fit-content
+        position: absolute
+        bottom: 0
+        right: 0
+        svg
+            width: 171rem
+            height: auto
+            aspect-ratio: 171 / 305
+            fill: currentColor

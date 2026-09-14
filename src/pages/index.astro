@@ -1,4 +1,6 @@
 ---
+import SectionHeading from '../components/SectionHeading.astro';
+import { toAccess, toFaq } from '../const/menu';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -8,9 +10,17 @@ import Layout from '../layouts/Layout.astro';
 		<section class="concept"></section>
 		<section class="facility"></section>
 		<search class="others"></search>
-		<section class="floor"></section>
-		<section class="gallery"></section>
-		<section class="access"></section>
-		<section class="faq"></section>
+		<section class="floor">
+			<SectionHeading main={"Floor Map"} sub='マウスホバー / タップで画像が表示されます。' />
+		</section>
+		<section class="gallery">
+			<SectionHeading main={"Gallery"} sub='高画質な写真で施設をご確認いただけます。' />
+		</section>
+		<section class="access">
+			<SectionHeading main={toAccess.title} />
+		</section>
+		<section class="faq">
+			<SectionHeading main={toFaq.title} />
+		</section>
 	</article>
 </Layout>

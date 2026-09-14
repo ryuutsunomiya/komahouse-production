@@ -1,0 +1,16 @@
+---
+import SubHeading from './SubHeading.astro'
+
+interface Props {
+    main: string
+    sub?: string
+    anchor?: string
+}
+
+const { main, sub } = Astro.props
+---
+
+<div class="sectionHeading">
+    <SubHeading text={main} />
+    <h2 class="sectionHeading_sub" set:html={sub}></h2>
+</div>

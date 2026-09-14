@@ -21,8 +21,8 @@
   font-size: calc(100 / $CanvasSize) * calc($fontSzie / ($fontSzie * 0 + 1px)) * 1vw
 
 =calc-line-height($fontSzie, $lineHeight)
-  line-height: calc($lineHeight / $fontSzie)
-  // line-height: calc(($fontSzie * 0.01 * $lineHeight) / $fontSzie)
+  // line-height: calc($lineHeight / $fontSzie)
+  line-height: calc(($fontSzie * 0.01 * $lineHeight) / $fontSzie)
 
 =calc-letter-spacing($tracking)
   letter-spacing: calc($tracking * 0.01em)
@@ -126,8 +126,9 @@
 =size($width: 100%, $height: 100%)
   width: $width
   height: $height
+
 =sectionW
-  width: 1120rem
+  width: 1320rem
   margin-left: auto
   margin-right: auto
   +sp

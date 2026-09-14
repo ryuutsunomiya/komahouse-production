@@ -28,7 +28,15 @@ const Tag = tag;
         ): (
             <span class="--pc --sp">
                 {texts.map((item, index) => {
-                    return (<span class={`slTexts_line --${index}`}><span class="slTexts_text --hide">{item}</span></span><>{index !== texts.length - 1 && <br />}</>)
+                    const chars = [...item];
+                    return (
+                        <span class={`slTexts_line --${index}`}>
+                            {chars.map((char) => (
+                                <span class="slTexts_text --hide">{char}</span>
+                            ))}
+                        </span>
+                        <>{index !== texts.length - 1 && <br />}</>
+                    )
                 })}
             </span>
         )}

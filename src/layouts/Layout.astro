@@ -87,6 +87,8 @@ import { isSp_set } from "../utils/isSp";
 import { isDev } from "../utils/isDev";
 import { checkLocal } from "../utils/checkLocal";
 import { pageTransition_set } from "../utils/pageTransition";
+import { slTexts_init } from "../scripts/slTexts";
+import { cta_init } from "../scripts/cta";
 
 window.addEventListener('DOMContentLoaded', () => {
 	!isDev && checkLocal();
@@ -95,6 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		function page_beforeEnter(resolve: (value: unknown) => void) {
 			isSp_set();
 			pageTransition_set();
+			slTexts_init();
+			cta_init();
 
 			switch (pageId) {
 				case "top":

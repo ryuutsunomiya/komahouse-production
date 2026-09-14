@@ -2,7 +2,7 @@
 @use './mixin' as f
 
 html
-    background-color: #fff
+    background-color: v.$white
     color: v.$black
     scroll-behavior: smooth
     +f.calc-font-size(1px, 1440)
@@ -17,6 +17,7 @@ body
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     font-size: 16rem
+    lein-height: 1.6em
 
 #pageWrapper,
 #pageContainer
@@ -28,9 +29,7 @@ body
 img,
 iframe,
 video
-    +f.size(100%, 100%)
     display: block
-    object-fit: cover
     touch-callout: none
     user-select: none
     user-drag: none
