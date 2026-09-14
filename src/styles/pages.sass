@@ -1,3 +1,47 @@
 @use './var.sass' as v
 @use './mixin' as f
 
+.top
+    .faq
+        @include f.sectionW
+        margin-top: v.$sectionMt
+        .subHeading
+            margin-bottom: 15rem
+        .faqList
+            +f.font(17, 160, 0, ZenMiB)
+            width: 100%
+            border-top: v.$border
+            .faqList_card
+                border-bottom: v.$border
+                background: v.$white
+                +f.tra(filter, 0.6s, 0s, lineaer)
+            .faqList_card_q
+                width: 100%
+                +f.flex(sta, bet)
+                padding-top: 3.2em
+                padding-bottom: 3.2em
+                .faqList_card_q_number
+                    width: 82rem
+                    text-align: center
+                .faqList_card_q_title
+                    width: 967rem
+                .faqList_card_q_icon
+                    fill: currentColor
+                    width: 82rem
+                    rect:nth-child(1)
+                        +f.tra(opacity, 0.4s, 0s, linear)
+            .faqList_card_a
+                padding-right: 88rem
+                padding-left: 265rem
+                overflow-y: clip
+                height: 0
+                .faqList_card_a_inner
+                    padding-bottom: 3.2em
+            .faqList_card:hover,
+            .faqList_card.--open
+                filter: invert(1)
+                transition-duration: 1.2s
+            .faqList_card.--open
+                .faqList_card_q_icon
+                    rect:nth-child(1)
+                        opacity: 0

@@ -59,7 +59,7 @@ button:has(.hoverText):hover
     content: ""
     width: 100%
     height: 100%
-    border: v.$border
+    border: 2px currentColor solid
     position: absolute
     border-radius: 100vmax
     +f.tra(scale, 2.4s, 0s, cubic-bezier(.02,.85,.14,.99))
@@ -73,6 +73,9 @@ button:has(.hoverText):hover
 .cta:hover
     filter: invert(1)
 
+.subHeading
+    +f.font(30, 160, 0, ZenMiB)
+    text-transform: uppercase
 
 .footer
     margin-top: v.$sectionMt

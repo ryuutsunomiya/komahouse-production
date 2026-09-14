@@ -1,10 +1,10 @@
 import gsap from "gsap";
 
-export const accordion_duration = 0.4;
-export const accordion_ease = "power1.out";
+export const accordion_duration = 1.8;
+export const accordion_ease = "expo.out";
 export type accordionOptionType = { openEx?: (index: number, duration: number, ease: string) => void; closeEx?: (index: number, duration: number, ease: string) => void };
 
-export function accordion_set(option?: accordionOptionType) {
+export function accordion_init(option?: accordionOptionType) {
   const accordions = document.querySelectorAll(".--accordion");
 
   accordions.forEach((accordion, index) => {
@@ -13,7 +13,7 @@ export function accordion_set(option?: accordionOptionType) {
     const inner = accordion.querySelector(".--accordion_bodyInner");
     const arrow = accordion.querySelector(".--accordion_head_icon");
 
-    if (!button || !body || !inner || !arrow) console.error("accordion_set");
+    if (!button || !body || !inner || !arrow) console.error("accordion_init");
 
     function open(isReisze: boolean) {
       const durationCoff = isReisze ? 0 : 1;
@@ -25,7 +25,7 @@ export function accordion_set(option?: accordionOptionType) {
         overwrite: true,
       });
       gsap.to(arrow, {
-        scaleY: -1,
+        rotate: 90,
         duration: accordion_duration * durationCoff,
         ease: accordion_ease,
       });
@@ -37,13 +37,13 @@ export function accordion_set(option?: accordionOptionType) {
       const durationCoff = isReisze ? 0 : 1;
       gsap.to(body, {
         height: 0,
-        duration: accordion_duration * durationCoff,
+        duration: accordion_duration * durationCoff * 0.5,
         ease: accordion_ease,
         overwrite: true,
       });
       gsap.to(arrow, {
-        scaleY: 1,
-        duration: accordion_duration * durationCoff,
+        rotate: 0,
+        duration: accordion_duration * durationCoff * 0.5,
         ease: accordion_ease,
       });
       if (option?.closeEx) option.closeEx(index, accordion_duration * durationCoff, accordion_ease);

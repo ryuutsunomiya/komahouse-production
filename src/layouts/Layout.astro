@@ -89,6 +89,7 @@ import { checkLocal } from "../utils/checkLocal";
 import { pageTransition_set } from "../utils/pageTransition";
 import { slTexts_init } from "../scripts/slTexts";
 import { cta_init } from "../scripts/cta";
+import { accordion_init } from "../utils/accordion";
 
 window.addEventListener('DOMContentLoaded', () => {
 	!isDev && checkLocal();
@@ -99,6 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			pageTransition_set();
 			slTexts_init();
 			cta_init();
+			accordion_init();
 
 			switch (pageId) {
 				case "top":
