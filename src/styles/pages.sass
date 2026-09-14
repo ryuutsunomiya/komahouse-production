@@ -14,8 +14,53 @@
             +f.font(16, 160, 0, ZenGoR)
             +f.flex()
     .gallery
-        @include f.sectionW
         margin-top: v.$sectionMt
+        @include f.sectionW
+        .sectionHeading
+            margin-bottom: 41rem
+        .gallerySlider
+            height: 801rem
+            +f.flex(sta, bet)
+            .gallerySlider_nav
+                height: 100%
+                position: relative
+                .gallerySlider_nav_scroll
+                    height: 100%
+                    width: calc(82rem * 2)
+                    overflow-y: scroll
+                    overflow-x: visible
+                    @include f.no-scrollbar
+                    position: relative
+                    position: absolute
+                    left: calc(-82rem * 0.5)
+                .gallerySlider_nav_items
+                    +f.flex(sta, cen, col)
+                    gap: 8rem
+                    margin: calc((801rem - 48rem) * 0.5) auto
+                .gallerySlider_nav_item
+                    width: 82rem
+                    height: 48rem
+                    background-color: lightgrey
+                    +f.flex()
+                    margin: 0 auto
+            .gallerySlider_nav::after
+                content: ""
+                width: calc(82rem + 4rem * 2)
+                height: calc(48rem + 4rem * 2)
+                border: v.$border
+                position: absolute
+                left: -4rem
+                top: calc((801rem - 48rem - 4rem * 2) * 0.5)
+                pointer-events: none
+            .gallerySlider_window
+                height: 801rem
+                width: 1203rem
+                +f.flex()
+                position: relative
+                background-color: lightgrey
+                right: -60rem
+                .gallerySlider_window_item
+                    position: absolute
     .access
         @include f.sectionW
         margin-top: v.$sectionMt
