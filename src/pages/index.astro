@@ -70,7 +70,11 @@ const faq = [
 					<div class="gallerySlider_nav_scroll">
 						<ul class="gallerySlider_nav_items">
 							{[...Array(20)].map((_, index) => (
-								<div class="gallerySlider_nav_item">{zeroPad(index, 2)}</div>
+								<div class="gallerySlider_nav_item">
+									<div class="gallerySlider_nav_item_inner">
+										{zeroPad(index, 2)}
+									</div>
+								</div>
 							))}
 						</ul>
 					</div>

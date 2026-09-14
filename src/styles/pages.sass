@@ -40,9 +40,17 @@
                 .gallerySlider_nav_item
                     width: 82rem
                     height: 48rem
-                    background-color: lightgrey
-                    +f.flex()
                     margin: 0 auto
+                    +f.flex()
+                    .gallerySlider_nav_item_inner
+                        background-color: lightgrey
+                        +f.flex()
+                        width: 100%
+                        height: 100%
+                        +f.tra(filter, 0.2s, 0s, linear)
+                .gallerySlider_nav_item.--current
+                    .gallerySlider_nav_item_inner
+                        filter: brightness(0.9)
             .gallerySlider_nav::after
                 content: ""
                 width: calc(82rem + 4rem * 2)
