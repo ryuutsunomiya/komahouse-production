@@ -90,6 +90,7 @@ import { pageTransition_set } from "../utils/pageTransition";
 import { slTexts_init } from "../scripts/slTexts";
 import { cta_init } from "../scripts/cta";
 import { accordion_init } from "../utils/accordion";
+import { pageTop_init } from "../scripts/page.top";
 
 window.addEventListener('DOMContentLoaded', () => {
 	!isDev && checkLocal();
@@ -104,6 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			switch (pageId) {
 				case "top":
+					pageTop_init();
 					break;
 				default:
 					break;
