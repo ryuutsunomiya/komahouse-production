@@ -1,0 +1,96 @@
+@use './var.sass' as v
+@use './mixin' as f
+
+html
+    background-color: #fff
+    color: v.$black
+    scroll-behavior: smooth
+    +f.calc-font-size(1px, 1440)
+    +f.sp
+        +f.calc-font-size(1px, 392)
+
+body
+    width: 100%
+    text-size-adjust: none
+    text-align: left
+    touch-action: manipulation
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    font-size: 16rem
+
+#pageWrapper,
+#pageContainer
+    width: 100%
+    overflow-x: clip
+    position: relative
+
+
+img,
+iframe,
+video
+    +f.size(100%, 100%)
+    display: block
+    object-fit: cover
+    touch-callout: none
+    user-select: none
+    user-drag: none
+
+img
+    pointer-events: none
+
+img,
+svg,
+button
+    -webkit-touch-callout: none
+    user-select: none
+
+button:focus
+    outline: 0
+
+nav
+    list-style-type: none
+
+input,
+textarea
+    -webkit-appearance: none
+    border-radius: 0
+    outline: none
+
+input:focus
+  outline: 0
+
+textarea:focus
+  outline: 0
+
+.js--hover
+    cursor: pointer !important
+
+.js--none
+    display: none !important
+
+.js--hidden
+    visibility: hidden !important
+    pointer-events: none !important
+
+.js--fixed
+    +f.size(100%, 100%)
+    overflow: hidden
+
+.js--noClick
+    pointer-events: none !important
+
+.js--noSc
+    +f.no-scrollbar()
+
+br.--pc
+    +f.sp
+        display: none
+br.--sp
+    display: none
+    +f.sp
+        display: inline
+
+.js--noDataText
+    +f.font(21, 100, -5, ZenGoR)
+    +f.sp
+        font-size: 13rem
