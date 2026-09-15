@@ -190,7 +190,8 @@ const sliderData_row = [
         <div class="gallerySlider_window">
             {sliderData.map((item, index) => (
                 <div class={index === 0 ? "gallerySlider_window_item" : "gallerySlider_window_item js--hidden"}>
-                    { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<img src="" alt="" data-src={item.src} width={item.width} height={item.height} />) }
+                    {/* { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<img src="" alt="" data-src={item.src} width={item.width} height={item.height} />) } */}
+                    { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<Image src={item} alt={""} loading={"lazy"} fetchpriority={"low"} />) }
                 </div>
             ))}
         </div>
