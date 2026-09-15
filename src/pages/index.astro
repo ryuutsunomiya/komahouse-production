@@ -12,6 +12,7 @@ import ShowImg from '../components/ShowImg.astro';
 import src_concept from "../assets/top/concept.jpg"
 import Facility from '../components/Facility.astro';
 import Others from '../components/Others.astro';
+import Gallery from '../components/Gallery.astro';
 
 const faq = [
 	{
@@ -102,29 +103,7 @@ const faq = [
 				<p>コンテンツ確定後実装</p>
 			</div>
 		</section>
-		<section class="gallery">
-			<SectionHeading main={"Gallery"} sub='高画質な写真で施設をご確認いただけます。' />
-			<div class="gallerySlider">
-				<div class="gallerySlider_nav">
-					<div class="gallerySlider_nav_scroll" data-lenis-prevent>
-						<ul class="gallerySlider_nav_items">
-							{[...Array(20)].map((_, index) => (
-								<div class="gallerySlider_nav_item">
-									<div class="gallerySlider_nav_item_inner">
-										{zeroPad(index, 2)}
-									</div>
-								</div>
-							))}
-						</ul>
-					</div>
-				</div>
-				<div class="gallerySlider_window">
-					{[...Array(20)].map((_, index) => (
-						<div class={index === 0 ? "gallerySlider_window_item" : "gallerySlider_window_item js--hidden"}>{zeroPad(index, 2)}</div>
-					))}
-				</div>
-			</div>
-		</section>
+		<Gallery />
 		<section class="access" id="access">
 			<div class="access_wrapper">
 				<div class="access_text">

@@ -283,14 +283,18 @@
                     margin: 0 auto
                     +f.flex()
                     .gallerySlider_nav_item_inner
-                        background-color: lightgrey
+                        background-color: rgba(v.$black, 0.05)
                         +f.flex()
                         width: 100%
                         height: 100%
                         +f.tra(filter, 0.2s, 0s, linear)
-                .gallerySlider_nav_item.--current
-                    .gallerySlider_nav_item_inner
-                        filter: brightness(0.9)
+                        img
+                            width: 100%
+                            height: 100%
+                            object-fit: cover
+                // .gallerySlider_nav_item.--current
+                    // .gallerySlider_nav_item_inner
+                    //     filter: lighten(, )
             .gallerySlider_nav::after
                 content: ""
                 width: calc(82rem + 4rem * 2)
@@ -305,10 +309,16 @@
                 width: 1203rem
                 +f.flex()
                 position: relative
-                background-color: lightgrey
                 right: -60rem
                 .gallerySlider_window_item
                     position: absolute
+                    // background-color: rgba(v.$black, 0.05)
+                    width: 100%
+                    height: 100%
+                    img
+                        width: 100%
+                        height: 100%
+                        object-fit: contain
     .access
         @include f.sectionW
         padding-top: v.$sectionMt

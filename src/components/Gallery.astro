@@ -1,0 +1,198 @@
+---
+import { zeroPad } from "../utils/calc";
+import SectionHeading from "./SectionHeading.astro";
+import slide_1 from  "../assets/top/gallery/kmhk_002.jpg"
+import slide_2 from  "../assets/top/gallery/kmhk_004.jpg"
+import slide_3 from  "../assets/top/gallery/kmhk_005.jpg"
+import slide_4 from  "../assets/top/gallery/kmhk_007.jpg"
+import slide_5 from  "../assets/top/gallery/kmhk_007a.jpg"
+import slide_6 from  "../assets/top/gallery/kmhk_008.jpg"
+import slide_7 from  "../assets/top/gallery/kmhk_010.jpg"
+import slide_8 from  "../assets/top/gallery/kmhk_015.jpg"
+import slide_9 from  "../assets/top/gallery/kmhk_017.jpg"
+import slide_10 from  "../assets/top/gallery/kmhk_022.jpg"
+import slide_11 from  "../assets/top/gallery/kmhk_023.jpg"
+import slide_12 from  "../assets/top/gallery/kmhk_025.jpg"
+import slide_13 from  "../assets/top/gallery/kmhk_027.jpg"
+import slide_14 from  "../assets/top/gallery/kmhk_028.jpg"
+import slide_15 from  "../assets/top/gallery/kmhk_030.jpg"
+import slide_16 from  "../assets/top/gallery/kmhk_031.jpg"
+import slide_17 from  "../assets/top/gallery/kmhk_043.jpg"
+import slide_18 from  "../assets/top/gallery/kmhk_046.jpg"
+import slide_19 from  "../assets/top/gallery/kmhk_047.jpg"
+import slide_20 from  "../assets/top/gallery/kmhk_048.jpg"
+import slide_21 from  "../assets/top/gallery/kmhk_050.jpg"
+import slide_22 from  "../assets/top/gallery/kmhk_053.jpg"
+import slide_23 from  "../assets/top/gallery/kmhk_054.jpg"
+import slide_24 from  "../assets/top/gallery/kmhk_056.jpg"
+import slide_25 from  "../assets/top/gallery/kmhk_058.jpg"
+import slide_26 from  "../assets/top/gallery/kmhk_062.jpg"
+import slide_27 from  "../assets/top/gallery/kmhk_064.jpg"
+import slide_28 from  "../assets/top/gallery/kmhk_067.jpg"
+import slide_29 from  "../assets/top/gallery/kmhk_069.jpg"
+import slide_30 from  "../assets/top/gallery/kmhk_070.jpg"
+import slide_31 from  "../assets/top/gallery/kmhk_072.jpg"
+import slide_32 from  "../assets/top/gallery/kmhk_074.jpg"
+import slide_33 from  "../assets/top/gallery/kmhk_075.jpg"
+import slide_34 from  "../assets/top/gallery/kmhk_076.jpg"
+import slide_35 from  "../assets/top/gallery/kmhk_077.jpg"
+import slide_36 from  "../assets/top/gallery/kmhk_079.jpg"
+import slide_37 from  "../assets/top/gallery/kmhk_081.jpg"
+import slide_38 from  "../assets/top/gallery/kmhk_081a.jpg"
+import slide_39 from  "../assets/top/gallery/kmhk_082.jpg"
+import slide_40 from  "../assets/top/gallery/kmhk_083.jpg"
+import slide_41 from  "../assets/top/gallery/kmhk_083a.jpg"
+import slide_42 from  "../assets/top/gallery/kmhk_084.jpg"
+import slide_43 from  "../assets/top/gallery/kmhk_085.jpg"
+import slide_44 from  "../assets/top/gallery/kmhk_085a.jpg"
+import slide_45 from  "../assets/top/gallery/kmhk_086.jpg"
+import slide_46 from  "../assets/top/gallery/kmhk_088.jpg"
+import slide_47 from  "../assets/top/gallery/kmhk_090.jpg"
+import slide_48 from  "../assets/top/gallery/kmhk_092.jpg"
+import slide_49 from  "../assets/top/gallery/kmhk_098.jpg"
+import slide_50 from  "../assets/top/gallery/kmhk_101.jpg"
+import slide_51 from  "../assets/top/gallery/kmhk_104.jpg"
+import slide_52 from  "../assets/top/gallery/kmhk_105.jpg"
+import slide_53 from  "../assets/top/gallery/kmhk_107.jpg"
+import slide_54 from  "../assets/top/gallery/kmhk_108.jpg"
+import slide_55 from  "../assets/top/gallery/kmhk_110.jpg"
+import slide_56 from  "../assets/top/gallery/kmhk_111.jpg"
+import slide_57 from  "../assets/top/gallery/kmhk_114.jpg"
+import slide_58 from  "../assets/top/gallery/kmhk_116.jpg"
+import slide_59 from  "../assets/top/gallery/kmhk_117.jpg"
+import slide_60 from  "../assets/top/gallery/kmhk_118.jpg"
+import slide_61 from  "../assets/top/gallery/kmhk_119.jpg"
+import slide_62 from  "../assets/top/gallery/kmhk_120.jpg"
+import slide_63 from  "../assets/top/gallery/kmhk_122.jpg"
+import slide_64 from  "../assets/top/gallery/kmhk_123.jpg"
+
+import slide_row_1 from  "../assets/top/gallery_row/kmhk_002.jpg"
+import slide_row_2 from  "../assets/top/gallery_row/kmhk_004.jpg"
+import slide_row_3 from  "../assets/top/gallery_row/kmhk_005.jpg"
+import slide_row_4 from  "../assets/top/gallery_row/kmhk_007.jpg"
+import slide_row_5 from  "../assets/top/gallery_row/kmhk_007a.jpg"
+import slide_row_6 from  "../assets/top/gallery_row/kmhk_008.jpg"
+import slide_row_7 from  "../assets/top/gallery_row/kmhk_010.jpg"
+import slide_row_8 from  "../assets/top/gallery_row/kmhk_015.jpg"
+import slide_row_9 from  "../assets/top/gallery_row/kmhk_017.jpg"
+import slide_row_10 from  "../assets/top/gallery_row/kmhk_022.jpg"
+import slide_row_11 from  "../assets/top/gallery_row/kmhk_023.jpg"
+import slide_row_12 from  "../assets/top/gallery_row/kmhk_025.jpg"
+import slide_row_13 from  "../assets/top/gallery_row/kmhk_027.jpg"
+import slide_row_14 from  "../assets/top/gallery_row/kmhk_028.jpg"
+import slide_row_15 from  "../assets/top/gallery_row/kmhk_030.jpg"
+import slide_row_16 from  "../assets/top/gallery_row/kmhk_031.jpg"
+import slide_row_17 from  "../assets/top/gallery_row/kmhk_043.jpg"
+import slide_row_18 from  "../assets/top/gallery_row/kmhk_046.jpg"
+import slide_row_19 from  "../assets/top/gallery_row/kmhk_047.jpg"
+import slide_row_20 from  "../assets/top/gallery_row/kmhk_048.jpg"
+import slide_row_21 from  "../assets/top/gallery_row/kmhk_050.jpg"
+import slide_row_22 from  "../assets/top/gallery_row/kmhk_053.jpg"
+import slide_row_23 from  "../assets/top/gallery_row/kmhk_054.jpg"
+import slide_row_24 from  "../assets/top/gallery_row/kmhk_056.jpg"
+import slide_row_25 from  "../assets/top/gallery_row/kmhk_058.jpg"
+import slide_row_26 from  "../assets/top/gallery_row/kmhk_062.jpg"
+import slide_row_27 from  "../assets/top/gallery_row/kmhk_064.jpg"
+import slide_row_28 from  "../assets/top/gallery_row/kmhk_067.jpg"
+import slide_row_29 from  "../assets/top/gallery_row/kmhk_069.jpg"
+import slide_row_30 from  "../assets/top/gallery_row/kmhk_070.jpg"
+import slide_row_31 from  "../assets/top/gallery_row/kmhk_072.jpg"
+import slide_row_32 from  "../assets/top/gallery_row/kmhk_074.jpg"
+import slide_row_33 from  "../assets/top/gallery_row/kmhk_075.jpg"
+import slide_row_34 from  "../assets/top/gallery_row/kmhk_076.jpg"
+import slide_row_35 from  "../assets/top/gallery_row/kmhk_077.jpg"
+import slide_row_36 from  "../assets/top/gallery_row/kmhk_079.jpg"
+import slide_row_37 from  "../assets/top/gallery_row/kmhk_081.jpg"
+import slide_row_38 from  "../assets/top/gallery_row/kmhk_081a.jpg"
+import slide_row_39 from  "../assets/top/gallery_row/kmhk_082.jpg"
+import slide_row_40 from  "../assets/top/gallery_row/kmhk_083.jpg"
+import slide_row_41 from  "../assets/top/gallery_row/kmhk_083a.jpg"
+import slide_row_42 from  "../assets/top/gallery_row/kmhk_084.jpg"
+import slide_row_43 from  "../assets/top/gallery_row/kmhk_085.jpg"
+import slide_row_44 from  "../assets/top/gallery_row/kmhk_085a.jpg"
+import slide_row_45 from  "../assets/top/gallery_row/kmhk_086.jpg"
+import slide_row_46 from  "../assets/top/gallery_row/kmhk_088.jpg"
+import slide_row_47 from  "../assets/top/gallery_row/kmhk_090.jpg"
+import slide_row_48 from  "../assets/top/gallery_row/kmhk_092.jpg"
+import slide_row_49 from  "../assets/top/gallery_row/kmhk_098.jpg"
+import slide_row_50 from  "../assets/top/gallery_row/kmhk_101.jpg"
+import slide_row_51 from  "../assets/top/gallery_row/kmhk_104.jpg"
+import slide_row_52 from  "../assets/top/gallery_row/kmhk_105.jpg"
+import slide_row_53 from  "../assets/top/gallery_row/kmhk_107.jpg"
+import slide_row_54 from  "../assets/top/gallery_row/kmhk_108.jpg"
+import slide_row_55 from  "../assets/top/gallery_row/kmhk_110.jpg"
+import slide_row_56 from  "../assets/top/gallery_row/kmhk_111.jpg"
+import slide_row_57 from  "../assets/top/gallery_row/kmhk_114.jpg"
+import slide_row_58 from  "../assets/top/gallery_row/kmhk_116.jpg"
+import slide_row_59 from  "../assets/top/gallery_row/kmhk_117.jpg"
+import slide_row_60 from  "../assets/top/gallery_row/kmhk_118.jpg"
+import slide_row_61 from  "../assets/top/gallery_row/kmhk_119.jpg"
+import slide_row_62 from  "../assets/top/gallery_row/kmhk_120.jpg"
+import slide_row_63 from  "../assets/top/gallery_row/kmhk_122.jpg"
+import slide_row_64 from  "../assets/top/gallery_row/kmhk_123.jpg"
+import Image from "astro/components/Image.astro";
+
+const sliderData = [
+  slide_1,  slide_2,  slide_3,  slide_4,
+  slide_5,  slide_6,  slide_7,  slide_8,
+  slide_9,  slide_10, slide_11, slide_12,
+  slide_13, slide_14, slide_15, slide_16,
+  slide_17, slide_18, slide_19, slide_20,
+  slide_21, slide_22, slide_23, slide_24,
+  slide_25, slide_26, slide_27, slide_28,
+  slide_29, slide_30, slide_31, slide_32,
+  slide_33, slide_34, slide_35, slide_36,
+  slide_37, slide_38, slide_39, slide_40,
+  slide_41, slide_42, slide_43, slide_44,
+  slide_45, slide_46, slide_47, slide_48,
+  slide_49, slide_50, slide_51, slide_52,
+  slide_53, slide_54, slide_55, slide_56,
+  slide_57, slide_58, slide_59, slide_60,
+  slide_61, slide_62, slide_63, slide_64
+]
+const sliderData_row = [
+  slide_row_1,  slide_row_2,  slide_row_3,  slide_row_4,
+  slide_row_5,  slide_row_6,  slide_row_7,  slide_row_8,
+  slide_row_9,  slide_row_10, slide_row_11, slide_row_12,
+  slide_row_13, slide_row_14, slide_row_15, slide_row_16,
+  slide_row_17, slide_row_18, slide_row_19, slide_row_20,
+  slide_row_21, slide_row_22, slide_row_23, slide_row_24,
+  slide_row_25, slide_row_26, slide_row_27, slide_row_28,
+  slide_row_29, slide_row_30, slide_row_31, slide_row_32,
+  slide_row_33, slide_row_34, slide_row_35, slide_row_36,
+  slide_row_37, slide_row_38, slide_row_39, slide_row_40,
+  slide_row_41, slide_row_42, slide_row_43, slide_row_44,
+  slide_row_45, slide_row_46, slide_row_47, slide_row_48,
+  slide_row_49, slide_row_50, slide_row_51, slide_row_52,
+  slide_row_53, slide_row_54, slide_row_55, slide_row_56,
+  slide_row_57, slide_row_58, slide_row_59, slide_row_60,
+  slide_row_61, slide_row_62, slide_row_63, slide_row_64
+]
+
+---
+
+<section class="gallery">
+    <SectionHeading main={"Gallery"} sub='高画質な写真で施設をご確認いただけます。' />
+    <div class="gallerySlider">
+        <div class="gallerySlider_nav">
+            <div class="gallerySlider_nav_scroll" data-lenis-prevent>
+                <ul class="gallerySlider_nav_items">
+                    {sliderData_row.map((item, index) => (
+                        <div class="gallerySlider_nav_item">
+                            <div class="gallerySlider_nav_item_inner">
+                                <Image src={item} alt={""} />
+                            </div>
+                        </div>
+                    ))}
+                </ul>
+            </div>
+        </div>
+        <div class="gallerySlider_window">
+            {sliderData.map((item, index) => (
+                <div class={index === 0 ? "gallerySlider_window_item" : "gallerySlider_window_item js--hidden"}>
+                    { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<img src="" alt="" data-src={item.src} width={item.width} height={item.height} />) }
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

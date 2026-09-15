@@ -6,6 +6,7 @@ function gallery_init() {
   const nav = wrapper?.querySelector(".gallerySlider_nav_scroll")!;
   const navItems = nav.querySelectorAll(".gallerySlider_nav_item");
   const windowItems = wrapper?.querySelectorAll(".gallerySlider_window_item");
+  const windowImgs = wrapper?.querySelectorAll(".gallerySlider_window_item img");
 
   if (!nav || navItems.length <= 2) return;
 
@@ -19,8 +20,6 @@ function gallery_init() {
     const item2Rect = navItems[1].getBoundingClientRect();
     perGap = item2Rect.top - item1Rect.bottom;
     perH = item1Rect.height + perGap;
-
-    console.log(perH, perGap);
   }
   window.addEventListener("resize", onResize);
   onResize();
@@ -31,8 +30,17 @@ function gallery_init() {
     });
     windowItems?.forEach((item, index) => {
       item.classList.toggle("js--hidden", index !== current);
+      if (index === current && windowImgs) {
+        const next = Math.min(index + 1, navItems.length - 1);
+        if (windowImgs[next].getAttribute("src") === "") {
+          windowImgs[next].setAttribute("src", windowImgs[next].getAttribute("data-src") || "");
+        }
+        const prev = Math.max(index - 1, 0);
+        if (windowImgs[prev].getAttribute("src") === "") {
+          windowImgs[prev].setAttribute("src", windowImgs[prev].getAttribute("data-src") || "");
+        }
+      }
     });
-    console.log("j");
   }
 
   function onScroll() {
