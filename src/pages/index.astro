@@ -13,48 +13,8 @@ import src_concept from "../assets/top/concept.jpg"
 import Facility from '../components/Facility.astro';
 import Others from '../components/Others.astro';
 import Gallery from '../components/Gallery.astro';
+import Faq from '../components/Faq.astro';
 
-const faq = [
-	{
-		q: "設備について教えてください。",
-		a: `
-			以下のご用意がございます。<br /><br />
-			室内設備：<br />
-			冷暖房<br />
-			Wi-Fi<br />
-			空気清浄機<br />
-			洗濯機<br />
-			ワークスペース<br />
-			....
-		`,
-	},
-	{
-		q: "設備について教えてください。",
-		a: `
-			以下のご用意がございます。<br /><br />
-			室内設備：<br />
-			冷暖房<br />
-			Wi-Fi<br />
-			空気清浄機<br />
-			洗濯機<br />
-			ワークスペース<br />
-			....
-		`,
-	},
-	{
-		q: "設備について教えてください。",
-		a: `
-			以下のご用意がございます。<br /><br />
-			室内設備：<br />
-			冷暖房<br />
-			Wi-Fi<br />
-			空気清浄機<br />
-			洗濯機<br />
-			ワークスペース<br />
-			....
-		`,
-	},
-]
 ---
 
 <Layout>
@@ -128,25 +88,6 @@ const faq = [
 				<Image class="access_img" src={src_map} alt="" />
 			</div>
 		</section>
-		<section class="faq" id="faq">
-			<SectionHeading main={toFaq.title} />
-			<ul class="faqList">
-				{faq.map((item, index) => (
-					<li class="faqList_card --accordion">
-						<button class="faqList_card_q --accordion_button">
-							<p class="faqList_card_q_number">{zeroPad(index + 1, 2)}</p>
-							<p class="faqList_card_q_title">{item.q}</p>
-							<svg class="faqList_card_q_icon --accordion_head_icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect x="7" y="13" width="13" height="1"/>
-								<rect x="14" y="7" width="13" height="1" transform="rotate(90 14 7)"/>
-							</svg>
-						</button>
-						<div class="faqList_card_a --accordion_body">
-							<p class="faqList_card_a_inner --accordion_bodyInner" set:html={item.a}></p>
-						</div>
-					</li>
-				))}
-			</ul>
-		</section>
+		<Faq />
 	</article>
 </Layout>

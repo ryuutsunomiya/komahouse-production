@@ -95,7 +95,7 @@ function facility_init() {
   function onResize() {
     const rect = facilityList_scroll?.getBoundingClientRect();
     const perRect = facilityList_scroll_item.getBoundingClientRect();
-    perH = (rect.height - perRect.height) / (total + 1);
+    perH = (rect.height - perRect.height * 0.5) / (total + 1);
   }
   window.addEventListener("resize", onResize);
   onResize();

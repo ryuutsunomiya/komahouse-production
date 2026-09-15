@@ -3,24 +3,73 @@ import Image from "astro/components/Image.astro"
 import src_01 from "../assets/top/facility/facility_01.jpg"
 import src_02 from "../assets/top/facility/facility_02.jpg"
 import src_03 from "../assets/top/facility/facility_03.jpg"
+import src_04 from "../assets/top/facility/facility_04.jpg"
+import src_05 from "../assets/top/facility/facility_05.jpg"
+import src_06 from "../assets/top/facility/facility_06.jpg"
+import src_07 from "../assets/top/facility/facility_07.jpg"
+import src_08 from "../assets/top/facility/facility_08.jpg"
+import src_09 from "../assets/top/facility/facility_09.jpg"
+import src_10 from "../assets/top/facility/facility_10.jpg"
 import { zeroPad } from "../utils/calc"
 
 
 const data = [
     {
         title: "LIVING / リビング",
-        detail: "くつろぐための、ゆったりとしたソファ。話す人、料理する人、何もしない人。思い思いの場所で過ごせます。",
+        detail: "くつろぐための、ゆったりとしたソファ。<br />話す人、料理する人、何もしない人。<br />思い思いの場所で過ごせます。",
         src: src_01,
     },
     {
         title: "KITCHEN / キッチン",
-        detail: "口コンロを備え、複数人で同時に料理ができる広さに設計。買い出しをして、料理をして、みんなで食卓を囲む。その時間ごと楽しんでいただければ幸いです。",
+        detail: "4口コンロを備え、複数人で同時に料理ができる広さに設計。<br />買い出しをして、料理をして、みんなで食卓を囲む。<br />その時間ごと楽しんでいただければ幸いです。",
         src: src_02,
     },
     {
         title: "TERRACE / テラス",
         detail: "星を眺めたり、ただ風に吹かれたり。<br />室内とは少し違う時間が流れる場所です。",
         src: src_03,
+        // kmhk_008
+    },
+    {
+        title: "DOMA / 土間",
+        detail: "外でも中でもない、そのあいだの場所。<br />アートが飾られた土間に腰をかけ、<br />いつもと違う角度で過ごす時間。",
+        src: src_04,
+        // kmhk_108
+    },
+    {
+        title: "WORKSPACE / ワークスペース",
+        detail: "2階に設けた、小さな仕事部屋。<br />同じ家にいながら、少しだけ離れて集中できます。",
+        src: src_05,
+        // kmhk_075
+    },
+    {
+        title: "BEDROOM / 寝室",
+        detail: "一日の終わりに、身体を休める場所。<br />静かな心地よい眠りを。",
+        src: src_06,
+        // kmhk_074
+    },
+    {
+        title: "BATH / 風呂",
+        detail: "ゆったりと足を伸ばせる、大きめの浴槽。<br />窓の外に植栽を配し、緑や外気を感じられます。<br />洗面台は2台。支度も並んでできます。",
+        src: src_07,
+        // kmhk_082
+    },
+    {
+        title: "SAUNA / サウナ",
+        detail: "身体を温め、呼吸を整える。<br />ゆっくりと自分に戻る時間を。<br />水風呂も併設しています。",
+        src: src_08,
+        // kmhk_098
+    },
+    {
+        title: "GARDEN / 庭",
+        detail: "季節とともに、少しずつ育っていく庭。<br />訪れるたびに、違う表情に出会えます。",
+        src: src_09,
+        // kmhk_002
+    },
+    {
+        title: "ART & OBJECTS / アートと器",
+        detail: "館内には、陶芸作家やアーティストの作品を随所に。<br />器は実際に手に取り、滞在の中でぜひお使いください。",
+        src: src_01,
     },
 ]
 ---
