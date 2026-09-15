@@ -28,30 +28,38 @@ const data = [
 
 <section class="facility --header_white" id="facility">
     <div class="facilityList">
-        <ul class="facilityList_sticky">
-            {
-                data.map((item, index) => (
-                    <li class="facilityList_sticky_item">
-                        <div class="facilityList_sticky_img">
-                            <Image src={item.src} alt={""} />
-                        </div>
-                        <div class="facilityList_sticky_texts">
-                            <div class="facilityList_sticky_itemBox">
-                                <div class="facilityList_sticky_numbers">
-                                    <p class="facilityList_sticky_numbers_title">FACILITY</p>
-                                    <div class="facilityList_sticky_numbers_number">
-                                        <p>{zeroPad(index + 1, 2)}</p>
-                                        <p>{zeroPad(data.length, 2)}</p>
-                                    </div>
-                                </div>
-                                <p class="facilityList_sticky_title">{item.title}</p>
+        <div class="facilityList_sticky">
+            <div class="facilityList_sticky_imgs">
+                {data.map((item) => (
+                    <Image class="facilityList_sticky_img" src={item.src} alt={""} />
+                ))}
+            </div>
+            <div class="facilityList_sticky_wrapper">
+                <div class="facilityList_sticky_textLeft">
+                    <div class="facilityList_sticky_numbers">
+                        <p class="facilityList_sticky_numbers_title">FACILITY</p>
+                        <div class="facilityList_sticky_numbers_number">
+                            <div class="--counter">
+                                {data.map((_, index) => (
+                                    <p>{zeroPad(index + 1, 2)}</p>
+                                ))}
                             </div>
-                            <p class="facilityList_sticky_text" set:html={item.detail}></p>
+                            <p>{zeroPad(data.length, 2)}</p>
                         </div>
-                    </li>
-                ))
-            }
-        </ul>
+                    </div>
+                    <div class="facilityList_sticky_title">
+                        {data.map((item) => (
+                            <h3>{item.title}</h3>
+                        ))}
+                    </div>
+                </div>
+                <div class="facilityList_sticky_textRight">
+                    {data.map((item) => (
+                        <p class="facilityList_sticky_textRight_inner" set:html={item.detail}></p>
+                    ))}
+                </div>
+            </div>
+        </div>
         <div class="facilityList_scroll">
             {
                 [...Array(data.length)].map(() => (

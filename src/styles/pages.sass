@@ -111,37 +111,39 @@
             top: 0
             width: 100%
             height: 100svh
-            .facilityList_sticky_item
+            +f.flex()
+            .facilityList_sticky_imgs
                 position: absolute
-                top: 0
-                left: 0
                 width: 100%
                 height: 100%
-                +f.flex()
-                +f.tra(opacity, 0.4s, 0s, linear)
-                opacity: 0
+                top: 0
                 .facilityList_sticky_img
                     position: absolute
                     width: 100%
                     height: 100%
-                    img
-                        width: 100%
-                        height: 100%
-                        object-fit: cover
-                .facilityList_sticky_img::before
-                    content: ""
-                    position: absolute
-                    height: 179rem
+                    object-fit: cover
+            .facilityList_sticky_imgs::after
+                content: ""
+                position: absolute
+                height: 179rem
+                width: 100%
+                background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%,)
+                opacity: 0.8
+                bottom: 0
+            .facilityList_sticky_wrapper
+                position: absolute
+                bottom: 0
+                +f.flex(end, bet)
+                @include f.sectionW
+            .facilityList_sticky_textLeft
+                width: 791rem
+                position: relative
+                margin-bottom: 1rem
+                .facilityList_sticky_title
                     width: 100%
-                    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%,)
-                    opacity: 0.8
-                    bottom: 0
-                .facilityList_sticky_texts
-                    +f.flex(end, bet)
-                    +f.tra(opacity, 0.4s, 0.4s, linear)
-                    opacity: 0
-                .facilityList_sticky_itemBox
-                    width: 791rem
+                    +f.font(30, 170, 10, ZenMiB)
+                    height: 1.7em
+                    overflow-y: clip
                 .facilityList_sticky_numbers
                     +f.flex(cen, bet)
                     width: 259rem
@@ -150,6 +152,10 @@
                         +f.flex(cen, bet)
                         width: 141rem
                         position: relative
+                        .--counter
+                            +f.flex(cen, sta, col)
+                            overflow-y: clip
+                            height: 2.4em
                     .facilityList_sticky_numbers_number::before
                         content: ""
                         width: 81rem
@@ -158,12 +164,15 @@
                         position: absolute
                         left: 50%
                         transform: translateX(-50%)
-                .facilityList_sticky_title
-                    +f.font(30, 170, 10, ZenMiB)
-                .facilityList_sticky_text
-                    +f.font(17, 170, 10, ZenGoR)
-                    width: 524rem
-                    margin-bottom: 0.5em
+            .facilityList_sticky_textRight
+                +f.font(17, 170, 10, ZenGoR)
+                width: 524rem
+                margin-bottom: 0.5em
+                position: relative
+                .facilityList_sticky_textRight_inner
+                    position: absolute
+                    bottom: 0
+                    width: 100%
             .facilityList_sticky_item.--current
                 opacity: 1
                 .facilityList_sticky_texts
