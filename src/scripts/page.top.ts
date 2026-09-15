@@ -129,7 +129,6 @@ function facility_init() {
   function onScroll() {
     const rect = facilityList_scroll?.getBoundingClientRect();
     const next = Math.min(total, Math.max(0, Math.round((rect.top * -1) / perH)));
-    console.log(perH);
     if (next !== current) {
       current = next;
       change();
