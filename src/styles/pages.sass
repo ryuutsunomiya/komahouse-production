@@ -122,6 +122,10 @@
                     width: 100%
                     height: 100%
                     object-fit: cover
+                    +f.tra(opacity, 0.8s, 0s, linear)
+                    opacity: 0
+                .facilityList_sticky_img.--current
+                    opacity: 1
             .facilityList_sticky_imgs::after
                 content: ""
                 position: absolute
@@ -143,27 +147,20 @@
                     width: 100%
                     +f.font(30, 170, 10, ZenMiB)
                     height: 1.7em
-                    overflow-y: clip
+                    position: relative
+                    h3
+                        position: absolute
                 .facilityList_sticky_numbers
                     +f.flex(cen, bet)
-                    width: 259rem
+                    // width: 259rem
                     +f.font(15, 240, 11, ZenMiB)
                     .facilityList_sticky_numbers_number
-                        +f.flex(cen, bet)
-                        width: 141rem
                         position: relative
+                        height: 2.4em
+                        white-space: nowrap
                         .--counter
-                            +f.flex(cen, sta, col)
-                            overflow-y: clip
-                            height: 2.4em
-                    .facilityList_sticky_numbers_number::before
-                        content: ""
-                        width: 81rem
-                        height: 1px
-                        background-color: currentColor
-                        position: absolute
-                        left: 50%
-                        transform: translateX(-50%)
+                            display: inline-flex
+                            position: absolute
             .facilityList_sticky_textRight
                 +f.font(17, 170, 10, ZenGoR)
                 width: 524rem

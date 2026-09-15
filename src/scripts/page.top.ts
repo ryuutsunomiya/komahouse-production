@@ -82,25 +82,52 @@ function enter() {
 
 function facility_init() {
   const facility = document.querySelector(".facilityList");
-  const items = facility?.querySelectorAll(".facilityList_sticky_item");
+  const imgs = facility?.querySelectorAll(".facilityList_sticky_img");
+  const titles = facility?.querySelectorAll(".facilityList_sticky_title_inner");
+  const counters = facility?.querySelectorAll(".facilityList_sticky_numbers_number .--counter");
+  const rightTexts = facility?.querySelectorAll(".facilityList_sticky_textRight_inner");
   const facilityList_scroll = facility?.querySelector(".facilityList_scroll")!;
+  const facilityList_scroll_item = facility?.querySelector(".facilityList_scroll div")!;
   let current = -1;
   let perH = 0;
-  const total = items ? items.length - 1 : 0;
+  const total = imgs ? imgs.length - 1 : 0;
 
   function onResize() {
     const rect = facilityList_scroll?.getBoundingClientRect();
-    perH = rect.height / (total + 1);
+    const perRect = facilityList_scroll_item.getBoundingClientRect();
+    perH = (rect.height - perRect.height) / (total + 1);
   }
   window.addEventListener("resize", onResize);
   onResize();
 
   function change() {
-    items?.forEach((item, index) => item.classList.toggle("--current", index <= current));
+    function fade(items: NodeListOf<Element> | undefined) {
+      items?.forEach((item, index) => {
+        gsap.to(item, {
+          opacity: 0,
+          duration: 0.4,
+          ease: "none",
+          overwrite: true,
+          onComplete: () => {
+            gsap.to(item, {
+              opacity: index === current ? 1 : 0,
+              duration: 0.8,
+              ease: "none",
+            });
+          },
+        });
+      });
+    }
+    fade(rightTexts);
+    fade(titles);
+    fade(counters);
+
+    imgs?.forEach((img, index) => img.classList.toggle("--current", index <= current));
   }
   function onScroll() {
     const rect = facilityList_scroll?.getBoundingClientRect();
     const next = Math.min(total, Math.max(0, Math.round((rect.top * -1) / perH)));
+    console.log(perH);
     if (next !== current) {
       current = next;
       change();
@@ -110,25 +137,7 @@ function facility_init() {
   onScroll();
 }
 
-function other_init() {
-  // const other = document.querySelector(".others");
-  // const sections = document.querySelectorAll(".others_textBlock");
-  // let current = 0;
-  // const total = sections.length - 1;
-  // let isShow =
-  // function onScroll() {
-  //   sections.forEach((item, index) => {
-  //   })
-  //   const rect = facilityList_scroll?.getBoundingClientRect();
-  //   const next = Math.min(total, Math.max(0, Math.round((rect.top * -1) / perH)));
-  //   if (next !== current) {
-  //     current = next;
-  //     change();
-  //   }
-  // }
-  // new RowScroll({ wrapper: other, onScroll: onScroll });
-  // onScroll();
-}
+function other_init() {}
 
 export function pageTop_init() {
   gallery_init();

@@ -37,19 +37,13 @@ const data = [
             <div class="facilityList_sticky_wrapper">
                 <div class="facilityList_sticky_textLeft">
                     <div class="facilityList_sticky_numbers">
-                        <p class="facilityList_sticky_numbers_title">FACILITY</p>
-                        <div class="facilityList_sticky_numbers_number">
-                            <div class="--counter">
-                                {data.map((_, index) => (
-                                    <p>{zeroPad(index + 1, 2)}</p>
-                                ))}
-                            </div>
-                            <p>{zeroPad(data.length, 2)}</p>
-                        </div>
+                        <p class="facilityList_sticky_numbers_number">
+                            {data.map((_, index) => (<span class="--counter">FACILITY&ensp;{zeroPad(index + 1, 2)}</span>))}
+                        </p>
                     </div>
                     <div class="facilityList_sticky_title">
                         {data.map((item) => (
-                            <h3>{item.title}</h3>
+                            <h3 class="facilityList_sticky_title_inner">{item.title}</h3>
                         ))}
                     </div>
                 </div>
@@ -62,7 +56,7 @@ const data = [
         </div>
         <div class="facilityList_scroll">
             {
-                [...Array(data.length)].map(() => (
+                [...Array(data.length + 1)].map(() => (
                     <div></div>
                 )
             )}
