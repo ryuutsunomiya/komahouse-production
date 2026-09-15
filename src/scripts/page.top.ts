@@ -103,12 +103,14 @@ function facility_init() {
   function change() {
     function fade(items: NodeListOf<Element> | undefined) {
       items?.forEach((item, index) => {
+        item.classList.add("js--noClick");
         gsap.to(item, {
           opacity: 0,
           duration: 0.4,
           ease: "none",
           overwrite: true,
           onComplete: () => {
+            if (index === current) item.classList.remove("js--noClick");
             gsap.to(item, {
               opacity: index === current ? 1 : 0,
               duration: 0.8,
