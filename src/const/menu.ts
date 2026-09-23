@@ -42,7 +42,7 @@ export const toAccommodation = {
 
 export const toYoutube = {
   title: "Youtube",
-  href: "/",
+  href: "https://www.youtube.com/@koma-house",
   isBlank: true,
 };
 export const toInstagram = {
@@ -50,19 +50,9 @@ export const toInstagram = {
   href: "https://www.instagram.com/komahouse_/",
   isBlank: true,
 };
-export const toIds = {
-  title: "IDS",
-  href: "/",
-  isBlank: true,
-};
-export const toOnlineStore = {
-  title: "Online Store",
-  href: "/",
-  isBlank: true,
-};
 
 export const menuData_main = [toConcept, toFacility, toAccess, toFaq];
 export const menuData_sub = [toTeam, toPrivacy, toLegal, toAccommodation];
-export const menuData_Follow = [toYoutube, toInstagram, toIds, toOnlineStore];
+export const menuData_Follow = [toYoutube, toInstagram];
 
 export const toReserve = "/";

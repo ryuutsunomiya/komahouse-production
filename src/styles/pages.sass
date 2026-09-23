@@ -34,18 +34,26 @@
             @include f.sectionW
             position: absolute
             bottom: 0
-            +f.flex(sta, bet)
+            +f.flex(end, bet)
             .fv_texts_main
-                +f.font(83, 140, 10, ForR)
+                // +f.font(83, 140, 10, ForR)
+                +f.font(65, 140, 11, ForR)
                 position: relative
                 bottom: -8rem
-            .fv_texts_sub
-                text-align: right
-                +f.font(27, 149, 6, ZenMiB)
-                margin-bottom: 4rem
+                white-space: nowrap
+            .logoHori
                 position: absolute
-                right: -28rem
-                bottom: 6rem
+                left: -1%
+                bottom: 10%
+                width: 400rem
+                visibility: hidden
+            .fv_texts_sub
+                width: 100%
+                text-align: right
+                +f.font(23, 130, 6, M)
+                position: relative
+                bottom: 0.3em
+                right: -1.05em
                 +f.tra(opacity, 1.6s, 1.0s, linear)
                 opacity: 0
                 span:nth-child(1)
@@ -56,7 +64,7 @@
             width: 100%
             height: 200%
             bottom: 0
-            background: linear-gradient(0deg, rgba(v.$white, 1) 0%, rgba(v.$white, 1) 50%, rgba(v.$white, 0) 100%,)
+            background: linear-gradient(0deg, rgba(v.$bg, 1) 0%, rgba(v.$bg, 1) 50%, rgba(v.$white, 0) 100%,)
             +f.tra(transform, 2.0s, 0s, auto)
     .fv.--act
         .fv_shutter
@@ -78,7 +86,7 @@
         .cencept_caths
             position: absolute
         .concept_heading
-            +f.font(17, 160, 11, ZenMiB)
+            +f.font(17, 160, 11, M)
             margin-left: 88rem
         .cencept_cath.--en
             +f.font(83, 140, 10, ForR)
@@ -89,7 +97,7 @@
         .cencept_cath.--jp
             -ms-writing-mode: tb-rl
             writing-mode: vertical-rl
-            +f.font(27, 210, 20, ZenMiB)
+            +f.font(27, 210, 20, M)
             margin-top: 1em
             margin-left: 335rem
             span:nth-child(2)
@@ -98,11 +106,10 @@
             width: 437rem
             position: relative
             margin: 264rem 0 0 auto
-            +f.font(17, 290, 6, ZenMiB)
+            +f.font(17, 290, 6, R)
             .cencept_text
                 margin-top: 2.9em
     .facility
-        margin: v.$sectionMt 0 0
         .facilityList
             position: relative
             color: v.$white
@@ -145,7 +152,7 @@
                 margin-bottom: 1rem
                 .facilityList_sticky_title
                     width: 100%
-                    +f.font(30, 170, 10, ZenMiB)
+                    +f.font(30, 170, 10, M)
                     height: 1.7em
                     position: relative
                     h3
@@ -153,7 +160,7 @@
                 .facilityList_sticky_numbers
                     +f.flex(cen, bet)
                     // width: 259rem
-                    +f.font(15, 240, 11, ZenMiB)
+                    +f.font(15, 240, 11, M)
                     .facilityList_sticky_numbers_number
                         position: relative
                         height: 2.4em
@@ -162,7 +169,7 @@
                             display: inline-flex
                             position: absolute
             .facilityList_sticky_textRight
-                +f.font(17, 170, 10, ZenGoR)
+                +f.font(17, 170, 10, R)
                 width: 524rem
                 margin-bottom: 0.5em
                 position: relative
@@ -196,10 +203,10 @@
             .others_texts
                 width: 524rem
             .others_catch
-                +f.font(34, 170, 6, ZenMiB)
+                +f.font(34, 170, 6, M)
                 margin: 1.7em 0
             .others_text
-                +f.font(17, 170, 6, ZenGoR)
+                +f.font(17, 170, 6, R)
             .others_imgs
                 width: 790rem
                 +f.flex()
@@ -257,7 +264,7 @@
             aspect-ratio: 16/10
             background-color: rgba(v.$black, 0.05)
             border: 1px currentColor dotted
-            +f.font(16, 160, 0, ZenGoR)
+            +f.font(16, 160, 0, M)
             +f.flex()
     .gallery
         margin-top: v.$sectionMt
@@ -331,13 +338,12 @@
         padding-top: v.$sectionMt
         .access_wrapper
             +f.flex(sta, bet)
-            +f.font(17, 170, 6, ZenGoR)
+            +f.font(17, 170, 6, R)
             .access_text
                 width: 524rem
                 h2
                     margin-bottom: calc(1.7em)
                 h3
-                    font-weight: 500
                     margin-top: calc(1.7em)
                 hr
                     margin-top: 3.4em
@@ -351,12 +357,12 @@
         .subHeading
             margin-bottom: 15rem
         .faqList
-            +f.font(17, 160, 0, ZenMiB)
+            +f.font(17, 160, 0, M)
             width: 100%
             border-top: v.$border
             .faqList_card
                 border-bottom: v.$border
-                background: v.$white
+                background: v.$bg
                 +f.tra(filter, 0.6s, 0s, lineaer)
             .faqList_card_q
                 width: 100%
@@ -380,6 +386,12 @@
                 height: 0
                 .faqList_card_a_inner
                     padding-bottom: 3.2em
+                    position: relative
+                    // padding-left: 1.7em
+                // .faqList_card_a_inner::before
+                //     content: "A."
+                //     position: absolute
+                //     left: 0
             // .faqList_card:hover,
             // .faqList_card.--open
             //     filter: invert(1)

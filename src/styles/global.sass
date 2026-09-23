@@ -2,7 +2,7 @@
 @use './mixin' as f
 
 html
-    background-color: v.$white
+    background-color: v.$bg
     color: v.$black
     scroll-behavior: smooth
     +f.calc-font-size(1px, 1440)
@@ -15,7 +15,7 @@ html
     initial-value: #ffffff
 
 html
-    --shutter-color: #{v.$white}
+    --shutter-color: #{v.$bg}
     transition: background-color 0.8s ease
     body
         color: v.$black
@@ -132,6 +132,6 @@ br.--sp
         display: inline
 
 .js--noDataText
-    +f.font(21, 100, -5, ZenGoR)
+    +f.font(21, 100, -5, M)
     +f.sp
         font-size: 13rem

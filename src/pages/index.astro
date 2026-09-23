@@ -1,9 +1,8 @@
 ---
 import Address from '../components/Address.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { toAccess, toFaq } from '../const/menu';
+import { toAccess } from '../const/menu';
 import Layout from '../layouts/Layout.astro';
-import { zeroPad } from '../utils/calc';
 import src_map from "../assets/dev/map.png"
 import Image from 'astro/components/Image.astro';
 import src_fv from "../assets/top/fv.jpg"
@@ -14,6 +13,7 @@ import Facility from '../components/Facility.astro';
 import Others from '../components/Others.astro';
 import Gallery from '../components/Gallery.astro';
 import Faq from '../components/Faq.astro';
+import LogoHori from '../components/LogoHori.astro';
 
 ---
 
@@ -25,13 +25,13 @@ import Faq from '../components/Faq.astro';
 			</div>
 			<div class="fv_texts">
 				<p class='fv_texts_main'>
-					<SlTexts tag='span' texts={["BREATH,"]} noSplit noInview noClip />&nbsp;
-					<SlTexts tag='span' texts={["CALL,"]} noSplit noInview noClip/>&nbsp;
-					<SlTexts tag='span' texts={["BELONG."]} noSplit noInview noClip/>
+					<SlTexts tag='span' texts={["GROWING"]} noSplit noInview noClip />&nbsp;
+					<SlTexts tag='span' texts={["OLDER,"]} noSplit noInview noClip/>&nbsp;
+					<SlTexts tag='span' texts={["TOGETHER."]} noSplit noInview noClip/>
 				</p>
+				<LogoHori />
 				<h1 class="fv_texts_sub">
-					<span>呼吸するように、過ごす</span><br />
-					<span>一棟貸切の宿。</span>
+					時間を継いで、<br />かわりながら育っていく宿。
 				</h1>
 			</div>
 			<div class="fv_shutter"></div>
@@ -44,7 +44,7 @@ import Faq from '../components/Faq.astro';
 					<span>TO REST YOUR<br /></span>
 					<span>HEART</span>
 				</h3>
-				<p class="cencept_cath --jp"><span>呼吸するように、過ごす<br /></span><span>一棟貸切の宿。</span></p>
+				<p class="cencept_cath --jp"><span>それぞれのペースで過ごす、<br /></span><span>一棟貸切の宿。</span></p>
 			</div>
 			<div class="cencept_itemBox">
 				<ShowImg src={src_concept} />
