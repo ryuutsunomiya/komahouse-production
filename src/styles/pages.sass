@@ -374,6 +374,20 @@
         .map_barrier.is-hidden
             pointer-events: none
             opacity: 0
+        .map_guide
+            +f.font(12, 160, 0, M)
+            position: absolute
+            bottom: 6rem
+            right: 6rem
+            background-color: rgba(v.$white, 0.6)
+            padding: 1em 2em 0.9em
+            border-radius: 2rem
+            pointer-events: none
+            opacity: 0
+            transition: opacity 0.8s linear
+        .map.is-active
+            .map_guide
+                opacity: 1
 
 
     .gallery

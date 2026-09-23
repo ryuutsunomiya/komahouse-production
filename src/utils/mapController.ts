@@ -48,7 +48,12 @@ export default class MapController {
 
       friction: 0.92,
 
+      // マウスホイール / 2本指スクロール
       wheelSpeed: 0.002,
+      // iPhone / Android等のタッチピンチ
+      pinchSensitivity: 1.5,
+      // Macトラックパッドのピンチ
+      trackpadPinchSpeed: 0.01,
 
       rubberBand: 0.35,
 

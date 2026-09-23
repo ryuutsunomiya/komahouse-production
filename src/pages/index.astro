@@ -63,7 +63,9 @@ import MainButton from '../components/mainButton.astro';
 		<Facility />
 		<Others />
 		<section class="floor">
-			<SectionHeading main={"Floor Map"} sub='ピンチで拡縮できます。' />
+			<div class="floor_texts">
+				<SectionHeading main={"Floor Map"} />
+			</div>
 			<div class="map">
 				<div class="map_inner">
 					<Image class:list={"floor_map"} src={src_1f} alt={""} />
@@ -76,6 +78,12 @@ import MainButton from '../components/mainButton.astro';
 					<span>
 						<span class="--pulse">クリックして操作を開始</span>
 					</span>
+				</button>
+				<button class="map_guide">
+					<div class="--open">
+						ドラッグ … 移動<br />
+						ピンチ / ホイール … 拡大縮小
+					</div>
 				</button>
 			</div>
 		</section>

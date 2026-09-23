@@ -3,29 +3,46 @@ type PanZoomOptions = {
   maxScale?: number;
 
   /**
-   * 慣性の減衰率
-   * 0.9〜0.97程度
+   * Pan慣性
+   * 大きいほど長く滑る
    */
   friction?: number;
 
   /**
-   * wheel zoomの感度
+   * マウスホイールのズーム感度
    */
   wheelSpeed?: number;
 
   /**
-   * panが境界を超えたときの抵抗
-   * 小さいほど抵抗が強い
+   * スマホ / タブレットの
+   * 2本指ピンチ感度
+   *
+   * 1 = 1:1
+   * 1.5 = 少し大きめ
+   * 2 = 強め
+   */
+  pinchSensitivity?: number;
+
+  /**
+   * Macトラックパッドの
+   * pinch zoom感度
+   */
+  trackpadPinchSpeed?: number;
+
+  /**
+   * Pan境界を超えたときの抵抗
+   * 小さいほど強い
    */
   rubberBand?: number;
 
   /**
-   * scaleがmin/maxを超えたときの抵抗
+   * minScale / maxScaleを
+   * 超えたときの抵抗
    */
   scaleRubberBand?: number;
 
   /**
-   * 境界へ戻るアニメーション時間
+   * 境界へ戻る時間
    */
   bounceDuration?: number;
 
@@ -56,6 +73,7 @@ export default class PanZoom {
   // ==================================================
 
   private enabled = false;
+  private destroyed = false;
 
   private scale = 1;
 
@@ -70,9 +88,15 @@ export default class PanZoom {
   private maxScale: number;
 
   private friction: number;
+
   private wheelSpeed: number;
 
+  private pinchSensitivity: number;
+
+  private trackpadPinchSpeed: number;
+
   private rubberBand: number;
+
   private scaleRubberBand: number;
 
   private bounceDuration: number;
@@ -87,6 +111,7 @@ export default class PanZoom {
 
   private lastX = 0;
   private lastY = 0;
+
   private lastTime = 0;
 
   // ==================================================
@@ -97,10 +122,11 @@ export default class PanZoom {
   private velocityY = 0;
 
   // ==================================================
-  // PINCH
+  // TOUCH PINCH
   // ==================================================
 
   private pinchStartDistance = 0;
+
   private pinchStartScale = 1;
 
   private pinchLastCenter: Point | null = null;
@@ -111,14 +137,13 @@ export default class PanZoom {
 
   private rafId: number | null = null;
 
-  private destroyed = false;
-
   // ==================================================
   // CONSTRUCTOR
   // ==================================================
 
   constructor(container: HTMLElement, target: HTMLElement, options: PanZoomOptions = {}) {
     this.container = container;
+
     this.target = target;
 
     this.minScale = options.minScale ?? 1;
@@ -128,6 +153,10 @@ export default class PanZoom {
     this.friction = options.friction ?? 0.92;
 
     this.wheelSpeed = options.wheelSpeed ?? 0.002;
+
+    this.pinchSensitivity = options.pinchSensitivity ?? 1.5;
+
+    this.trackpadPinchSpeed = options.trackpadPinchSpeed ?? 0.01;
 
     this.rubberBand = options.rubberBand ?? 0.35;
 
@@ -176,7 +205,7 @@ export default class PanZoom {
     this.pointers.set(e.pointerId, e);
 
     // --------------------------------------------------
-    // 1 pointer
+    // 1 POINTER
     // --------------------------------------------------
 
     if (this.pointers.size === 1) {
@@ -191,7 +220,7 @@ export default class PanZoom {
     }
 
     // --------------------------------------------------
-    // 2 pointers
+    // 2 POINTERS
     // --------------------------------------------------
 
     if (this.pointers.size === 2) {
@@ -224,6 +253,7 @@ export default class PanZoom {
     this.pointers.set(e.pointerId, e);
 
     // ==================================================
+    // ONE POINTER
     // PAN
     // ==================================================
 
@@ -239,7 +269,7 @@ export default class PanZoom {
       this.applyPan(dx, dy, true);
 
       /*
-       * px / 60fps frame 相当
+       * 60fps換算の速度
        */
       this.velocityX = (dx / dt) * 16.6667;
 
@@ -253,10 +283,6 @@ export default class PanZoom {
 
       this.render();
 
-      /*
-       * 実際に移動したときだけ
-       * interactionとして通知
-       */
       if (Math.abs(dx) > 0 || Math.abs(dy) > 0) {
         this.onInteraction?.();
       }
@@ -265,18 +291,27 @@ export default class PanZoom {
     }
 
     // ==================================================
-    // PINCH
+    // TWO POINTERS
+    // TOUCH PINCH
     // ==================================================
 
     if (this.pointers.size === 2) {
       const [p1, p2] = [...this.pointers.values()];
 
+      // --------------------------------------------------
+      // DISTANCE
+      // --------------------------------------------------
+
       const distance = this.getDistance(p1, p2);
+
+      // --------------------------------------------------
+      // CENTER
+      // --------------------------------------------------
 
       const center = this.getCenter(p1, p2);
 
       // --------------------------------------------------
-      // pinchしながらpan
+      // PAN WHILE PINCHING
       // --------------------------------------------------
 
       if (this.pinchLastCenter) {
@@ -291,13 +326,37 @@ export default class PanZoom {
       this.pinchLastCenter = center;
 
       // --------------------------------------------------
-      // SCALE
+      // PINCH RATIO
       // --------------------------------------------------
 
-      const rawScale = this.pinchStartScale * (distance / this.pinchStartDistance);
+      const ratio = distance / this.pinchStartDistance;
+
+      /*
+       * 感度調整
+       *
+       * 例:
+       *
+       * ratio = 1.2
+       *
+       * sensitivity 1
+       * → 1.2
+       *
+       * sensitivity 1.5
+       * → 約1.31
+       *
+       * sensitivity 2
+       * → 1.44
+       */
+      const adjustedRatio = Math.pow(ratio, this.pinchSensitivity);
+
+      const rawScale = this.pinchStartScale * adjustedRatio;
 
       const nextScale = this.applyScaleResistance(rawScale);
 
+      /*
+       * 2本指の中心を基準に
+       * zoom
+       */
       this.zoomAt(center.x, center.y, nextScale);
 
       this.onInteraction?.();
@@ -318,15 +377,15 @@ export default class PanZoom {
     this.pointers.delete(e.pointerId);
 
     // --------------------------------------------------
-    // 全pointerが離れた
+    // POINTER 0
     // --------------------------------------------------
 
     if (this.pointers.size === 0) {
       this.pinchLastCenter = null;
 
       /*
-       * scaleが範囲外なら
-       * まず正常範囲へ戻す
+       * Scaleが範囲外なら
+       * 正常範囲へ戻す
        */
       if (this.scale < this.minScale || this.scale > this.maxScale) {
         this.bounceToBounds();
@@ -335,7 +394,7 @@ export default class PanZoom {
       }
 
       /*
-       * 通常のpanなら慣性開始
+       * Pan inertia
        */
       this.startInertia();
 
@@ -343,7 +402,7 @@ export default class PanZoom {
     }
 
     // --------------------------------------------------
-    // pinch → 1 pointer
+    // PINCH → ONE POINTER
     // --------------------------------------------------
 
     if (this.pointers.size === 1) {
@@ -360,6 +419,73 @@ export default class PanZoom {
 
       this.pinchLastCenter = null;
     }
+  };
+
+  // ==================================================
+  // WHEEL
+  // ==================================================
+
+  private onWheel = (e: WheelEvent) => {
+    /*
+     * barrier ON時
+     *
+     * preventDefaultしない
+     * ↓
+     * 通常のページスクロール
+     */
+    if (!this.enabled) {
+      return;
+    }
+
+    e.preventDefault();
+
+    this.stopAnimation();
+
+    // --------------------------------------------------
+    // TRACKPAD PINCH
+    // --------------------------------------------------
+
+    /*
+     * Chrome / Safari等では
+     *
+     * Mac trackpad pinch
+     *
+     * ↓
+     *
+     * WheelEvent
+     * ctrlKey === true
+     *
+     * として通知される場合がある。
+     */
+    const isTrackpadPinch = e.ctrlKey;
+
+    const speed = isTrackpadPinch ? this.trackpadPinchSpeed : this.wheelSpeed;
+
+    // --------------------------------------------------
+    // SCALE
+    // --------------------------------------------------
+
+    const factor = Math.exp(-e.deltaY * speed);
+
+    const nextScale = this.clamp(this.scale * factor, this.minScale, this.maxScale);
+
+    /*
+     * マウス位置 /
+     * trackpad pinch中心
+     *
+     * を基準にzoom
+     */
+    this.zoomAt(e.clientX, e.clientY, nextScale);
+
+    /*
+     * scale後に
+     * bounds内へ収める
+     */
+    this.clampPosition();
+
+    this.render();
+
+    this.onInteraction?.();
   };
 
   // ==================================================
@@ -409,11 +535,19 @@ export default class PanZoom {
   // ==================================================
 
   private applyScaleResistance(scale: number) {
+    // --------------------------------------------------
+    // MIN
+    // --------------------------------------------------
+
     if (scale < this.minScale) {
       const diff = this.minScale - scale;
 
       return this.minScale - diff * this.scaleRubberBand;
     }
+
+    // --------------------------------------------------
+    // MAX
+    // --------------------------------------------------
 
     if (scale > this.maxScale) {
       const diff = scale - this.maxScale;
@@ -425,32 +559,38 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // ZOOM
+  // ZOOM AT
   // ==================================================
 
   private zoomAt(clientX: number, clientY: number, nextScale: number) {
     const rect = this.container.getBoundingClientRect();
 
     /*
-     * viewport内のpointer座標
+     * container内の
+     * pointer位置
      */
     const px = clientX - rect.left;
 
     const py = clientY - rect.top;
 
     /*
-     * 現在pointer下にある
-     * target内の座標
+     * 現在pointerの下にある
+     * target座標
      */
     const contentX = (px - this.x) / this.scale;
 
     const contentY = (py - this.y) / this.scale;
 
+    // --------------------------------------------------
+    // SCALE
+    // --------------------------------------------------
+
     this.scale = nextScale;
 
     /*
-     * scale変更後も
-     * 同じ場所をpointer下へ配置
+     * Scale変更後も
+     * 同じcontent位置が
+     * pointer下に来るようにする
      */
     this.x = px - contentX * this.scale;
 
@@ -460,50 +600,17 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // WHEEL
-  // ==================================================
-
-  private onWheel = (e: WheelEvent) => {
-    /*
-     * barrier中
-     *
-     * preventDefaultしないので
-     * 普通のページスクロールになる
-     */
-    if (!this.enabled) {
-      return;
-    }
-
-    e.preventDefault();
-
-    this.stopAnimation();
-
-    const factor = Math.exp(-e.deltaY * this.wheelSpeed);
-
-    const nextScale = this.clamp(this.scale * factor, this.minScale, this.maxScale);
-
-    this.zoomAt(e.clientX, e.clientY, nextScale);
-
-    this.clampPosition();
-
-    this.render();
-
-    this.onInteraction?.();
-  };
-
-  // ==================================================
   // INERTIA
   // ==================================================
 
   private startInertia() {
     this.stopAnimation();
 
-    /*
-     * ほぼ動いていなければ
-     * inertia不要
-     */
     const initialSpeed = Math.hypot(this.velocityX, this.velocityY);
 
+    /*
+     * ほぼ動いていない
+     */
     if (initialSpeed < 0.05) {
       this.bounceToBounds();
 
@@ -521,14 +628,19 @@ export default class PanZoom {
 
       lastTime = time;
 
-      /*
-       * refresh rate非依存のfriction
-       */
+      // --------------------------------------------------
+      // FRICTION
+      // --------------------------------------------------
+
       const friction = Math.pow(this.friction, delta);
 
       this.velocityX *= friction;
 
       this.velocityY *= friction;
+
+      // --------------------------------------------------
+      // NEXT POSITION
+      // --------------------------------------------------
 
       const bounds = this.getBounds();
 
@@ -536,10 +648,10 @@ export default class PanZoom {
 
       const nextY = this.y + this.velocityY * delta;
 
-      /*
-       * 境界外へ進んだ場合は
-       * 速度を強く減衰
-       */
+      // --------------------------------------------------
+      // BOUNDARY RESISTANCE
+      // --------------------------------------------------
+
       if (nextX > bounds.maxX || nextX < bounds.minX) {
         this.velocityX *= 0.7;
       }
@@ -553,6 +665,10 @@ export default class PanZoom {
       this.y = nextY;
 
       this.render();
+
+      // --------------------------------------------------
+      // STOP
+      // --------------------------------------------------
 
       const speed = Math.hypot(this.velocityX, this.velocityY);
 
@@ -571,7 +687,7 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // BOUNCE
+  // BOUNCE TO BOUNDS
   // ==================================================
 
   private bounceToBounds() {
@@ -584,7 +700,7 @@ export default class PanZoom {
     const startScale = this.scale;
 
     // --------------------------------------------------
-    // SCALE
+    // TARGET SCALE
     // --------------------------------------------------
 
     const targetScale = this.clamp(this.scale, this.minScale, this.maxScale);
@@ -593,10 +709,10 @@ export default class PanZoom {
 
     let targetY = this.y;
 
-    /*
-     * scaleが範囲外の場合
-     * viewport中央を基準に戻す
-     */
+    // --------------------------------------------------
+    // SCALE CORRECTION
+    // --------------------------------------------------
+
     if (targetScale !== this.scale) {
       const rect = this.container.getBoundingClientRect();
 
@@ -614,7 +730,7 @@ export default class PanZoom {
     }
 
     // --------------------------------------------------
-    // POSITION
+    // POSITION CORRECTION
     // --------------------------------------------------
 
     const bounds = this.getBounds(targetScale);
@@ -623,10 +739,10 @@ export default class PanZoom {
 
     targetY = this.clamp(targetY, bounds.minY, bounds.maxY);
 
-    /*
-     * すでに正常範囲なら
-     * animation不要
-     */
+    // --------------------------------------------------
+    // ALREADY CORRECT
+    // --------------------------------------------------
+
     if (Math.abs(targetX - startX) < 0.01 && Math.abs(targetY - startY) < 0.01 && Math.abs(targetScale - startScale) < 0.001) {
       this.x = targetX;
 
@@ -638,6 +754,10 @@ export default class PanZoom {
 
       return;
     }
+
+    // --------------------------------------------------
+    // ANIMATION
+    // --------------------------------------------------
 
     const startTime = performance.now();
 
@@ -686,7 +806,7 @@ export default class PanZoom {
     const containerRect = this.container.getBoundingClientRect();
 
     /*
-     * transform前のtargetサイズ × scale
+     * transform前サイズ
      */
     const width = this.target.offsetWidth * scale;
 
@@ -704,7 +824,8 @@ export default class PanZoom {
 
     if (width <= containerRect.width) {
       /*
-       * targetの方が小さい場合は中央固定
+       * targetがcontainerより
+       * 小さい場合は中央固定
        */
       const centerX = (containerRect.width - width) / 2;
 
@@ -741,6 +862,10 @@ export default class PanZoom {
     };
   }
 
+  // ==================================================
+  // CLAMP POSITION
+  // ==================================================
+
   private clampPosition() {
     const bounds = this.getBounds();
 
@@ -758,7 +883,7 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // UTILS
+  // DISTANCE
   // ==================================================
 
   private getDistance(p1: PointerEvent, p2: PointerEvent) {
@@ -769,6 +894,10 @@ export default class PanZoom {
     );
   }
 
+  // ==================================================
+  // CENTER
+  // ==================================================
+
   private getCenter(p1: PointerEvent, p2: PointerEvent): Point {
     return {
       x: (p1.clientX + p2.clientX) / 2,
@@ -777,13 +906,25 @@ export default class PanZoom {
     };
   }
 
+  // ==================================================
+  // CLAMP
+  // ==================================================
+
   private clamp(value: number, min: number, max: number) {
     return Math.min(Math.max(value, min), max);
   }
 
+  // ==================================================
+  // LERP
+  // ==================================================
+
   private lerp(start: number, end: number, progress: number) {
     return start + (end - start) * progress;
   }
+
+  // ==================================================
+  // EASING
+  // ==================================================
 
   private easeOutExpo(t: number) {
     if (t >= 1) {
@@ -794,7 +935,7 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // ANIMATION
+  // STOP ANIMATION
   // ==================================================
 
   private stopAnimation() {
@@ -808,7 +949,7 @@ export default class PanZoom {
   }
 
   // ==================================================
-  // ENABLE / DISABLE
+  // ENABLE
   // ==================================================
 
   public enable() {
@@ -819,18 +960,26 @@ export default class PanZoom {
     this.enabled = true;
   }
 
+  // ==================================================
+  // DISABLE
+  // ==================================================
+
   public disable() {
     this.enabled = false;
 
-    /*
-     * 操作途中でdisableされた場合も
-     * pointer状態を完全に破棄
-     */
+    // --------------------------------------------------
+    // POINTER CAPTURE RELEASE
+    // --------------------------------------------------
+
     for (const pointerId of this.pointers.keys()) {
       if (this.container.hasPointerCapture(pointerId)) {
         this.container.releasePointerCapture(pointerId);
       }
     }
+
+    // --------------------------------------------------
+    // RESET POINTER STATE
+    // --------------------------------------------------
 
     this.pointers.clear();
 
@@ -839,9 +988,10 @@ export default class PanZoom {
 
     this.pinchLastCenter = null;
 
-    /*
-     * 慣性等も停止
-     */
+    // --------------------------------------------------
+    // STOP INERTIA
+    // --------------------------------------------------
+
     this.stopAnimation();
   }
 
@@ -854,6 +1004,10 @@ export default class PanZoom {
 
     this.velocityX = 0;
     this.velocityY = 0;
+
+    // --------------------------------------------------
+    // NO ANIMATION
+    // --------------------------------------------------
 
     if (!animate) {
       this.scale = this.minScale;
@@ -869,10 +1023,10 @@ export default class PanZoom {
       return;
     }
 
-    /*
-     * bounceToBoundsを利用するため
-     * 一旦scaleをminScaleへ
-     */
+    // --------------------------------------------------
+    // ANIMATION
+    // --------------------------------------------------
+
     const startX = this.x;
 
     const startY = this.y;
@@ -943,6 +1097,10 @@ export default class PanZoom {
   // ==================================================
 
   public destroy() {
+    if (this.destroyed) {
+      return;
+    }
+
     this.destroyed = true;
 
     this.disable();
