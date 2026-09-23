@@ -62,7 +62,7 @@ export const toInstagram = {
 };
 
 export const menuData_main = [toConcept, toFacility, toAccess, toFaq];
-export const menuData_sub = [toLegal, toTeam, toAccommodation, toPrivacy];
+export const menuData_sub = [toLegal, toTeam, toAccommodation];
 export const menuData_Follow = [toYoutube, toInstagram];
 
 export const toReserve = "/";
