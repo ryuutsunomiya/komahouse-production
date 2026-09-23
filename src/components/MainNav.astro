@@ -12,7 +12,7 @@ interface Props {
 
 const { label, type } = Astro.props;
 
-const subs = [{title: "INFO", contents: menuData_sub}, {title: "FOLLOW", contents: menuData_Follow}]
+const subs = [{title: "Terms", contents: menuData_sub}, {title: "Follow", contents: menuData_Follow}]
 ---
 
 <nav class="mainNav" aria-label={label}>
@@ -41,7 +41,7 @@ const subs = [{title: "INFO", contents: menuData_sub}, {title: "FOLLOW", content
             </div>
         ))}
         <div class="mainNav_sub">
-            <h3 class="mainNav_sub_title">ACCESS</h3>
+            <h3 class="mainNav_sub_title">Access</h3>
             <p class="mainNav_sub_items">
                 <Address />
             </p>

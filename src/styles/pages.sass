@@ -238,9 +238,13 @@
             padding: 0 0 v.$sectionMt
             .others_texts
                 width: 524rem
+                // .subHeading
+                //     font-size: 21rem
+                //     margin-left: 0.08em
+                //     letter-spacing: 0.1em
             .others_catch
                 +f.font(34, 170, 6, M)
-                margin: 1.7em 0
+                margin: 1.7em 0 1.7em
             .others_text
                 +f.font(17, 170, 6, R)
             .others_imgs
@@ -462,17 +466,33 @@
         padding-top: v.$sectionMt
         .access_wrapper
             +f.flex(sta, bet)
-            +f.font(17, 170, 6, R)
             .access_text
                 width: 524rem
-                h2
-                    margin-bottom: calc(1.7em)
-                h3
-                    margin-top: calc(1.7em)
-                hr
-                    margin-top: 3.4em
-                    margin-bottom: 1.7em
-                    opacity: 0.4
+            .access_block
+                +f.font(13, 170, 6, R)
+                margin-bottom: calc(1.7em * 3)
+                .access_block_content
+                    padding-left: 1.5em
+                    border-left: v.$border
+                    margin-top: 0.5em
+                .access_block_grid
+                    +f.grid(repeat(2, 1fr), auto, 6rem, calc(1.7 * 1em))
+                .--indent
+                    position: relative
+                    +f.flex(baseline, sta)
+                    
+                    // small
+                    //     padding-left: calc(1 / 0.8 * 1.5em)
+                .--indent::before
+                    content: "＊"
+                    // position: absolute
+                    // left: 0
+                .--table
+                    .--th
+                        display: inline-block
+                        width: 100rem
+                .mainButton
+                    font-size: 0.8em
             .access_img
                 width: 613rem
     .faq

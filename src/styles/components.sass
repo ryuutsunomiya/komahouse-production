@@ -127,8 +127,8 @@ button:has(.hoverText):hover
     filter: invert(1)
 
 .subHeading
-    +f.font(30, 160, 0, M)
-    text-transform: uppercase
+    +f.font(50, 160, 5, ForR)
+    text-transform: capitalize !important
 
 .sectionHeading
     .sectionHeading_sub
@@ -162,7 +162,7 @@ button:has(.hoverText):hover
         width: 348rem
         margin-right: 271rem
         +f.font(65, 140, 10, ForR)
-        text-transform: uppercase
+        // text-transform: uppercase
     .mainNav_main_item
         overflow-y: clip
     .mainNav_subs
@@ -173,6 +173,7 @@ button:has(.hoverText):hover
         margin-top: 0.8em
         .mainNav_sub_title
             +f.font(16, 210, 6, B)
+            text-transform: uppercase
         .mainNav_sub:nth-child(1)
             grid-area: 1 / 1 / 2 / 2
             width: 259rem

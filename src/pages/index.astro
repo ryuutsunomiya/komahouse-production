@@ -91,37 +91,103 @@ import MainButton from '../components/mainButton.astro';
 		<section class="access" id="access">
 			<div class="access_wrapper">
 				<div class="access_text">
-					<SectionHeading main={toAccess.title} />
-					<p>
-						<Address />
-					</p>
-					<h3>お車でお越しの方</h3>
-					<p>
-						東京湾アクアライン経由、都心から約40分<br />
-						駐車場あり（無料）
-					</p>
-					<h3>電車・バスでお越しの方</h3>
-					<p>
-						高速バス：東京・渋谷・品川 各駅 → 「木更津駅」約60分<br />
-						JR特急：東京駅 → 「木更津駅」約55分<br />
-						木更津駅から徒歩 約13分／タクシー 約5分
-					</p>
-					<hr />
-					<SectionHeading main={"SPEC"} />
-					<h3>Check In</h3>
-					<p>
-						14:00〜<br />
-					</p>
-					<h3>Check Out</h3>
-					<p>
-						〜11:00<br />
-					</p>
-					<h3>定員</h3>
-					<p>
-						大人10名まで<br />
-						<small>＊未就学児の添い寝は宿泊人数に含みません</small><br />
-						<small>＊ペット可</small>
-					</p>
+					<div class="access_block">
+						<SectionHeading main={toAccess.title} />
+						<p class="access_block_content">
+							<Address /><br /><br />
+							<span class="--indent">
+								お車でお越しの方<br />
+								東京湾アクアライン経由、都心から約40分<br />
+								駐車場あり（無料）
+							</span><br /><br />
+							<span class="--indent">
+								電車・バスでお越しの方<br />
+								高速バス：東京・渋谷・品川 各駅 → 「木更津駅」約60分<br />
+								JR特急：東京駅 → 「木更津駅」約55分<br />
+								木更津駅から徒歩 約13分／タクシー 約5分
+							</span>
+						</p>
+					</div>
+					<div class="access_block">
+						<SectionHeading main={"Information"} />
+						<p class="access_block_content">
+							<span class="--table">
+								<span class="--th">Check In</span><span>14:00〜</span>
+							</span><br />
+							<span class="--table">
+								<span class="--th">Check Out</span><span>〜11:00</span>
+							</span><br /><br />
+							<span class="--table">
+								<span class="--th">定員</span><span>大人10名まで</span><br />
+								<small>＊未就学児の添い寝は宿泊人数に含みません</small>
+							</span><br /><br />
+							<span class="--indent">
+								ペット可<br />
+								大切な家族と、同じ時間を。<br />
+								室内だけでなく、庭でも自由に過ごせる宿です。<br />
+								くつろぐ愛犬の姿も、旅の大切な一コマに。
+							</span>
+						</p>
+					</div>
+					<div class="access_block">
+						<SectionHeading main={"Facilities"} />
+						<div class="access_block_content --faci">
+							<ul class="access_block_grid">
+								<li class="--indent">
+									室内設備<br />
+									冷暖房<br />
+									Wi-Fi<br />
+									空気清浄機<br />
+									洗濯機<br />
+									ワークスペース
+								</li>
+								<li class="--indent">
+									バス・洗面<br />
+									洗面台 × 2<br />
+									ウォッシュレットトイレ<br />
+									ドライヤー<br />
+									サウナ<br />
+									水風呂
+								</li>
+								<li class="--indent">
+									キッチン<br />
+									4口コンロ<br />
+									冷蔵庫<br />
+									電子レンジ<br />
+									オーブントースター<br />
+									ケトル<br />
+									調理器具<br />
+									食器<br />
+									カトラリー<br />
+									子ども用食器
+								</li>
+								<li class="--indent">
+									屋外設備<br />
+									BBQセット<br />
+									デッキチェア × 4<br />
+									デッキソファ × 1<br />
+									外気浴チェア × 2
+								</li>
+								<li class="--indent">
+									寝具<br />
+									1F シングルマットレス × 6枚<br />
+									2F セミダブルマットレス × 4枚
+								</li>
+							</ul><br />
+							<p class="--indent">
+								<span>
+									アメニティ<br />
+									触れるものから、心地よく。<br />
+									使い心地だけでなく、<br />
+									ものづくりの背景にも共感できるものを選びました。<br />
+									nakedfact | Face & Body Soap<br />
+									ORMONICA | Shampoo & Conditioner<br />
+									YOBEK | Hand Wash<br />
+									<small>＊季節や仕入れ状況により変わることがあります。予めご了承ください。</small>
+								</span>
+							</p>
+						</div>
+					</div>
 				</div>
 				<Image class="access_img" src={src_map} alt="" />
 			</div>
