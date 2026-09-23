@@ -6,8 +6,12 @@
     @include f.sectionW
     .terms_section
         margin: calc( v.$sectionMt * 0.25 ) 0
+        position: relative
+        .terms_section_smooth
+            position: absolute
+            top: calc( v.$sectionMt * -0.25 )
         h2
-            +f.font(21, calc(16 / 21 * 170), 0, B)
+            +f.font(21, calc(16 / 21 * 170), 0, M)
             margin-top: calc(16 / 21 * 1.7em * 3)
             margin-bottom: calc(16 / 21 * 1.7em)
         .terms_block
@@ -16,8 +20,6 @@
             > p,
             > ol
                 margin-bottom: 1.7em
-            h3
-                font-weight: 700
             ol
                 padding-left: 3em
                 list-style: decimal
@@ -27,7 +29,7 @@
                 width: 100%
                 border-bottom: v.$border
             th
-                font-weight: 700
+                font-weight: inherit
                 width: 436rem
             tr
                 display: block
@@ -83,11 +85,10 @@
                 width: 400rem
                 visibility: hidden
             .fv_texts_sub
-                width: 100%
                 text-align: right
-                +f.font(23, 130, 6, M)
+                +f.font(23, 140, 6, M)
                 position: relative
-                bottom: 0.3em
+                bottom: 0.45em
                 right: -1.05em
                 +f.tra(opacity, 1.6s, 1.0s, linear)
                 opacity: 0

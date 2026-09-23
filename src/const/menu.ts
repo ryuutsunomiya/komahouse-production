@@ -48,7 +48,7 @@ export const toLegal = {
 export const toAccommodation = {
   title: "宿泊約款",
   titleEn: "Accommodation Terms and Conditions",
-  id: "#accommodation",
+  id: "accommodation",
   href: "/terms-policies/#accommodation",
   isBlank: false,
   content: accommodationContent,

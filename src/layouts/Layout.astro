@@ -52,18 +52,9 @@ const ogpUrl = new URL('/ogp.png', Astro.url.origin).href;
 
     <meta name="generator" content={Astro.generator} />
 
-	<script>
-		(function(d) {
-			var config = {
-			kitId: 'nyw6mhh',
-			scriptTimeout: 3000,
-			async: true
-			},
-			h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;
-			/* @ts-ignore */
-			tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-		})(document);
-	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
 
     <meta name="robots" content="noindex, nofollow" />
   </head>
@@ -88,6 +79,7 @@ import { toggleBgSection_init } from "../scripts/toggleBgSection";
 import { header_enter, header_init } from "../scripts/header";
 import { initProgressiveImages_init } from "../utils/initProgressiveImages";
 import { isFirstSession } from "../utils/isFiersSettion";
+import { smoothScroll_init } from "../utils/smoothScroll";
 
 initProgressiveImages_init();
 window.addEventListener('DOMContentLoaded', () => {
@@ -96,6 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		function page_beforeEnter(resolve: (value: unknown) => void) {
 			isSp_set();
 			pageTransition_set();
+			smoothScroll_init();
 			slTexts_init();
 			cta_init();
 			accordion_init();

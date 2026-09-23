@@ -1,9 +1,15 @@
 ---
+import { fade } from "astro:transitions";
 import HeaderContent from "./HeaderContent.astro";
 import MainNav from "./MainNav.astro";
+interface Props {
+    isTop?: boolean
+}
+
+const { isTop } = Astro.props
 ---
 
-<header class="header js--noAnime">
+<header class={isTop ? "header js--noAnime --initWhite" : "header js--noAnime"}>
     <HeaderContent menuText="MENU" />
     <div class="hamburger --close">
         <div class="hamburger_scroll">
