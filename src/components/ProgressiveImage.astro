@@ -1,0 +1,20 @@
+---
+interface Props {
+    row: ImageMetadata
+    src: ImageMetadata
+    className?: string
+}
+
+const {row,  src, className=""} = Astro.props
+---
+
+<img
+  class={`progressiveImage ${className}`}
+  src={row.src}
+  data-src={src.src}
+  width={src.width}
+  height={src.height}
+  alt=""
+  fetchpriority="high"
+  loading="eager"
+>

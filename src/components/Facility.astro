@@ -62,8 +62,8 @@ const data = [
     <div class="facilityList">
         <div class="facilityList_sticky">
             <div class="facilityList_sticky_imgs">
-                {data.map((item) => (
-                    <Image class="facilityList_sticky_img" src={item.src} alt={""} />
+                {data.map((item, index) => (
+                    <Image class="facilityList_sticky_img" src={item.src} alt={""} fetchpriority={index === 0 ? "high" : "low"} loading={index === 0 ? "eager" : "lazy"}  />
                 ))}
             </div>
             <div class="facilityList_sticky_wrapper">

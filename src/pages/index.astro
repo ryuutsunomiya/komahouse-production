@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro';
 import src_map from "../assets/dev/map.png"
 import Image from 'astro/components/Image.astro';
 import src_fv from "../assets/top/fv.jpg"
+import src_fv_row from "../assets/top/fv_row.jpg"
 import SlTexts from '../components/SlTexts.astro';
 import ShowImg from '../components/ShowImg.astro';
 import src_concept from "../assets/top/concept.jpg"
@@ -14,6 +15,7 @@ import Others from '../components/Others.astro';
 import Gallery from '../components/Gallery.astro';
 import Faq from '../components/Faq.astro';
 import LogoHori from '../components/LogoHori.astro';
+import ProgressiveImage from '../components/ProgressiveImage.astro';
 
 ---
 
@@ -21,7 +23,7 @@ import LogoHori from '../components/LogoHori.astro';
 	<article id="pageContainer" class="top" data-pageId="top">
 		<section class="fv --header_white">
 			<div class="fv_bg">
-				<Image class="fv_bg_img" src={src_fv} alt={""} fetchpriority={"high"} loading={"eager"} />
+				<ProgressiveImage row={src_fv_row} src={src_fv}  className='fv_bg_img' />
 			</div>
 			<div class="fv_texts">
 				<p class='fv_texts_main'>

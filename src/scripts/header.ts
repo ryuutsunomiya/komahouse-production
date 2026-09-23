@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { rowResize } from "../utils/rowResize";
+import { isFirstSession } from "../utils/isFiersSettion";
 
 function hamburger_init() {
   const hamburger = document.querySelector(".hamburger");
@@ -71,6 +72,25 @@ function overlap_init() {
 }
 
 export function header_init() {
+  if (isFirstSession()) {
+    const header = document.querySelector(".header");
+    gsap.to(header, {
+      opacity: 0,
+      duration: 0,
+      overwrite: true,
+    });
+  }
+
   overlap_init();
   hamburger_init();
+}
+
+export function header_enter() {
+  const header = document.querySelector(".header");
+  header?.classList.remove("js--noAnime");
+  gsap.to(header, {
+    opacity: 1,
+    duration: isFirstSession() ? 0.8 : 0,
+    ease: "none",
+  });
 }

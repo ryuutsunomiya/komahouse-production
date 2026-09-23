@@ -151,6 +151,7 @@ button:has(.hoverText):hover
     margin-top: v.$sectionMt
     .mainNav
         margin-top: v.$sectionMt
+        min-height: 600rem
 
 .mainNav
     @include f.sectionW
@@ -203,7 +204,6 @@ button:has(.hoverText):hover
     z-index: 999
     pointer-events: none
     +f.tra(color, 0.8s, 0s, linear)
-    opacity: 0
     .header_wrapper
         position: absolute
         @include f.sectionW

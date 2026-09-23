@@ -76,42 +76,26 @@ const ogpUrl = new URL('/ogp.png', Astro.url.origin).href;
 	</body>
 </html>
 
-<style>
-	#dev_guide {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: auto;
-		transform: translate3d(0rem, 0rem, 0);
-		opacity: 0.5;
-		pointer-events: none;
-		z-index: 9999999999;
-	}
-</style>
-
 <script>
 import { isSp_set } from "../utils/isSp";
-import { isDev } from "../utils/isDev";
-import { checkLocal } from "../utils/checkLocal";
 import { pageTransition_set } from "../utils/pageTransition";
 import { slTexts_init } from "../scripts/slTexts";
 import { cta_init } from "../scripts/cta";
 import { accordion_init } from "../utils/accordion";
-import { pageTop_init } from "../scripts/page.top";
+import { pageTop_init, pageTop_enter } from "../scripts/page.top";
 import { showImg_init } from "../scripts/showImg";
-import { lenis_init } from "../libs/lenis";
 import { toggleBgSection_init } from "../scripts/toggleBgSection";
-import { header_init } from "../scripts/header";
+import { header_enter, header_init } from "../scripts/header";
+import { initProgressiveImages_init } from "../utils/initProgressiveImages";
+import { isFirstSession } from "../utils/isFiersSettion";
 
+initProgressiveImages_init();
 window.addEventListener('DOMContentLoaded', () => {
-	!isDev && checkLocal();
 	setTimeout(() => {
 		const pageId = document.getElementById('pageContainer')?.getAttribute('data-pageId') || ""
 		function page_beforeEnter(resolve: (value: unknown) => void) {
 			isSp_set();
 			pageTransition_set();
-			// lenis_init();
 			slTexts_init();
 			cta_init();
 			accordion_init();
@@ -129,14 +113,18 @@ window.addEventListener('DOMContentLoaded', () => {
 			resolve(null);
 		}
 		function page_enter() {
-			switch (pageId) {
-				case "top":
-					break;
-				default:
-					break;
-			}
+			setTimeout(() => {
+				header_enter();
+				switch (pageId) {
+					case "top":
+						pageTop_enter();
+						break;
+					default:
+						break;
+				}
+			}, isFirstSession() ? 500 : 0)
 		}
 		Promise.resolve().then(() => new Promise(page_beforeEnter).then(page_enter));
-	},)
+	})
 })
 </script>

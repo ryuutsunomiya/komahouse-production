@@ -1,20 +1,24 @@
 import { accommodationContent, legalContent, privacyContent, teamContent } from "./terms";
 
+export const toTop = {
+  title: "Top",
+  href: "/",
+};
 export const toConcept = {
   title: "Concept",
-  href: "#concept",
+  href: "/#concept",
 };
 export const toFacility = {
   title: "Facility",
-  href: "#facility",
+  href: "/#facility",
 };
 export const toAccess = {
   title: "Access",
-  href: "#access",
+  href: "/#access",
 };
 export const toFaq = {
   title: "Faq",
-  href: "#faq",
+  href: "/#faq",
 };
 
 export const toTeam = {
@@ -61,7 +65,7 @@ export const toInstagram = {
   isBlank: true,
 };
 
-export const menuData_main = [toConcept, toFacility, toAccess, toFaq];
+export const menuData_main = [toTop, toConcept, toFacility, toAccess, toFaq];
 export const menuData_sub = [toLegal, toTeam, toAccommodation];
 export const menuData_Follow = [toYoutube, toInstagram];
 
