@@ -1,6 +1,36 @@
 @use './var.sass' as v
 @use './mixin' as f
 
+#pageContainer.terms
+    margin-top: v.$sectionMt
+    @include f.sectionW
+    .terms_section
+        margin: calc( v.$sectionMt * 0.25 ) 0
+        h2
+            +f.font(21, calc(16 / 21 * 170), 0, B)
+            margin-top: calc(16 / 21 * 1.7em * 3)
+            margin-bottom: calc(16 / 21 * 1.7em)
+        .terms_block
+            +f.font(16, 170, 0, R)
+            p,
+            > ol
+                margin-bottom: 1.7em
+            h3
+                font-weight: 700
+            ol
+                padding-left: 3em
+                list-style: decimal
+            table
+                width: 100%
+                border-bottom: v.$border
+            th
+                font-weight: 700
+                width: 436rem
+            tr
+                display: block
+                padding: 1.6em 0
+                border-top: v.$border
+
 .top
     .fv
         height: 100svh

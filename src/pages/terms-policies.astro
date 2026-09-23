@@ -1,0 +1,19 @@
+---
+import { menuData_sub } from "../const/menu";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+	<article id="pageContainer" class="terms" data-pageId="other">
+        <section class="pageHeading">
+            <h1>Terms & Policies</h1>
+            <p>各種規約</p>
+        </section>
+        {menuData_sub.map((item, index) => (
+            <section class="terms_section" id={item.id}>
+                <h2>{index + 1}. {item.title} / {item.titleEn}</h2>
+                <div class="terms_block" set:html={item.content}></div>
+            </section>
+        ))}
+    </article>
+</Layout>

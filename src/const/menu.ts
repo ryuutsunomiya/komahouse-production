@@ -1,3 +1,5 @@
+import { accommodationContent, legalContent, privacyContent, teamContent } from "./terms";
+
 export const toConcept = {
   title: "Concept",
   href: "#concept",
@@ -17,27 +19,35 @@ export const toFaq = {
 
 export const toTeam = {
   title: "利用規約",
-  // href: "/terms/",
-  href: "/",
+  titleEn: "Terms of Use",
+  id: "team",
+  href: "/terms-policies/#team",
   isBlank: false,
+  content: teamContent,
 };
 export const toPrivacy = {
   title: "プライバシーポリシー",
-  // href: "/privacy/",
-  href: "/",
+  titleEn: "Privacy Policy",
+  id: "privacy",
+  href: "/terms-policies/#privacy",
   isBlank: false,
+  content: privacyContent,
 };
 export const toLegal = {
   title: "特定商取引",
-  // href: "/legal/",
-  href: "/",
+  titleEn: "Specified Commercial Transactions Act",
+  id: "legal",
+  href: "/terms-policies/#legal",
   isBlank: false,
+  content: legalContent,
 };
 export const toAccommodation = {
   title: "宿泊約款",
-  // href: "/accommodation/",
-  href: "/",
+  titleEn: "Accommodation Terms and Conditions",
+  id: "#accommodation",
+  href: "/terms-policies/#accommodation",
   isBlank: false,
+  content: accommodationContent,
 };
 
 export const toYoutube = {
@@ -52,7 +62,7 @@ export const toInstagram = {
 };
 
 export const menuData_main = [toConcept, toFacility, toAccess, toFaq];
-export const menuData_sub = [toTeam, toPrivacy, toLegal, toAccommodation];
+export const menuData_sub = [toLegal, toTeam, toAccommodation, toPrivacy];
 export const menuData_Follow = [toYoutube, toInstagram];
 
 export const toReserve = "/";
