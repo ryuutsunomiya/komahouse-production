@@ -1,5 +1,7 @@
 import gsap from "gsap";
 import { RowScroll } from "../utils/rowScroll";
+import MapController from "../utils/mapController";
+import { map_Init } from "../utils/map";
 
 function gallery_init() {
   const wrapper = document.querySelector(".gallerySlider");
@@ -124,8 +126,13 @@ function facility_init() {
 
 function other_init() {}
 
+function floor_init() {
+  map_Init();
+}
+
 export function pageTop_init() {
   gallery_init();
   facility_init();
   other_init();
+  floor_init();
 }

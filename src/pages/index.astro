@@ -16,6 +16,9 @@ import Gallery from '../components/Gallery.astro';
 import Faq from '../components/Faq.astro';
 import LogoHori from '../components/LogoHori.astro';
 import ProgressiveImage from '../components/ProgressiveImage.astro';
+import src_1f from "../assets/top/map.jpg"
+// import src_2f from "../assets/top/map_2f.jpg"
+import MainButton from '../components/mainButton.astro';
 
 ---
 
@@ -60,9 +63,20 @@ import ProgressiveImage from '../components/ProgressiveImage.astro';
 		<Facility />
 		<Others />
 		<section class="floor">
-			<SectionHeading main={"Floor Map"} sub='マウスホバー / タップで画像が表示されます。' />
-			<div class="floor_wrapper">
-				<p><small class='js--devNote'>宇都宮メモ：どの設備を掲載するか決めたい。内容確定後実装</small></p>
+			<SectionHeading main={"Floor Map"} sub='ピンチで拡縮できます。' />
+			<div class="map">
+				<div class="map_inner">
+					<Image class:list={"floor_map"} src={src_1f} alt={""} />
+				</div>
+				<button
+					class="map_barrier"
+					type="button"
+					aria-label="マップを操作する"
+				>
+					<span>
+						<span class="--pulse">クリックして操作を開始</span>
+					</span>
+				</button>
 			</div>
 		</section>
 		<Gallery />

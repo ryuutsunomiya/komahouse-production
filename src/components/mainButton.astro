@@ -2,7 +2,7 @@
 import HoverText from './HoverText.astro'
 
 interface Props {
-    href: string
+    href?: string
     text: string
     bg?: "none" | "black" | "white"
     border?: "inherit" | "none" | "black" | "white"
@@ -15,6 +15,12 @@ const borderClassName = border === "inherit" ? bg : border;
 const wrapperClassName = `${className} --bg_${bg} --border_${borderClassName} mainButton`;
 ---
 
-<a class={wrapperClassName} href={href} target={isBlank ? "_blank" : "_self"} rel={isBlank ? 'noopener noreferrer' : ""}>
-    <HoverText text={text} />
-</a>
+{href ? (
+    <a class={wrapperClassName} href={href} target={isBlank ? "_blank" : "_self"} rel={isBlank ? 'noopener noreferrer' : ""}>
+        <HoverText text={text} />
+    </a>
+) : (
+    <button class={wrapperClassName}>
+        <HoverText text={text} />
+    </button>
+)}
