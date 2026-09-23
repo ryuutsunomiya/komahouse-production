@@ -60,14 +60,10 @@ function enter() {
     const fv = document.querySelector(".fv");
     fv?.classList.add("--act");
     const helos = fv?.querySelectorAll(".slTexts_text");
-    helos?.forEach((item, index) => {
-      setTimeout(
-        () => {
-          item.classList.remove("--hide");
-        },
-        // 200 + index * 100,
-        0,
-      );
+    helos?.forEach((item) => {
+      setTimeout(() => {
+        item.classList.remove("--hide");
+      }, 0);
     });
 
     const header = document.querySelector(".header");
