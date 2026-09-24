@@ -1,10 +1,10 @@
 ---
 import ShowImg from "./ShowImg.astro";
+import ShowText from "./ShowText.astro";
 import SubHeading from "./SubHeading.astro";
 import src_02_01 from "../assets/top/others/others_2_1.jpg"
 import src_02_02 from "../assets/top/gallery_row/kmhk_111.jpg"
 import src_03_01 from "../assets/top/others/others_3_1.jpg"
-import src_03_02 from "../assets/top/others/others_3_2.jpg"
 import src_03_03 from "../assets/top/gallery_row/kmhk_025.jpg"
 import ToggleBgSection from "./ToggleBgSection.astro";
 
@@ -27,7 +27,7 @@ const data = [
     {
         id: "bed",
         title: "Bedroom",
-        catch: "灯りを落とせば、静けさだけが残る。",
+        catch: "灯りを落とせば、<br />静けさだけが残る。",
         text: `
             気候の良い季節には窓を開けて、<br />自然の風を感じながら眠ることもできます。<br /><br />
 
@@ -46,11 +46,13 @@ const data = [
 <section class="others">
     {data.map((item, index) => (
         <ToggleBgSection className={`others_block --${item.id}`} col={item.col}>
-            <div class="others_texts">
-                <SubHeading text={item.title} />
-                <p class="others_catch" set:html={item.catch}></p>
-                <p class="others_text" set:html={item.text}></p>
-            </div>
+                <div class="others_texts">
+                    <ShowText noInview>
+                        <SubHeading text={item.title} />
+                        <p class="others_catch" set:html={item.catch}></p>
+                        <p class="others_text" set:html={item.text}></p>
+                    </ShowText>
+                </div>
             <div class={`others_imgs --${item.id}`}>
                 <div class="others_imgs_inner">
                     {item.imgs.map((img) => (

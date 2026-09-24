@@ -1,0 +1,15 @@
+---
+
+interface Props {
+    noInview?: boolean
+}
+
+const { noInview } = Astro.props
+---
+
+<div class={`showText --${noInview ? "noInview" : "inview"}`}>
+    <slot />
+    <div class="showText_shutter">
+        <div class="showText_shutter_item"></div>
+    </div>
+</div>

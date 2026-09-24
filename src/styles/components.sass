@@ -42,6 +42,26 @@
         transform: translate3d(0, 200%, 0)
         +f.tra(transform, 2.4s, 0s, auto)
 
+.showText
+    position: relative
+    overflow: clip
+    .showText_text
+        position: relative
+    .showText_shutter
+        position: absolute
+        width: 100%
+        height: 100%
+        bottom: 0
+    .showText_shutter_item
+        position: absolute
+        width: 100%
+        height: 200%
+        bottom: 0
+.showText.--act
+    .showText_shutter
+        transform: translate3d(0, 200%, 0)
+        +f.tra(transform, 2.4s, 0s, auto)
+
 .hoverText
     display: inline-block
     overflow: clip

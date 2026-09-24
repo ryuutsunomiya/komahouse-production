@@ -9,11 +9,20 @@ export function toggleBgSection_init() {
   let current = -1;
 
   const showImgs = document.querySelectorAll(".others .others_imgs_inner");
+  const showTexts = document.querySelectorAll(".others .others_texts");
   function change() {
     showImgs.forEach((item, index) => {
       const imgs = item.querySelectorAll(".showImg");
       imgs.forEach((img) => {
         if (index === current) img.classList.add("--act");
+      });
+    });
+    showTexts.forEach((item, index) => {
+      const texts = item.querySelectorAll(".showText");
+      texts.forEach((img) => {
+        setTimeout(() => {
+          if (index === current) img.classList.add("--act");
+        }, 100);
       });
     });
   }
