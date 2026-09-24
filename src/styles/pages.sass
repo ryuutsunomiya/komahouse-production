@@ -97,8 +97,8 @@
             bottom: 0
             +f.flex(end, bet)
             .fv_texts_main
-                // +f.font(83, 140, 10, ForR)
-                +f.font(65, 140, 11, ForR)
+                // +f.font(83, 140, 10, EN)
+                +f.font(65, 140, 11, EN)
                 position: relative
                 bottom: -8rem
                 white-space: nowrap
@@ -147,9 +147,10 @@
             position: absolute
         .concept_heading
             +f.font(17, 160, 11, M)
-            margin-left: 88rem
+            // margin-left: 88rem
+            margin-left: 5rem
         .cencept_cath.--en
-            +f.font(83, 140, 10, ForR)
+            +f.font(83, 140, 10, EN)
             span:nth-child(2)
                 margin-left: 175rem
             span:nth-child(3)
@@ -209,30 +210,38 @@
             .facilityList_sticky_textLeft
                 width: 791rem
                 position: relative
-                margin-bottom: 1rem
                 .facilityList_sticky_title
                     width: 100%
-                    +f.font(30, 170, 10, M)
-                    height: 1.7em
                     position: relative
+                    +f.font(50, 170, 5, EN)
+                    height: calc(1 / 1.05 * 1.7em)
+                    left: -2rem
                     h3
                         position: absolute
+                    .--jp,
+                    .--hyphen
+                        +f.font(17, 170, 10, R)
+                    .--hyphen
+                        display: inline-block
+                        width: 5em
+                        height: 1px
+                        background-color: currentColor
+                        margin: 0 0.5em 0.4em 0.75em
                 .facilityList_sticky_numbers
                     +f.flex(cen, bet)
-                    // width: 259rem
-                    +f.font(15, 240, 11, M)
+                    +f.font(17, 170, 11, M)
                     .facilityList_sticky_numbers_number
                         position: relative
-                        height: 2.4em
                         white-space: nowrap
+                        bottom: 20rem
                         .--counter
                             display: inline-flex
                             position: absolute
             .facilityList_sticky_textRight
                 +f.font(17, 170, 10, R)
                 width: 524rem
-                margin-bottom: 0.5em
                 position: relative
+                bottom: 15rem
                 .facilityList_sticky_textRight_inner
                     position: absolute
                     bottom: 0
@@ -495,6 +504,8 @@
             .access_block
                 +f.font(13, 170, 6, R)
                 margin-bottom: calc(1.7em * 3)
+                a
+                    text-decoration: underline
                 .access_block_content
                     padding-left: 1.5em
                     border-left: v.$border

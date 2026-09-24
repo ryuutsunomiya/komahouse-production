@@ -1,7 +1,7 @@
 ---
 import Address from '../components/Address.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { toAccess } from '../const/menu';
+import { toAccess, toPet } from '../const/menu';
 import Layout from '../layouts/Layout.astro';
 import src_map from "../assets/dev/map.png"
 import Image from 'astro/components/Image.astro';
@@ -122,10 +122,13 @@ import MainButton from '../components/mainButton.astro';
 								<small>＊未就学児の添い寝は宿泊人数に含みません</small>
 							</span><br /><br />
 							<span class="--indent">
-								ペット可<br />
-								大切な家族と、同じ時間を。<br />
-								室内だけでなく、庭でも自由に過ごせる宿です。<br />
-								くつろぐ愛犬の姿も、旅の大切な一コマに。
+								<span>
+									ペット可<br />
+									大切な家族と、同じ時間を。<br />
+									室内だけでなく、庭でも自由に過ごせる宿です。<br />
+									くつろぐ愛犬の姿も、旅の大切な一コマに。<br />
+									<small>＊<a href={`${toPet.href}`}>利用条件</a>がございますので、事前にご確認ください。</small>
+								</span>
 							</span>
 						</p>
 					</div>

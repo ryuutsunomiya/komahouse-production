@@ -11,45 +11,51 @@ import { zeroPad } from "../utils/calc"
 
 const data = [
     {
-        title: "LIVING / リビング",
+        title: "リビング",
+        titleEn: "Living",
         detail: "くつろぐための、ゆったりとしたソファ。<br />話す人、料理する人、何もしない人。<br />思い思いの場所で過ごせます。",
         src: src_01,
     },
     {
-        title: "TERRACE / テラス",
+        title: "テラス",
+        titleEn: "Terrace",
         detail: "星を眺めたり、ただ風に吹かれたり。<br />室内とは少し違う時間が流れる場所です。",
         src: src_03,
         // kmhk_008
     },
     {
-        title: "DINING ROOM / ダイニング",
+        title: "ダイニング",
+        titleEn: "Dining Room",
         detail: "土間のある玄関から、暮らしは始まります。<br />旧家の柱をダイニングテーブルに変え、その木目と時間をそのまま生かしました。今の暮らしに合う、新しい形へ。<br />時を重ねた木のぬくもりを。",
         src: src_04,
         // kmhk_108
     },
     {
-        title: "WORKSPACE / ワークスペース",
+        title: "ワークスペース",
+        titleEn: "Workspace",
         detail: "2階に設けた、小さな仕事部屋。<br />同じ家にいながら、少しだけ離れて集中できます。",
         src: src_05,
         // kmhk_075
     },
     {
-        title: "BATH / 風呂",
+        title: "風呂",
+        titleEn: "Bath",
         detail: "ゆったりと足を伸ばせる、大きめの浴槽。<br />窓の外に植栽を配し、緑や外気を感じられます。<br />洗面台は2台。支度も並んでできます。",
         src: src_07,
         // kmhk_082
     },
     {
-        title: "SAUNA / サウナ",
+        title: "サウナ",
+        titleEn: "Sauna",
         detail: "身体を温め、呼吸を整える。<br />ゆっくりと自分に戻る時間を。<br />水風呂も併設しています。",
         src: src_08,
         // kmhk_098
     },
     {
-        title: "GARDEN / 庭",
+        title: "庭",
+        titleEn: "Garden",
         detail: "季節とともに、少しずつ育っていく庭。<br />訪れるたびに、違う表情に出会えます。",
         src: src_09,
-        // kmhk_002
     },
 ]
 ---
@@ -72,7 +78,9 @@ const data = [
                     </div>
                     <div class="facilityList_sticky_title">
                         {data.map((item) => (
-                            <h3 class="facilityList_sticky_title_inner">{item.title}</h3>
+                            <h3 class="facilityList_sticky_title_inner">
+                                <span class="--en">{item.titleEn}</span><span class="--hyphen"></span><span class="--jp">[{item.title}]</span>
+                            </h3>
                         ))}
                     </div>
                 </div>
