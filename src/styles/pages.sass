@@ -147,8 +147,8 @@
             position: absolute
         .concept_heading
             +f.font(17, 160, 11, M)
-            // margin-left: 88rem
-            margin-left: 5rem
+            margin-left: 88rem
+            // margin-left: 5rem
         .cencept_cath.--en
             +f.font(83, 140, 10, EN)
             span:nth-child(2)
@@ -263,6 +263,7 @@
         position: relative
         @include f.sectionW
         margin-top: v.$sectionMt
+        margin-bottom: calc(v.$sectionMt * 0.25)
         color: v.$white
         .others_block
             width: 100%
@@ -270,82 +271,67 @@
             +f.flex(cen, bet)
             padding: 0 0 v.$sectionMt
             .others_texts
-                width: 524rem
-                // .subHeading
-                //     font-size: 21rem
-                //     margin-left: 0.08em
-                //     letter-spacing: 0.1em
+                opacity: 0.9
+                width: 613rem
             .others_catch
-                +f.font(34, 170, 6, M)
-                margin: 1.7em 0 1.7em
+                +f.font(24, 170, 6, M)
+                margin: 0 0 1.7em
             .others_text
-                +f.font(17, 170, 6, R)
+                +f.font(13, 170, 6, R)
             .others_imgs
-                width: 790rem
+                width: 703rem
                 +f.flex()
                 .others_imgs_inner
                     position: relative
+                    flex-shrink: 0
                 .showImg
                     position: absolute
-            .others_imgs.--ame
-                .others_imgs_inner
-                    height: 785rem
-                    width: 613rem
-                .showImg:nth-child(1)
-                    width: 260rem
-                    height: 358rem
-                .showImg:nth-child(2)
-                    width: 347rem
-                    height: 231rem
-                    right: 0
-                    top: 192rem
-                .showImg:nth-child(3)
-                    width: 259rem
-                    height: 357rem
-                    bottom: 0
-                    left: 177rem
-            .others_imgs.--bed
-                .others_imgs_inner
-                    width: 613rem
-                    height: 409rem
-                .showImg:nth-child(1)
-                    width: 100%
-                    height: 100%
             .others_imgs.--mea
+                justify-content: flex-start
                 .others_imgs_inner
-                    height: 785rem
-                    width: 613rem
-                .showImg:nth-child(2)
-                    width: 347rem
-                    height: 231rem
-                    right: 0
-                    top: 192rem
+                    width: 1234rem
+                    height: 894rem
                 .showImg:nth-child(1)
-                    width: 260rem
-                    height: 358rem
-                .showImg:nth-child(3)
-                    width: 259rem
-                    height: 357rem
+                    width: 526rem
+                    height: auto
+                    aspect-ratio: 5 / 7
+                    left: 0
                     bottom: 0
-                    left: 177rem
-                // .others_imgs_inner
-                //     width: 701rem
-                //     height: 737rem
-                // .showImg:nth-child(1)
-                //     width: 613rem
-                //     height: 413rem
-                // .showImg:nth-child(2)
-                //     width: 364rem
-                //     height: 461rem
-                //     right: 0
-                //     bottom: 0
+                .showImg:nth-child(2)
+                    width: 436rem
+                    height: 290rem
+                    right: 0
+                    top: 0
+            .others_imgs.--bed
+                justify-content: flex-end
+                .others_imgs_inner
+                    width: 1056rem
+                    height: 1100rem
+                .showImg:nth-child(1)
+                    width: 701rem
+                    height: 467rem
+                    right: 0
+                .showImg:nth-child(2)
+                    width: 260rem
+                    height: auto
+                    aspect-ratio: 5 / 7
+                    left: 0
+                    bottom: 0
+        .others_block.--mea
+            align-items: flex-start
+            .others_texts
+                margin-top: 420rem
+        .others_block.--bed
+            align-items: flex-start
+            .others_texts
+                margin-top: 220rem
+                padding-left: 88rem
     .others
         .others_block:nth-child(odd)
             flex-direction: row-reverse
     .floor
         @include f.sectionW
-        +f.flex(sta, bet)
-        
+        // +f.flex(sta, bet)
         .sectionHeading
             .sectionHeading_sub
                 margin-bottom: 1.6em
@@ -353,13 +339,14 @@
             border: v.$border
             border-style: dotted
             margin-top: 13rem
-            width: 1055rem
+            width: 100%
             height: auto
             aspect-ratio: 200 / 121
             background-color: #fff4e8
             position: relative
             overflow: clip
             touch-action: auto
+            margin: 0 0 0 auto
             &.is-active
                 touch-action: none
         .map_inner
