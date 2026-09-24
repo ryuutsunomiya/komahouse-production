@@ -2,11 +2,18 @@ import gsap from "gsap";
 import { rowResize } from "../utils/rowResize";
 import { isFirstSession } from "../utils/isFiersSettion";
 
+let hamburger: HTMLElement | null;
+let isOpen = false;
+export function hamburger_close() {
+  hamburger?.classList.add("--close");
+  hamburger?.classList.remove("--open");
+  isOpen = false;
+}
+
 function hamburger_init() {
-  const hamburger = document.querySelector(".hamburger");
+  hamburger = document.querySelector(".hamburger");
   const buttons = document.querySelectorAll(".hamburgerButton");
   const navAnchors = hamburger?.querySelectorAll<HTMLAnchorElement>(".mainNav_main_anchor");
-  let isOpen = false;
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       hamburger?.classList.toggle("--close");
@@ -34,14 +41,14 @@ function hamburger_init() {
   }
   rowResize(resize_start, resize_end, 10);
 
-  const anchors = document.querySelectorAll('a[href^="#"]');
-  anchors.forEach((anchor) => {
-    anchor.addEventListener("click", () => {
-      hamburger?.classList.add("--close");
-      hamburger?.classList.remove("--open");
-      isOpen = false;
-    });
-  });
+  // const anchors = document.querySelectorAll('a[href^="#"]');
+  // anchors.forEach((anchor) => {
+  //   anchor.addEventListener("click", () => {
+  //     hamburger?.classList.add("--close");
+  //     hamburger?.classList.remove("--open");
+  //     isOpen = false;
+  //   });
+  // });
 }
 
 function overlap_init() {

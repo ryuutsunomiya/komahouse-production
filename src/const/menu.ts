@@ -1,4 +1,4 @@
-import { accommodationContent, legalContent, privacyContent, teamContent } from "./terms";
+import { accommodationContent, legalContent, petContent, teamContent } from "./terms";
 
 export const toTop = {
   title: "Top",
@@ -21,23 +21,16 @@ export const toFaq = {
   href: "/#faq",
 };
 
-export const toTeam = {
-  title: "利用規約",
-  titleEn: "Terms of Use",
-  id: "team",
-  href: "/terms-policies/#team",
-  isBlank: false,
-  content: teamContent,
-};
-export const toPrivacy = {
-  title: "プライバシーポリシー",
-  titleEn: "Privacy Policy",
-  id: "privacy",
-  href: "/terms-policies/#privacy",
-  isBlank: false,
-  content: privacyContent,
-};
+// export const toPrivacy = {
+//   title: "プライバシーポリシー",
+//   titleEn: "Privacy Policy",
+//   id: "privacy",
+//   href: "/terms-policies/#privacy",
+//   isBlank: false,
+//   content: privacyContent,
+// };
 export const toLegal = {
+  index: "1",
   title: "特定商取引",
   titleEn: "Specified Commercial Transactions Act",
   id: "legal",
@@ -45,7 +38,26 @@ export const toLegal = {
   isBlank: false,
   content: legalContent,
 };
+export const toTeam = {
+  index: "2",
+  title: "利用規約",
+  titleEn: "Terms of Use",
+  id: "team",
+  href: "/terms-policies/#team",
+  isBlank: false,
+  content: teamContent,
+};
+export const toPet = {
+  index: "2 - 1",
+  title: "ペット同伴規約",
+  titleEn: null,
+  id: "pet",
+  href: "/terms-policies/#pet",
+  isBlank: false,
+  content: petContent,
+};
 export const toAccommodation = {
+  index: "3",
   title: "宿泊約款",
   titleEn: "Accommodation Terms and Conditions",
   id: "accommodation",
@@ -66,7 +78,7 @@ export const toInstagram = {
 };
 
 export const menuData_main = [toTop, toConcept, toFacility, toAccess, toFaq];
-export const menuData_sub = [toLegal, toTeam, toAccommodation];
+export const menuData_sub = [toLegal, toTeam, toPet, toAccommodation];
 export const menuData_Follow = [toYoutube, toInstagram];
 
 export const toReserve = "/";

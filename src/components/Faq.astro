@@ -1,5 +1,5 @@
 ---
-import { toFaq } from "../const/menu";
+import { toFaq, toPet } from "../const/menu";
 import { zeroPad } from "../utils/calc";
 import SectionHeading from "./SectionHeading.astro";
 
@@ -39,7 +39,7 @@ const faq = [
 	{
 		q: "ペットと一緒に泊まれますか?",
 		a: `
-            はい、可能です。利用条件がございますので、事前にご確認ください。
+            はい、可能です。<a href="${toPet.href}">利用条件</a>がございますので、事前にご確認ください。
 		`,
 	},
 ]

@@ -9,12 +9,27 @@ import Layout from "../layouts/Layout.astro";
             <h1>Terms & Policies</h1>
             <p>各種規約</p>
         </section>
-        {menuData_sub.map((item, index) => (
-            <section class="terms_section">
-                <div class="terms_section_smooth" id={item.id}></div>
-                <h2>{index + 1}. {item.title} / {item.titleEn}</h2>
-                <div class="terms_block" set:html={item.content}></div>
-            </section>
-        ))}
+        <div class="terms_wrapper">
+            <nav class="terms_nav" aria-label="Terms Navigation">
+                <ul class="terms_nav_list">
+                    {menuData_sub.map((item) => (
+                        <li>
+                            <a href={item.href}>
+                                {item.index}. {item.title}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+            <div class="terms_sections">
+                {menuData_sub.map((item) => (
+                    <section class="terms_section" data-href={item.href}>
+                        <h2>{item.index}. {item.title} {item.titleEn && <>/ {item.titleEn}</>}</h2>
+                        <div class="terms_block" set:html={item.content}></div>
+                        <div class="terms_section_smooth" id={item.id}></div>
+                    </section>
+                ))}
+            </div>
+        </div>
     </article>
 </Layout>

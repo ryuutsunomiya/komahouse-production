@@ -1,3 +1,5 @@
+import { hamburger_close } from "../scripts/header";
+
 const DURATION = 700;
 const OFFSET = 0; // 固定headerがあるなら高さを指定
 
@@ -41,6 +43,8 @@ function clickHandlar() {
     if (!target) return;
 
     e.preventDefault();
+
+    hamburger_close();
 
     history.pushState(null, "", url.hash);
 
