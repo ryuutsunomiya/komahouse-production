@@ -81,4 +81,4 @@ export const menuData_main = [toTop, toConcept, toFacility, toAccess, toFaq];
 export const menuData_sub = [toLegal, toTeam, toPet, toAccommodation];
 export const menuData_Follow = [toYoutube, toInstagram];
 
-export const toReserve = "/";
+export const toReserve = "https://komahouse.airhost.co/ja";
