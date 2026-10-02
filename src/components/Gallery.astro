@@ -176,15 +176,17 @@ const sliderData_row = [
     <div class="gallerySlider">
         <div class="gallerySlider_nav">
             <div class="gallerySlider_nav_scroll" data-lenis-prevent>
-                <ul class="gallerySlider_nav_items">
-                    {sliderData_row.map((item, index) => (
-                        <div class="gallerySlider_nav_item">
-                            <div class="gallerySlider_nav_item_inner">
-                                <Image src={item} alt={""} />
-                            </div>
-                        </div>
-                    ))}
-                </ul>
+                <div class="gallerySlider_nav_items">
+                    <ul class="gallerySlider_nav_itemsInner">
+                        {sliderData_row.map((item, index) => (
+                            <li class="gallerySlider_nav_item">
+                                <div class="gallerySlider_nav_item_inner">
+                                    <Image src={item} alt={""} />
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="gallerySlider_window">

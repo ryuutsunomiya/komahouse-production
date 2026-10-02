@@ -114,19 +114,27 @@ button:has(.hoverText):hover
 .cta
     display: block
     width: 1144rem
-    height: 316rem
+    height: auto
+    aspect-ratio: 1144 / 316
     margin: 0 auto
     +f.flex(cen, cen, col)
     position: relative
     +f.tra(filter, 0.4s, 0s, linear)
+    +f.sp
+        width: 348rem
+        aspect-ratio: 1144 / 340
     .cta_main
         +f.font(159, 120, 10, EN)
+        +f.sp
+            font-size: 50rem
     .cta_sub
         +f.font(30, 50, 0, M)
         +f.tra(opacity, 1.0s, 0.8s, linear)
         margin-bottom: 0.5em
         opacity: 0
         position: relative
+        +f.sp
+            font-size: 14rem
 .cta::before
     content: ""
     width: 100%
@@ -137,6 +145,8 @@ button:has(.hoverText):hover
     +f.tra(scale, 2.4s, 0s, cubic-bezier(.02,.85,.14,.99))
     scale: 0
     background-color: v.$bg
+    +f.sp
+        border-width: 1px
 .cta.--show
     .cta_sub
         opacity: 1
@@ -154,6 +164,8 @@ button:has(.hoverText):hover
 .sectionHeading
     .sectionHeading_sub
         +f.font(17, 160, 6, M)
+        +f.sp
+            font-size: 13rem
 
 .mainButton
     +f.font(14, 130, 6, M)
@@ -179,10 +191,17 @@ button:has(.hoverText):hover
     +f.flex(sta, sta)
     position: relative
     padding-bottom: 45rem
+    +f.sp
+        +f.flex(sta, sta, col)
     .mainNav_main
         width: 348rem
         margin-right: 271rem
         +f.font(65, 140, 10, EN)
+        +f.sp
+            font-size: 40rem
+            margin-right: 0rem
+            width: 100%
+            margin-bottom: 60rem
         // text-transform: uppercase
     .mainNav_main_item
         overflow-y: clip
@@ -192,30 +211,53 @@ button:has(.hoverText):hover
         margin-bottom: calc(2.1em * 4)
         width: 618rem
         margin-top: 0.8em
+        +f.sp
+            font-size: 13rem
+            width: 100%
+            margin: 0
         .mainNav_sub_title
             +f.font(16, 210, 6, B)
             text-transform: uppercase
+            +f.sp
+                font-size: 13rem
         .mainNav_sub:nth-child(1)
             grid-area: 1 / 1 / 2 / 2
             width: 259rem
+            +f.sp
+                width: 192rem
         .mainNav_sub:nth-child(2)
             grid-area: 2 / 1 / 3 / 2
             width: 259rem
+            +f.sp
+                width: 192rem
         .mainNav_sub:nth-child(3)
             grid-area: 1 / 2 / 2 / 3
-            width: 348rem
+            +f.sp
+                width: auto
+            .mainButton
+                font-size: 0.8em
     .mainNav_thum
         width: fit-content
         position: absolute
         bottom: 45rem
         right: 0
+        +f.sp
+            position: relative
+            margin: 0 0 0 auto
+            bottom: 0
         svg
             width: 171rem
             height: auto
             aspect-ratio: 171 / 305
             fill: currentColor
+            +f.sp
+                width: 113rem
         img
             width: 171rem
+            height: auto
+            aspect-ratio: 5 / 7
+            +f.sp
+                width: 113rem
 
 
 .header

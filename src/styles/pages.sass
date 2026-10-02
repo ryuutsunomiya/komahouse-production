@@ -461,8 +461,10 @@
                 flex-direction: column-reverse
     .floor
         @include f.sectionW
-        // +f.flex(sta, bet)
+        +f.sp
+            width: 100%
         .sectionHeading
+            @include f.sectionW
             .sectionHeading_sub
                 margin-bottom: 1.6em
         .map
@@ -477,6 +479,8 @@
             overflow: clip
             touch-action: auto
             margin: 0 auto
+            +f.sp
+                width: 100%
             &.is-active
                 touch-action: none
         .map_inner
@@ -539,6 +543,11 @@
             pointer-events: none
             opacity: 0
             transition: opacity 0.8s linear
+            +f.sp
+                font-size: 10rem
+                bottom: 3rem
+                right: 3rem
+                padding: 1em 1em 0.9em
         .map.is-active
             .map_guide
                 opacity: 1
@@ -547,15 +556,27 @@
     .gallery
         margin-top: v.$sectionMt
         @include f.sectionW
+        +f.sp
+            width: 100%
         .sectionHeading
+            @include f.sectionW
             .sectionHeading_sub
                 margin-bottom: 1.6em
+                +f.sp
+                    margin-bottom: 1em
         .gallerySlider
             height: 801rem
             +f.flex(sta, bet)
+            +f.sp
+                height: auto
+                +f.flex(sta, sta, column-reverse)
+                gap: 10rem
             .gallerySlider_nav
                 height: 100%
                 position: relative
+                +f.sp
+                    height: 50rem
+                    width: 100%
                 .gallerySlider_nav_scroll
                     height: 100%
                     width: calc(82rem * 2)
@@ -565,15 +586,30 @@
                     position: relative
                     position: absolute
                     left: calc(-82rem * 0.5)
-                .gallerySlider_nav_items
+                    +f.sp
+                        width: 100%
+                        left: 0
+                        overflow-x: scroll
+                        overflow-y: visible
+                .gallerySlider_nav_itemsInner
                     +f.flex(sta, cen, col)
                     gap: 8rem
                     margin: calc((801rem - 48rem) * 0.5) auto
+                    +f.sp
+                        margin: 0
+                        +f.flex(cen, sta)
+                        gap: 4rem
+                        padding: 0 calc((100% - 75rem) * 0.5)
+                        width: max-content
                 .gallerySlider_nav_item
                     width: 82rem
                     height: 48rem
                     margin: 0 auto
                     +f.flex()
+                    +f.sp
+                        flex-shrink: 0
+                        width: 75rem
+                        height: 50rem
                     .gallerySlider_nav_item_inner
                         background-color: rgba(v.$black, 0.05)
                         +f.flex()
@@ -584,9 +620,6 @@
                             width: 100%
                             height: 100%
                             object-fit: cover
-                // .gallerySlider_nav_item.--current
-                    // .gallerySlider_nav_item_inner
-                    //     filter: lighten(, )
             .gallerySlider_nav::after
                 content: ""
                 width: calc(82rem + 4rem * 2)
@@ -596,12 +629,21 @@
                 left: -4rem
                 top: calc((801rem - 48rem - 4rem * 2) * 0.5)
                 pointer-events: none
+                +f.sp
+                    width: calc(75rem + 4rem * 2)
+                    height: calc(50rem + 4rem * 2)
+                    top: -4rem
+                    left: calc((100% - 75rem - 4rem * 2) * 0.5)
             .gallerySlider_window
                 height: 801rem
                 width: 1203rem
                 +f.flex()
                 position: relative
                 right: -60rem
+                +f.sp
+                    width: 100%
+                    height: 286rem
+                    right: 0
                 .gallerySlider_window_item
                     position: absolute
                     // background-color: rgba(v.$black, 0.05)
@@ -616,8 +658,12 @@
         padding-top: v.$sectionMt
         .access_wrapper
             +f.flex(sta, bet)
+            +f.sp
+                +f.flex(sta, sta, column-reverse)
             .access_text
                 width: 524rem
+                +f.sp
+                    width: 100%
             .access_block
                 +f.font(13, 170, 6, R)
                 margin-bottom: calc(1.7em * 3)
@@ -652,6 +698,10 @@
                     font-size: 0.8em
             .access_img
                 width: 613rem
+                position: relative
+                +f.sp
+                    width: 200rem
+                    margin: 0 0 0 auto
     .faq
         @include f.sectionW
         padding-top: v.$sectionMt
@@ -661,6 +711,8 @@
             +f.font(17, 160, 0, M)
             width: 100%
             border-top: v.$border
+            +f.sp
+                font-size: 13rem
             .faqList_card
                 border-bottom: v.$border
                 background: v.$bg
@@ -670,14 +722,25 @@
                 +f.flex(sta, bet)
                 padding-top: 3.2em
                 padding-bottom: 3.2em
+                +f.sp
+                    padding-top: 1.6em
+                    padding-bottom: 1.6em
+                    
                 .faqList_card_q_number
                     width: 82rem
                     text-align: center
+                    +f.sp
+                        width: 35rem
                 .faqList_card_q_title
                     width: 967rem
+                    +f.sp
+                        width: 270rem
                 .faqList_card_q_icon
                     fill: currentColor
                     width: 82rem
+                    +f.sp
+                        width: 35rem
+                        height: 1.6em
                     rect:nth-child(1)
                         +f.tra(opacity, 0.4s, 0s, linear)
             .faqList_card_a
@@ -685,20 +748,17 @@
                 padding-left: 265rem
                 overflow-y: clip
                 height: 0
+                +f.sp
+                    padding-right: 39rem
+                    padding-left: 39rem
+                    
                 .faqList_card_a_inner
                     padding-bottom: 3.2em
                     position: relative
+                    +f.sp
+                        padding-bottom: 1.6em
                     a
                         text-decoration: underline
-                    // padding-left: 1.7em
-                // .faqList_card_a_inner::before
-                //     content: "A."
-                //     position: absolute
-                //     left: 0
-            // .faqList_card:hover,
-            // .faqList_card.--open
-            //     filter: invert(1)
-            //     transition-duration: 1.2s
             .faqList_card.--open
                 .faqList_card_q_icon
                     rect:nth-child(1)

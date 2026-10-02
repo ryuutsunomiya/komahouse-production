@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { RowScroll } from "../utils/rowScroll";
 import MapController from "../utils/mapController";
 import { map_Init } from "../utils/map";
+import { isSp } from "../utils/isSp";
 
 function gallery_init() {
   const wrapper = document.querySelector(".gallerySlider");
@@ -20,8 +21,8 @@ function gallery_init() {
   function onResize() {
     const item1Rect = navItems[0].getBoundingClientRect();
     const item2Rect = navItems[1].getBoundingClientRect();
-    perGap = item2Rect.top - item1Rect.bottom;
-    perH = item1Rect.height + perGap;
+    perGap = isSp ? item2Rect.left - item1Rect.right : item2Rect.top - item1Rect.bottom;
+    perH = (isSp ? item1Rect.width : item1Rect.height) + perGap;
   }
   window.addEventListener("resize", onResize);
   onResize();
@@ -46,7 +47,7 @@ function gallery_init() {
   }
 
   function onScroll() {
-    const scY = nav.scrollTop;
+    const scY = isSp ? nav.scrollLeft : nav.scrollTop;
     const next = Math.min(total, Math.max(0, Math.round(scY / perH)));
 
     if (next !== current) {
