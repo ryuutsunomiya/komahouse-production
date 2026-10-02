@@ -97,6 +97,7 @@ function facility_init() {
           overwrite: true,
           onComplete: () => {
             if (index === current) item.classList.remove("js--noClick");
+            item.classList.toggle("--current", index === current);
             gsap.to(item, {
               opacity: index === current ? 1 : 0,
               duration: 0.8,

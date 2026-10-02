@@ -229,8 +229,13 @@ button:has(.hoverText):hover
         @include f.sectionW
         top: 26rem
         +f.flex(sta, cen)
+        +f.sp
+            width: 410rem
+            align-items: center
     .header_logo
         width: 82rem
+        +f.sp
+            width: 66rem
         svg
             fill: currentColor
             width: 100%
@@ -243,10 +248,28 @@ button:has(.hoverText):hover
         right: 0
         border-color: currentColor
         +f.font(14, 120, 9, M)
+        +f.sp
+            font-size: 12rem
+            padding-top: 0.3em
+            padding-right: 1.6em
+            padding-left: 1.6em
+            span.--pc
+                display: none
     .hamburgerButton
         position: absolute
         left: 0
         +f.font(17, 120, 9, M)
+        +f.sp
+            font-size: 15rem
+            margin-bottom: 16rem
+            margin-left: 15rem
+    // .hamburgerButton::before
+    //     content: ""
+    //     position: absolute
+    //     width: 100vw
+    //     height: 1px
+    //     background-color: red
+    //     bottom: 2rem
     .hamburgerButton,
     .header_logo,
     .header_cta
