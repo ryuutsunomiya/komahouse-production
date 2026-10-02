@@ -347,21 +347,29 @@
         color: v.$white
         .others_block
             width: 100%
-            min-height: 960rem
             +f.flex(cen, bet)
             padding: 0 0 v.$sectionMt
+            +f.sp
+                +f.flex(sta, sta, col)
             .others_texts
                 opacity: 0.9
                 width: 613rem
                 position: relative
+                +f.sp
+                    width: 100%
             .others_catch
                 +f.font(24, 170, 6, M)
                 margin: 0 0 1.7em
+                +f.sp
+                    font-size: 16rem
             .others_text
                 +f.font(13, 170, 6, R)
             .others_imgs
                 width: 703rem
                 +f.flex()
+                pointer-events: none
+                +f.sp
+                    width: 100%
                 .others_imgs_inner
                     position: relative
                     flex-shrink: 0
@@ -372,44 +380,85 @@
                 .others_imgs_inner
                     width: 1234rem
                     height: 894rem
+                    +f.sp
+                        width: 100%
+                        height: 310rem
                 .showImg:nth-child(1)
                     width: 526rem
                     height: auto
                     aspect-ratio: 5 / 7
                     left: 0
                     bottom: 0
+                    +f.sp
+                        width: 193rem
+                        right: 0
+                        top: 0
+                        bottom: auto
+                        left: auto
                 .showImg:nth-child(2)
                     width: 436rem
                     height: 290rem
                     right: 0
                     top: 0
+                    +f.sp
+                        left: 0
+                        top: auto
+                        bottom: 0
+                        right: auto
+                        width: 152rem
+                        height: 101rem
+                        
             .others_imgs.--bed
                 justify-content: flex-end
                 .others_imgs_inner
                     width: 1056rem
                     height: 1100rem
+                    +f.sp
+                        width: 348rem
+                        height: 750rem
                 .showImg:nth-child(1)
                     width: 701rem
                     height: 467rem
                     right: 0
+                    +f.sp
+                        right: 0
+                        width: 231rem
+                        height: 154rem
                 .showImg:nth-child(2)
                     width: 260rem
                     height: auto
                     aspect-ratio: 5 / 7
                     left: 0
                     bottom: 0
+                    +f.sp
+                        left: 0
+                        width: 113rem
         .others_block.--mea
             align-items: flex-start
             .others_texts
                 margin-top: 420rem
+                +f.sp
+                    margin-top: 30rem
+                    padding-left: 39rem
         .others_block.--bed
             align-items: flex-start
+            +f.sp
+                justify-content: flex-start
+                flex-direction: column-reverse
+                position: relative
             .others_texts
                 margin-top: 280rem
                 padding-left: 88rem
+                +f.sp
+                    margin-top: 0rem
+                    padding-left: 39rem
+                    position: absolute
+                    top: 210rem
     .others
         .others_block:nth-child(odd)
             flex-direction: row-reverse
+            +f.sp
+                flex-direction: column-reverse
     .floor
         @include f.sectionW
         // +f.flex(sta, bet)
