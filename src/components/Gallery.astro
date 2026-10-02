@@ -172,7 +172,7 @@ const sliderData_row = [
 ---
 
 <section class="gallery">
-    <SectionHeading main={"Gallery"} sub='高画質な写真で施設をご確認いただけます。' />
+    <SectionHeading main={"Gallery"} />
     <div class="gallerySlider">
         <div class="gallerySlider_nav">
             <div class="gallerySlider_nav_scroll" data-lenis-prevent>
@@ -190,11 +190,19 @@ const sliderData_row = [
             </div>
         </div>
         <div class="gallerySlider_window">
-            {sliderData.map((item, index) => (
-                <div class={index === 0 ? "gallerySlider_window_item" : "gallerySlider_window_item js--hidden"}>
-                    { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<Image src={item} alt={""} loading={"lazy"} fetchpriority={"low"} />) }
-                </div>
-            ))}
+            {sliderData.map((item, index) => {
+                const loading = index < 2 ? "eager" : "lazy"
+                const fetchpriority = index < 2 ? "high" : "low"
+                return (
+                    <div class={index === 0 ? "gallerySlider_window_item" : "gallerySlider_window_item js--hidden"}>
+                        <picture >
+                            <source media='(max-width: 768px)' srcset={sliderData_row[index].src} />
+                            <img src={item.src} width={item.width} height={item.height} loading={loading} fetchpriority={fetchpriority} />
+                        </picture>
+                        {/* { index < 2 ? (<Image src={item} alt={""} loading={"eager"} fetchpriority={"high"} />) : (<Image src={item} alt={""} loading={"lazy"} fetchpriority={"low"} />) } */}
+                    </div>
+                )
+            })}
         </div>
     </div>
 </section>
