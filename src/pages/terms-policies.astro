@@ -10,6 +10,15 @@ import Layout from "../layouts/Layout.astro";
             <p>各種規約</p>
         </section>
         <div class="terms_wrapper">
+            <div class="terms_sections">
+                {menuData_sub.map((item) => (
+                    <section class="terms_section" data-href={item.href}>
+                        <h2>{item.index}. {item.title} {item.titleEn && <>/ {item.titleEn}</>}</h2>
+                        <div class="terms_block" set:html={item.content}></div>
+                        <div class="terms_section_smooth" id={item.id}></div>
+                    </section>
+                ))}
+            </div>
             <nav class="terms_nav" aria-label="Terms Navigation">
                 <ul class="terms_nav_list">
                     {menuData_sub.map((item) => (
@@ -21,15 +30,6 @@ import Layout from "../layouts/Layout.astro";
                     ))}
                 </ul>
             </nav>
-            <div class="terms_sections">
-                {menuData_sub.map((item) => (
-                    <section class="terms_section" data-href={item.href}>
-                        <h2>{item.index}. {item.title} {item.titleEn && <>/ {item.titleEn}</>}</h2>
-                        <div class="terms_block" set:html={item.content}></div>
-                        <div class="terms_section_smooth" id={item.id}></div>
-                    </section>
-                ))}
-            </div>
         </div>
     </article>
 </Layout>

@@ -111,7 +111,7 @@ export const legalContent = `
     <table>
         <tr>
             <th>
-                サービス提供事業者・運営責任者
+                サービス提供事業者<br class='--sp'/>・運営責任者
             </th>
             <td>
                 KOMA HOUSE（運営会社　合同会社ツキノミチカケ）<br />
@@ -150,7 +150,7 @@ export const legalContent = `
                 サービス提供時期
             </th>
             <td>
-                ご予約チェックイン日〜チェックアウト日<br />
+                ご予約チェックイン日<br class='--sp'/>〜チェックアウト日<br />
                 ※台風等の災害時は要相談
             </td>
         </tr>
