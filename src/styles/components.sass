@@ -186,9 +186,13 @@ button:has(.hoverText):hover
 
 .footer
     margin-top: v.$sectionMt
+    +f.sp
+        margin-top: v.$sectionMtSp
     .mainNav
         margin-top: v.$sectionMt
         min-height: 600rem
+        +f.sp
+            margin-top: calc(v.$sectionMtSp * 0.75)
 
 .mainNav
     @include f.sectionW
@@ -197,6 +201,7 @@ button:has(.hoverText):hover
     padding-bottom: 45rem
     +f.sp
         +f.flex(sta, sta, col)
+        padding-bottom: 20rem
     .mainNav_main
         width: 348rem
         margin-right: 271rem
@@ -214,16 +219,17 @@ button:has(.hoverText):hover
         +f.grid(repeat(2, 1fr), auto, 6rem, 2.1em)
         margin-bottom: calc(2.1em * 4)
         width: 618rem
-        margin-top: 0.8em
+        margin-top: 0.4em
         +f.sp
             font-size: 13rem
             width: 100%
             margin: 0
         .mainNav_sub_title
-            +f.font(16, 210, 6, B)
+            +f.font(21, 210, 6, B)
             text-transform: uppercase
+            margin-bottom: 0.25em
             +f.sp
-                font-size: 13rem
+                font-size: 17rem
         .mainNav_sub:nth-child(1)
             grid-area: 1 / 1 / 2 / 2
             width: 259rem
@@ -248,7 +254,7 @@ button:has(.hoverText):hover
         pointer-events: none
         +f.sp
             position: relative
-            margin: 0 0 0 auto
+            margin: -20rem 0 0 auto
             bottom: 0
         svg
             width: 171rem
@@ -298,8 +304,8 @@ button:has(.hoverText):hover
         border-color: currentColor
         +f.font(14, 120, 9, M)
         +f.sp
-            font-size: 12rem
-            padding-top: 0.3em
+            font-size: 13rem
+            padding-top: 0.4em
             padding-right: 1.6em
             padding-left: 1.6em
             span.--pc
@@ -310,7 +316,7 @@ button:has(.hoverText):hover
         +f.font(17, 120, 9, M)
         +f.sp
             font-size: 15rem
-            margin-bottom: 16rem
+            margin-bottom: 15rem
             margin-left: 10rem
     // .hamburgerButton::before
     //     content: ""
@@ -347,6 +353,8 @@ button:has(.hoverText):hover
     .mainNav
         padding-top: 178rem
         min-height: 100svh
+        +f.sp
+            padding-top: 140rem
         .mainNav_main_anchor
             display: inline-block
             transform: translate3d(0, -100%, 0)

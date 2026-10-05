@@ -191,6 +191,7 @@
         position: relative
         +f.sp
             width: 348rem
+            padding: v.$sectionMtSp 0
         .showImg
             width: 347rem
             height: auto
@@ -208,7 +209,7 @@
             +f.sp
                 font-size: 13rem
                 margin-left: 39rem
-                margin-bottom: 10rem
+                margin-bottom: 4rem
         .cencept_cath.--en
             +f.font(83, 140, 10, EN)
             +f.sp
@@ -226,7 +227,7 @@
                     width: 100%
                     display: inline-block
                     position: relative
-                    right: -2rem
+                    right: -6rem
             span:nth-child(3)
                 margin-left: 173rem
                 white-space: nowrap
@@ -241,11 +242,12 @@
             white-space: nowrap
             +f.sp
                 font-size: 16rem
-                margin-left: 67rem
+                margin-left: 69rem
+                letter-spacing: 0.25em
             span:nth-child(2)
                 margin-top: 8.4em
                 +f.sp
-                    margin-top: 11.9em
+                    margin-top: 12.5em
         .cencept_itemBox
             width: 437rem
             position: relative
@@ -254,11 +256,11 @@
             +f.sp
                 width: 100%
                 font-size: 13rem
-                margin-top: 135rem
+                margin-top: 131rem
             .cencept_text
                 margin-top: 2.9em
                 +f.sp
-                    margin-top: 12em
+                    margin-top: 13em
                     margin-left: -0.2rem
     .facility
         .facilityList
@@ -268,7 +270,7 @@
             position: sticky
             top: 0
             width: 100%
-            height: 100svh
+            height: 100lvh
             +f.flex()
             .facilityList_sticky_imgs
                 position: absolute
@@ -300,6 +302,7 @@
                 +f.sp
                     +f.flex(sta, sta, col)
                     gap: 20rem
+                    bottom: calc(100lvh - 100svh)
             .facilityList_sticky_textLeft
                 width: 791rem
                 position: relative
@@ -374,12 +377,16 @@
         margin-top: v.$sectionMt
         margin-bottom: calc(v.$sectionMt * 0.25)
         color: v.$white
+        +f.sp
+            margin-top: v.$sectionMtSp
+            margin-bottom: calc(v.$sectionMtSp * 0.25)
         .others_block
             width: 100%
             +f.flex(cen, bet)
             padding: 0 0 v.$sectionMt
             +f.sp
                 +f.flex(sta, sta, col)
+                padding: 0 0 v.$sectionMtSp
             .others_texts
                 opacity: 0.9
                 width: 613rem
@@ -410,7 +417,7 @@
                     width: 1234rem
                     height: 894rem
                     +f.sp
-                        width: 100%
+                        width: 349rem
                         height: 310rem
                 .showImg:nth-child(1)
                     width: 526rem
@@ -587,6 +594,7 @@
         @include f.sectionW
         +f.sp
             width: 100%
+            margin-top: v.$sectionMtSp
         .sectionHeading
             @include f.sectionW
             .sectionHeading_sub
@@ -685,6 +693,8 @@
     .access
         @include f.sectionW
         padding-top: v.$sectionMt
+        +f.sp
+            padding-top: calc(v.$sectionMtSp * 0.5)
         .access_wrapper
             +f.flex(sta, bet)
             +f.sp
@@ -734,6 +744,8 @@
     .faq
         @include f.sectionW
         padding-top: v.$sectionMt
+        +f.sp
+            padding-top: calc(v.$sectionMtSp * 0.5)
         .subHeading
             margin-bottom: 15rem
         .faqList
