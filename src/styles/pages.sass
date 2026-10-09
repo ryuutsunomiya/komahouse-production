@@ -507,8 +507,8 @@
             border: v.$border
             border-style: dotted
             margin-top: 13rem
-            width: 1140rem
-            height: auto
+            max-width: 1140rem
+            max-height: 80svh
             aspect-ratio: 200 / 121
             background-color: #fff4e8
             position: relative
@@ -674,6 +674,7 @@
             .gallerySlider_window
                 height: 801rem
                 width: 1203rem
+                width: 1203rem
                 +f.flex()
                 position: relative
                 right: -60rem
@@ -694,8 +695,9 @@
         @include f.sectionW
         padding-top: v.$sectionMt
         +f.sp
-            padding-top: calc(v.$sectionMtSp * 0.5)
+            padding-top: v.$sectionMtSp
         .access_wrapper
+            position: relative
             +f.flex(sta, bet)
             +f.sp
                 +f.flex(sta, sta, column-reverse)
@@ -735,12 +737,21 @@
                         width: 100rem
                 .mainButton
                     font-size: 0.8em
-            .access_img
-                width: 613rem
-                position: relative
+            .access_map
+                width: 790rem
+                height: auto
+                aspect-ratio: 16 / 10
+                position: absolute
+                right: 0
+                top: 14rem
+                iframe
+                    width: 100%
+                    height: 100%
                 +f.sp
-                    width: 200rem
-                    margin: 0 0 0 auto
+                    width: 100%
+                    position: relative
+                    top: 0
+                    margin: 0 0 20rem auto
     .faq
         @include f.sectionW
         padding-top: v.$sectionMt
