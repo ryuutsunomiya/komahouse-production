@@ -1,7 +1,7 @@
 ---
-import { fade } from "astro:transitions";
 import HeaderContent from "./HeaderContent.astro";
 import MainNav from "./MainNav.astro";
+import Loading from "./Loading.astro";
 interface Props {
     isTop?: boolean
 }
@@ -17,4 +17,5 @@ const { isTop } = Astro.props
         </div>
         <HeaderContent menuText="CLOSE" />
     </div>
+    <Loading />
 </header>

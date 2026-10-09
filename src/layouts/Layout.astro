@@ -93,6 +93,7 @@ import { initProgressiveImages_init } from "../utils/initProgressiveImages";
 import { isFirstSession } from "../utils/isFiersSettion";
 import { smoothScroll_init } from "../utils/smoothScroll";
 import { pageTerms_init } from "../scripts/page.terms";
+import { isDev } from "../utils/isDev";
 
 initProgressiveImages_init();
 window.addEventListener('DOMContentLoaded', () => {
@@ -120,7 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			resolve(null);
 		}
 		function page_enter() {
-			setTimeout(() => {
+			function enter() {
 				header_enter();
 				switch (pageId) {
 					case "top":
@@ -129,7 +130,12 @@ window.addEventListener('DOMContentLoaded', () => {
 					default:
 						break;
 				}
-			}, isFirstSession() ? 500 : 0)
+			}
+			const loading = document.querySelector('.loading')
+			setTimeout(() => {
+				loading?.classList.add('js--none')
+				enter();
+			}, isFirstSession() ? 1500 : 0);
 		}
 		Promise.resolve().then(() => new Promise(page_beforeEnter).then(page_enter));
 	})
